@@ -1,0 +1,4 @@
+$DATA1 SOURCE='HSPICE' VERSION='Q-2020.03-SP2-2 linux64' PARAM_COUNT=0
+.TITLE '.title dic_final'
+ pwr              temper           alter#          
+  6.654775e-04      25.0000000     1               

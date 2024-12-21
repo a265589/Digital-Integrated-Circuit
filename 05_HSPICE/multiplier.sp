@@ -1,0 +1,1144 @@
+.TITLE DIC_Final
+
+***-----------------------***
+***        setting        ***
+***-----------------------***
+
+.protect
+.include '../08_TECH/LIB/7nm_TT.pm'
+.include '../08_TECH/LIB/16mos.pm'
+.include '../08_TECH/LIB/asap7sc7p5t_SIMPLE_RVT.sp' 
+.include '../08_TECH/LIB/asap7sc7p5t_SEQ_RVT.sp'    
+.include '../08_TECH/LIB/asap7sc7p5t_INVBUF_RVT.sp' 
+.include '../08_TECH/LIB/asap7sc7p5t_AO_RVT.sp'     
+.include '../08_TECH/LIB/asap7sc7p5t_OA_RVT.sp'     
+.unprotect
+
+.VEC "mul.vec" 
+
+*** Voltage: 1.8V ***
+.PARAM supply=0.7v
+
+*** Temperature: 25C ***
+.TEMP 25
+
+***********************************
+* Transition Analysis             *
+***********************************
+.TRAN 1ps 20ns 
+
+***********************************
+* HSPICE Options                  *
+***********************************
+.OPTION POST PROBE
+.OPTION NOMOD BRIEF MEASDGT=7 
+.OPTION CAPTAB NOTOP AUTOSTOP
+
+***********************************
+* Output Signals                  *
+***********************************
+.probe tran v(*) i(*)
+
+***********************************
+* Define Global Nets              *
+***********************************
+.GLOBAL VDD GND BL BLB
+
+***********************************
+* Voltage Sources                 *
+***********************************
+vdd     VDD   0  DC supply
+vss     VSS   0  DC 0
+vbl     BL    0   DC supply/2
+vblb    BLB   0   DC supply/2
+
+***********************************
+* Measurement Commands            *
+***********************************
+.meas pwr avg POWER
+
+
+
+***-----------------------***
+***        circuit        ***
+***-----------------------***
+
+
+// Xbuf Input In_bar INV
+
+// WEIGHT IS INITIALIZE IN THE SRAM
+// SO CIM OPERATION IS READ THE WEIGHT AND THEN DO DOT PRODUCT 
+X1 I111 O_1_1_1 WL_1_1 BL BLB W_1_1_1 W_1_1_1_bar CIM_cell
+X2 I112 O_1_1_2 WL_1_2 BL BLB W_1_1_2 W_1_1_2_bar CIM_cell
+X3 I113 O_1_1_3 WL_1_3 BL BLB W_1_1_3 W_1_1_3_bar CIM_cell
+X4 I114 O_1_1_4 WL_1_4 BL BLB W_1_1_4 W_1_1_4_bar CIM_cell
+X5 I121 O_1_2_1 WL_1_1 BL BLB W_1_2_1 W_1_2_1_bar CIM_cell
+X6 I122 O_1_2_2 WL_1_2 BL BLB W_1_2_2 W_1_2_2_bar CIM_cell
+X7 I123 O_1_2_3 WL_1_3 BL BLB W_1_2_3 W_1_2_3_bar CIM_cell
+X8 I124 O_1_2_4 WL_1_4 BL BLB W_1_2_4 W_1_2_4_bar CIM_cell
+X9 I131 O_1_3_1 WL_1_1 BL BLB W_1_3_1 W_1_3_1_bar CIM_cell
+X10 I132 O_1_3_2 WL_1_2 BL BLB W_1_3_2 W_1_3_2_bar CIM_cell
+X11 I133 O_1_3_3 WL_1_3 BL BLB W_1_3_3 W_1_3_3_bar CIM_cell
+X12 I134 O_1_3_4 WL_1_4 BL BLB W_1_3_4 W_1_3_4_bar CIM_cell
+X13 I141 O_1_4_1 WL_1_1 BL BLB W_1_4_1 W_1_4_1_bar CIM_cell
+X14 I142 O_1_4_2 WL_1_2 BL BLB W_1_4_2 W_1_4_2_bar CIM_cell
+X15 I143 O_1_4_3 WL_1_3 BL BLB W_1_4_3 W_1_4_3_bar CIM_cell
+X16 I144 O_1_4_4 WL_1_4 BL BLB W_1_4_4 W_1_4_4_bar CIM_cell
+X17 I151 O_1_5_1 WL_1_1 BL BLB W_1_5_1 W_1_5_1_bar CIM_cell
+X18 I152 O_1_5_2 WL_1_2 BL BLB W_1_5_2 W_1_5_2_bar CIM_cell
+X19 I153 O_1_5_3 WL_1_3 BL BLB W_1_5_3 W_1_5_3_bar CIM_cell
+X20 I154 O_1_5_4 WL_1_4 BL BLB W_1_5_4 W_1_5_4_bar CIM_cell
+X21 I161 O_1_6_1 WL_1_1 BL BLB W_1_6_1 W_1_6_1_bar CIM_cell
+X22 I162 O_1_6_2 WL_1_2 BL BLB W_1_6_2 W_1_6_2_bar CIM_cell
+X23 I163 O_1_6_3 WL_1_3 BL BLB W_1_6_3 W_1_6_3_bar CIM_cell
+X24 I164 O_1_6_4 WL_1_4 BL BLB W_1_6_4 W_1_6_4_bar CIM_cell
+X25 I171 O_1_7_1 WL_1_1 BL BLB W_1_7_1 W_1_7_1_bar CIM_cell
+X26 I172 O_1_7_2 WL_1_2 BL BLB W_1_7_2 W_1_7_2_bar CIM_cell
+X27 I173 O_1_7_3 WL_1_3 BL BLB W_1_7_3 W_1_7_3_bar CIM_cell
+X28 I174 O_1_7_4 WL_1_4 BL BLB W_1_7_4 W_1_7_4_bar CIM_cell
+X29 I181 O_1_8_1 WL_1_1 BL BLB W_1_8_1 W_1_8_1_bar CIM_cell
+X30 I182 O_1_8_2 WL_1_2 BL BLB W_1_8_2 W_1_8_2_bar CIM_cell
+X31 I183 O_1_8_3 WL_1_3 BL BLB W_1_8_3 W_1_8_3_bar CIM_cell
+X32 I184 O_1_8_4 WL_1_4 BL BLB W_1_8_4 W_1_8_4_bar CIM_cell
+X33 I191 O_1_9_1 WL_1_1 BL BLB W_1_9_1 W_1_9_1_bar CIM_cell
+X34 I192 O_1_9_2 WL_1_2 BL BLB W_1_9_2 W_1_9_2_bar CIM_cell
+X35 I193 O_1_9_3 WL_1_3 BL BLB W_1_9_3 W_1_9_3_bar CIM_cell
+X36 I194 O_1_9_4 WL_1_4 BL BLB W_1_9_4 W_1_9_4_bar CIM_cell
+X37 I1101 O_1_10_1 WL_1_1 BL BLB W_1_10_1 W_1_10_1_bar CIM_cell
+X38 I1102 O_1_10_2 WL_1_2 BL BLB W_1_10_2 W_1_10_2_bar CIM_cell
+X39 I1103 O_1_10_3 WL_1_3 BL BLB W_1_10_3 W_1_10_3_bar CIM_cell
+X40 I1104 O_1_10_4 WL_1_4 BL BLB W_1_10_4 W_1_10_4_bar CIM_cell
+X41 I1111 O_1_11_1 WL_1_1 BL BLB W_1_11_1 W_1_11_1_bar CIM_cell
+X42 I1112 O_1_11_2 WL_1_2 BL BLB W_1_11_2 W_1_11_2_bar CIM_cell
+X43 I1113 O_1_11_3 WL_1_3 BL BLB W_1_11_3 W_1_11_3_bar CIM_cell
+X44 I1114 O_1_11_4 WL_1_4 BL BLB W_1_11_4 W_1_11_4_bar CIM_cell
+X45 I1121 O_1_12_1 WL_1_1 BL BLB W_1_12_1 W_1_12_1_bar CIM_cell
+X46 I1122 O_1_12_2 WL_1_2 BL BLB W_1_12_2 W_1_12_2_bar CIM_cell
+X47 I1123 O_1_12_3 WL_1_3 BL BLB W_1_12_3 W_1_12_3_bar CIM_cell
+X48 I1124 O_1_12_4 WL_1_4 BL BLB W_1_12_4 W_1_12_4_bar CIM_cell
+X49 I1131 O_1_13_1 WL_1_1 BL BLB W_1_13_1 W_1_13_1_bar CIM_cell
+X50 I1132 O_1_13_2 WL_1_2 BL BLB W_1_13_2 W_1_13_2_bar CIM_cell
+X51 I1133 O_1_13_3 WL_1_3 BL BLB W_1_13_3 W_1_13_3_bar CIM_cell
+X52 I1134 O_1_13_4 WL_1_4 BL BLB W_1_13_4 W_1_13_4_bar CIM_cell
+X53 I1141 O_1_14_1 WL_1_1 BL BLB W_1_14_1 W_1_14_1_bar CIM_cell
+X54 I1142 O_1_14_2 WL_1_2 BL BLB W_1_14_2 W_1_14_2_bar CIM_cell
+X55 I1143 O_1_14_3 WL_1_3 BL BLB W_1_14_3 W_1_14_3_bar CIM_cell
+X56 I1144 O_1_14_4 WL_1_4 BL BLB W_1_14_4 W_1_14_4_bar CIM_cell
+X57 I1151 O_1_15_1 WL_1_1 BL BLB W_1_15_1 W_1_15_1_bar CIM_cell
+X58 I1152 O_1_15_2 WL_1_2 BL BLB W_1_15_2 W_1_15_2_bar CIM_cell
+X59 I1153 O_1_15_3 WL_1_3 BL BLB W_1_15_3 W_1_15_3_bar CIM_cell
+X60 I1154 O_1_15_4 WL_1_4 BL BLB W_1_15_4 W_1_15_4_bar CIM_cell
+X61 I1161 O_1_16_1 WL_1_1 BL BLB W_1_16_1 W_1_16_1_bar CIM_cell
+X62 I1162 O_1_16_2 WL_1_2 BL BLB W_1_16_2 W_1_16_2_bar CIM_cell
+X63 I1163 O_1_16_3 WL_1_3 BL BLB W_1_16_3 W_1_16_3_bar CIM_cell
+X64 I1164 O_1_16_4 WL_1_4 BL BLB W_1_16_4 W_1_16_4_bar CIM_cell
+X65 I1171 O_1_17_1 WL_1_1 BL BLB W_1_17_1 W_1_17_1_bar CIM_cell
+X66 I1172 O_1_17_2 WL_1_2 BL BLB W_1_17_2 W_1_17_2_bar CIM_cell
+X67 I1173 O_1_17_3 WL_1_3 BL BLB W_1_17_3 W_1_17_3_bar CIM_cell
+X68 I1174 O_1_17_4 WL_1_4 BL BLB W_1_17_4 W_1_17_4_bar CIM_cell
+X69 I1181 O_1_18_1 WL_1_1 BL BLB W_1_18_1 W_1_18_1_bar CIM_cell
+X70 I1182 O_1_18_2 WL_1_2 BL BLB W_1_18_2 W_1_18_2_bar CIM_cell
+X71 I1183 O_1_18_3 WL_1_3 BL BLB W_1_18_3 W_1_18_3_bar CIM_cell
+X72 I1184 O_1_18_4 WL_1_4 BL BLB W_1_18_4 W_1_18_4_bar CIM_cell
+X73 I1191 O_1_19_1 WL_1_1 BL BLB W_1_19_1 W_1_19_1_bar CIM_cell
+X74 I1192 O_1_19_2 WL_1_2 BL BLB W_1_19_2 W_1_19_2_bar CIM_cell
+X75 I1193 O_1_19_3 WL_1_3 BL BLB W_1_19_3 W_1_19_3_bar CIM_cell
+X76 I1194 O_1_19_4 WL_1_4 BL BLB W_1_19_4 W_1_19_4_bar CIM_cell
+X77 I1201 O_1_20_1 WL_1_1 BL BLB W_1_20_1 W_1_20_1_bar CIM_cell
+X78 I1202 O_1_20_2 WL_1_2 BL BLB W_1_20_2 W_1_20_2_bar CIM_cell
+X79 I1203 O_1_20_3 WL_1_3 BL BLB W_1_20_3 W_1_20_3_bar CIM_cell
+X80 I1204 O_1_20_4 WL_1_4 BL BLB W_1_20_4 W_1_20_4_bar CIM_cell
+X81 I1211 O_1_21_1 WL_1_1 BL BLB W_1_21_1 W_1_21_1_bar CIM_cell
+X82 I1212 O_1_21_2 WL_1_2 BL BLB W_1_21_2 W_1_21_2_bar CIM_cell
+X83 I1213 O_1_21_3 WL_1_3 BL BLB W_1_21_3 W_1_21_3_bar CIM_cell
+X84 I1214 O_1_21_4 WL_1_4 BL BLB W_1_21_4 W_1_21_4_bar CIM_cell
+X85 I1221 O_1_22_1 WL_1_1 BL BLB W_1_22_1 W_1_22_1_bar CIM_cell
+X86 I1222 O_1_22_2 WL_1_2 BL BLB W_1_22_2 W_1_22_2_bar CIM_cell
+X87 I1223 O_1_22_3 WL_1_3 BL BLB W_1_22_3 W_1_22_3_bar CIM_cell
+X88 I1224 O_1_22_4 WL_1_4 BL BLB W_1_22_4 W_1_22_4_bar CIM_cell
+X89 I1231 O_1_23_1 WL_1_1 BL BLB W_1_23_1 W_1_23_1_bar CIM_cell
+X90 I1232 O_1_23_2 WL_1_2 BL BLB W_1_23_2 W_1_23_2_bar CIM_cell
+X91 I1233 O_1_23_3 WL_1_3 BL BLB W_1_23_3 W_1_23_3_bar CIM_cell
+X92 I1234 O_1_23_4 WL_1_4 BL BLB W_1_23_4 W_1_23_4_bar CIM_cell
+X93 I1241 O_1_24_1 WL_1_1 BL BLB W_1_24_1 W_1_24_1_bar CIM_cell
+X94 I1242 O_1_24_2 WL_1_2 BL BLB W_1_24_2 W_1_24_2_bar CIM_cell
+X95 I1243 O_1_24_3 WL_1_3 BL BLB W_1_24_3 W_1_24_3_bar CIM_cell
+X96 I1244 O_1_24_4 WL_1_4 BL BLB W_1_24_4 W_1_24_4_bar CIM_cell
+X97 I1251 O_1_25_1 WL_1_1 BL BLB W_1_25_1 W_1_25_1_bar CIM_cell
+X98 I1252 O_1_25_2 WL_1_2 BL BLB W_1_25_2 W_1_25_2_bar CIM_cell
+X99 I1253 O_1_25_3 WL_1_3 BL BLB W_1_25_3 W_1_25_3_bar CIM_cell
+X100 I1254 O_1_25_4 WL_1_4 BL BLB W_1_25_4 W_1_25_4_bar CIM_cell
+X101 I1261 O_1_26_1 WL_1_1 BL BLB W_1_26_1 W_1_26_1_bar CIM_cell
+X102 I1262 O_1_26_2 WL_1_2 BL BLB W_1_26_2 W_1_26_2_bar CIM_cell
+X103 I1263 O_1_26_3 WL_1_3 BL BLB W_1_26_3 W_1_26_3_bar CIM_cell
+X104 I1264 O_1_26_4 WL_1_4 BL BLB W_1_26_4 W_1_26_4_bar CIM_cell
+X105 I1271 O_1_27_1 WL_1_1 BL BLB W_1_27_1 W_1_27_1_bar CIM_cell
+X106 I1272 O_1_27_2 WL_1_2 BL BLB W_1_27_2 W_1_27_2_bar CIM_cell
+X107 I1273 O_1_27_3 WL_1_3 BL BLB W_1_27_3 W_1_27_3_bar CIM_cell
+X108 I1274 O_1_27_4 WL_1_4 BL BLB W_1_27_4 W_1_27_4_bar CIM_cell
+X109 I1281 O_1_28_1 WL_1_1 BL BLB W_1_28_1 W_1_28_1_bar CIM_cell
+X110 I1282 O_1_28_2 WL_1_2 BL BLB W_1_28_2 W_1_28_2_bar CIM_cell
+X111 I1283 O_1_28_3 WL_1_3 BL BLB W_1_28_3 W_1_28_3_bar CIM_cell
+X112 I1284 O_1_28_4 WL_1_4 BL BLB W_1_28_4 W_1_28_4_bar CIM_cell
+X113 I1291 O_1_29_1 WL_1_1 BL BLB W_1_29_1 W_1_29_1_bar CIM_cell
+X114 I1292 O_1_29_2 WL_1_2 BL BLB W_1_29_2 W_1_29_2_bar CIM_cell
+X115 I1293 O_1_29_3 WL_1_3 BL BLB W_1_29_3 W_1_29_3_bar CIM_cell
+X116 I1294 O_1_29_4 WL_1_4 BL BLB W_1_29_4 W_1_29_4_bar CIM_cell
+X117 I1301 O_1_30_1 WL_1_1 BL BLB W_1_30_1 W_1_30_1_bar CIM_cell
+X118 I1302 O_1_30_2 WL_1_2 BL BLB W_1_30_2 W_1_30_2_bar CIM_cell
+X119 I1303 O_1_30_3 WL_1_3 BL BLB W_1_30_3 W_1_30_3_bar CIM_cell
+X120 I1304 O_1_30_4 WL_1_4 BL BLB W_1_30_4 W_1_30_4_bar CIM_cell
+X121 I1311 O_1_31_1 WL_1_1 BL BLB W_1_31_1 W_1_31_1_bar CIM_cell
+X122 I1312 O_1_31_2 WL_1_2 BL BLB W_1_31_2 W_1_31_2_bar CIM_cell
+X123 I1313 O_1_31_3 WL_1_3 BL BLB W_1_31_3 W_1_31_3_bar CIM_cell
+X124 I1314 O_1_31_4 WL_1_4 BL BLB W_1_31_4 W_1_31_4_bar CIM_cell
+X125 I1321 O_1_32_1 WL_1_1 BL BLB W_1_32_1 W_1_32_1_bar CIM_cell
+X126 I1322 O_1_32_2 WL_1_2 BL BLB W_1_32_2 W_1_32_2_bar CIM_cell
+X127 I1323 O_1_32_3 WL_1_3 BL BLB W_1_32_3 W_1_32_3_bar CIM_cell
+X128 I1324 O_1_32_4 WL_1_4 BL BLB W_1_32_4 W_1_32_4_bar CIM_cell
+X129 I211 O_2_1_1 WL_2_1 BL BLB W_2_1_1 W_2_1_1_bar CIM_cell
+X130 I212 O_2_1_2 WL_2_2 BL BLB W_2_1_2 W_2_1_2_bar CIM_cell
+X131 I213 O_2_1_3 WL_2_3 BL BLB W_2_1_3 W_2_1_3_bar CIM_cell
+X132 I214 O_2_1_4 WL_2_4 BL BLB W_2_1_4 W_2_1_4_bar CIM_cell
+X133 I221 O_2_2_1 WL_2_1 BL BLB W_2_2_1 W_2_2_1_bar CIM_cell
+X134 I222 O_2_2_2 WL_2_2 BL BLB W_2_2_2 W_2_2_2_bar CIM_cell
+X135 I223 O_2_2_3 WL_2_3 BL BLB W_2_2_3 W_2_2_3_bar CIM_cell
+X136 I224 O_2_2_4 WL_2_4 BL BLB W_2_2_4 W_2_2_4_bar CIM_cell
+X137 I231 O_2_3_1 WL_2_1 BL BLB W_2_3_1 W_2_3_1_bar CIM_cell
+X138 I232 O_2_3_2 WL_2_2 BL BLB W_2_3_2 W_2_3_2_bar CIM_cell
+X139 I233 O_2_3_3 WL_2_3 BL BLB W_2_3_3 W_2_3_3_bar CIM_cell
+X140 I234 O_2_3_4 WL_2_4 BL BLB W_2_3_4 W_2_3_4_bar CIM_cell
+X141 I241 O_2_4_1 WL_2_1 BL BLB W_2_4_1 W_2_4_1_bar CIM_cell
+X142 I242 O_2_4_2 WL_2_2 BL BLB W_2_4_2 W_2_4_2_bar CIM_cell
+X143 I243 O_2_4_3 WL_2_3 BL BLB W_2_4_3 W_2_4_3_bar CIM_cell
+X144 I244 O_2_4_4 WL_2_4 BL BLB W_2_4_4 W_2_4_4_bar CIM_cell
+X145 I251 O_2_5_1 WL_2_1 BL BLB W_2_5_1 W_2_5_1_bar CIM_cell
+X146 I252 O_2_5_2 WL_2_2 BL BLB W_2_5_2 W_2_5_2_bar CIM_cell
+X147 I253 O_2_5_3 WL_2_3 BL BLB W_2_5_3 W_2_5_3_bar CIM_cell
+X148 I254 O_2_5_4 WL_2_4 BL BLB W_2_5_4 W_2_5_4_bar CIM_cell
+X149 I261 O_2_6_1 WL_2_1 BL BLB W_2_6_1 W_2_6_1_bar CIM_cell
+X150 I262 O_2_6_2 WL_2_2 BL BLB W_2_6_2 W_2_6_2_bar CIM_cell
+X151 I263 O_2_6_3 WL_2_3 BL BLB W_2_6_3 W_2_6_3_bar CIM_cell
+X152 I264 O_2_6_4 WL_2_4 BL BLB W_2_6_4 W_2_6_4_bar CIM_cell
+X153 I271 O_2_7_1 WL_2_1 BL BLB W_2_7_1 W_2_7_1_bar CIM_cell
+X154 I272 O_2_7_2 WL_2_2 BL BLB W_2_7_2 W_2_7_2_bar CIM_cell
+X155 I273 O_2_7_3 WL_2_3 BL BLB W_2_7_3 W_2_7_3_bar CIM_cell
+X156 I274 O_2_7_4 WL_2_4 BL BLB W_2_7_4 W_2_7_4_bar CIM_cell
+X157 I281 O_2_8_1 WL_2_1 BL BLB W_2_8_1 W_2_8_1_bar CIM_cell
+X158 I282 O_2_8_2 WL_2_2 BL BLB W_2_8_2 W_2_8_2_bar CIM_cell
+X159 I283 O_2_8_3 WL_2_3 BL BLB W_2_8_3 W_2_8_3_bar CIM_cell
+X160 I284 O_2_8_4 WL_2_4 BL BLB W_2_8_4 W_2_8_4_bar CIM_cell
+X161 I291 O_2_9_1 WL_2_1 BL BLB W_2_9_1 W_2_9_1_bar CIM_cell
+X162 I292 O_2_9_2 WL_2_2 BL BLB W_2_9_2 W_2_9_2_bar CIM_cell
+X163 I293 O_2_9_3 WL_2_3 BL BLB W_2_9_3 W_2_9_3_bar CIM_cell
+X164 I294 O_2_9_4 WL_2_4 BL BLB W_2_9_4 W_2_9_4_bar CIM_cell
+X165 I2101 O_2_10_1 WL_2_1 BL BLB W_2_10_1 W_2_10_1_bar CIM_cell
+X166 I2102 O_2_10_2 WL_2_2 BL BLB W_2_10_2 W_2_10_2_bar CIM_cell
+X167 I2103 O_2_10_3 WL_2_3 BL BLB W_2_10_3 W_2_10_3_bar CIM_cell
+X168 I2104 O_2_10_4 WL_2_4 BL BLB W_2_10_4 W_2_10_4_bar CIM_cell
+X169 I2111 O_2_11_1 WL_2_1 BL BLB W_2_11_1 W_2_11_1_bar CIM_cell
+X170 I2112 O_2_11_2 WL_2_2 BL BLB W_2_11_2 W_2_11_2_bar CIM_cell
+X171 I2113 O_2_11_3 WL_2_3 BL BLB W_2_11_3 W_2_11_3_bar CIM_cell
+X172 I2114 O_2_11_4 WL_2_4 BL BLB W_2_11_4 W_2_11_4_bar CIM_cell
+X173 I2121 O_2_12_1 WL_2_1 BL BLB W_2_12_1 W_2_12_1_bar CIM_cell
+X174 I2122 O_2_12_2 WL_2_2 BL BLB W_2_12_2 W_2_12_2_bar CIM_cell
+X175 I2123 O_2_12_3 WL_2_3 BL BLB W_2_12_3 W_2_12_3_bar CIM_cell
+X176 I2124 O_2_12_4 WL_2_4 BL BLB W_2_12_4 W_2_12_4_bar CIM_cell
+X177 I2131 O_2_13_1 WL_2_1 BL BLB W_2_13_1 W_2_13_1_bar CIM_cell
+X178 I2132 O_2_13_2 WL_2_2 BL BLB W_2_13_2 W_2_13_2_bar CIM_cell
+X179 I2133 O_2_13_3 WL_2_3 BL BLB W_2_13_3 W_2_13_3_bar CIM_cell
+X180 I2134 O_2_13_4 WL_2_4 BL BLB W_2_13_4 W_2_13_4_bar CIM_cell
+X181 I2141 O_2_14_1 WL_2_1 BL BLB W_2_14_1 W_2_14_1_bar CIM_cell
+X182 I2142 O_2_14_2 WL_2_2 BL BLB W_2_14_2 W_2_14_2_bar CIM_cell
+X183 I2143 O_2_14_3 WL_2_3 BL BLB W_2_14_3 W_2_14_3_bar CIM_cell
+X184 I2144 O_2_14_4 WL_2_4 BL BLB W_2_14_4 W_2_14_4_bar CIM_cell
+X185 I2151 O_2_15_1 WL_2_1 BL BLB W_2_15_1 W_2_15_1_bar CIM_cell
+X186 I2152 O_2_15_2 WL_2_2 BL BLB W_2_15_2 W_2_15_2_bar CIM_cell
+X187 I2153 O_2_15_3 WL_2_3 BL BLB W_2_15_3 W_2_15_3_bar CIM_cell
+X188 I2154 O_2_15_4 WL_2_4 BL BLB W_2_15_4 W_2_15_4_bar CIM_cell
+X189 I2161 O_2_16_1 WL_2_1 BL BLB W_2_16_1 W_2_16_1_bar CIM_cell
+X190 I2162 O_2_16_2 WL_2_2 BL BLB W_2_16_2 W_2_16_2_bar CIM_cell
+X191 I2163 O_2_16_3 WL_2_3 BL BLB W_2_16_3 W_2_16_3_bar CIM_cell
+X192 I2164 O_2_16_4 WL_2_4 BL BLB W_2_16_4 W_2_16_4_bar CIM_cell
+X193 I2171 O_2_17_1 WL_2_1 BL BLB W_2_17_1 W_2_17_1_bar CIM_cell
+X194 I2172 O_2_17_2 WL_2_2 BL BLB W_2_17_2 W_2_17_2_bar CIM_cell
+X195 I2173 O_2_17_3 WL_2_3 BL BLB W_2_17_3 W_2_17_3_bar CIM_cell
+X196 I2174 O_2_17_4 WL_2_4 BL BLB W_2_17_4 W_2_17_4_bar CIM_cell
+X197 I2181 O_2_18_1 WL_2_1 BL BLB W_2_18_1 W_2_18_1_bar CIM_cell
+X198 I2182 O_2_18_2 WL_2_2 BL BLB W_2_18_2 W_2_18_2_bar CIM_cell
+X199 I2183 O_2_18_3 WL_2_3 BL BLB W_2_18_3 W_2_18_3_bar CIM_cell
+X200 I2184 O_2_18_4 WL_2_4 BL BLB W_2_18_4 W_2_18_4_bar CIM_cell
+X201 I2191 O_2_19_1 WL_2_1 BL BLB W_2_19_1 W_2_19_1_bar CIM_cell
+X202 I2192 O_2_19_2 WL_2_2 BL BLB W_2_19_2 W_2_19_2_bar CIM_cell
+X203 I2193 O_2_19_3 WL_2_3 BL BLB W_2_19_3 W_2_19_3_bar CIM_cell
+X204 I2194 O_2_19_4 WL_2_4 BL BLB W_2_19_4 W_2_19_4_bar CIM_cell
+X205 I2201 O_2_20_1 WL_2_1 BL BLB W_2_20_1 W_2_20_1_bar CIM_cell
+X206 I2202 O_2_20_2 WL_2_2 BL BLB W_2_20_2 W_2_20_2_bar CIM_cell
+X207 I2203 O_2_20_3 WL_2_3 BL BLB W_2_20_3 W_2_20_3_bar CIM_cell
+X208 I2204 O_2_20_4 WL_2_4 BL BLB W_2_20_4 W_2_20_4_bar CIM_cell
+X209 I2211 O_2_21_1 WL_2_1 BL BLB W_2_21_1 W_2_21_1_bar CIM_cell
+X210 I2212 O_2_21_2 WL_2_2 BL BLB W_2_21_2 W_2_21_2_bar CIM_cell
+X211 I2213 O_2_21_3 WL_2_3 BL BLB W_2_21_3 W_2_21_3_bar CIM_cell
+X212 I2214 O_2_21_4 WL_2_4 BL BLB W_2_21_4 W_2_21_4_bar CIM_cell
+X213 I2221 O_2_22_1 WL_2_1 BL BLB W_2_22_1 W_2_22_1_bar CIM_cell
+X214 I2222 O_2_22_2 WL_2_2 BL BLB W_2_22_2 W_2_22_2_bar CIM_cell
+X215 I2223 O_2_22_3 WL_2_3 BL BLB W_2_22_3 W_2_22_3_bar CIM_cell
+X216 I2224 O_2_22_4 WL_2_4 BL BLB W_2_22_4 W_2_22_4_bar CIM_cell
+X217 I2231 O_2_23_1 WL_2_1 BL BLB W_2_23_1 W_2_23_1_bar CIM_cell
+X218 I2232 O_2_23_2 WL_2_2 BL BLB W_2_23_2 W_2_23_2_bar CIM_cell
+X219 I2233 O_2_23_3 WL_2_3 BL BLB W_2_23_3 W_2_23_3_bar CIM_cell
+X220 I2234 O_2_23_4 WL_2_4 BL BLB W_2_23_4 W_2_23_4_bar CIM_cell
+X221 I2241 O_2_24_1 WL_2_1 BL BLB W_2_24_1 W_2_24_1_bar CIM_cell
+X222 I2242 O_2_24_2 WL_2_2 BL BLB W_2_24_2 W_2_24_2_bar CIM_cell
+X223 I2243 O_2_24_3 WL_2_3 BL BLB W_2_24_3 W_2_24_3_bar CIM_cell
+X224 I2244 O_2_24_4 WL_2_4 BL BLB W_2_24_4 W_2_24_4_bar CIM_cell
+X225 I2251 O_2_25_1 WL_2_1 BL BLB W_2_25_1 W_2_25_1_bar CIM_cell
+X226 I2252 O_2_25_2 WL_2_2 BL BLB W_2_25_2 W_2_25_2_bar CIM_cell
+X227 I2253 O_2_25_3 WL_2_3 BL BLB W_2_25_3 W_2_25_3_bar CIM_cell
+X228 I2254 O_2_25_4 WL_2_4 BL BLB W_2_25_4 W_2_25_4_bar CIM_cell
+X229 I2261 O_2_26_1 WL_2_1 BL BLB W_2_26_1 W_2_26_1_bar CIM_cell
+X230 I2262 O_2_26_2 WL_2_2 BL BLB W_2_26_2 W_2_26_2_bar CIM_cell
+X231 I2263 O_2_26_3 WL_2_3 BL BLB W_2_26_3 W_2_26_3_bar CIM_cell
+X232 I2264 O_2_26_4 WL_2_4 BL BLB W_2_26_4 W_2_26_4_bar CIM_cell
+X233 I2271 O_2_27_1 WL_2_1 BL BLB W_2_27_1 W_2_27_1_bar CIM_cell
+X234 I2272 O_2_27_2 WL_2_2 BL BLB W_2_27_2 W_2_27_2_bar CIM_cell
+X235 I2273 O_2_27_3 WL_2_3 BL BLB W_2_27_3 W_2_27_3_bar CIM_cell
+X236 I2274 O_2_27_4 WL_2_4 BL BLB W_2_27_4 W_2_27_4_bar CIM_cell
+X237 I2281 O_2_28_1 WL_2_1 BL BLB W_2_28_1 W_2_28_1_bar CIM_cell
+X238 I2282 O_2_28_2 WL_2_2 BL BLB W_2_28_2 W_2_28_2_bar CIM_cell
+X239 I2283 O_2_28_3 WL_2_3 BL BLB W_2_28_3 W_2_28_3_bar CIM_cell
+X240 I2284 O_2_28_4 WL_2_4 BL BLB W_2_28_4 W_2_28_4_bar CIM_cell
+X241 I2291 O_2_29_1 WL_2_1 BL BLB W_2_29_1 W_2_29_1_bar CIM_cell
+X242 I2292 O_2_29_2 WL_2_2 BL BLB W_2_29_2 W_2_29_2_bar CIM_cell
+X243 I2293 O_2_29_3 WL_2_3 BL BLB W_2_29_3 W_2_29_3_bar CIM_cell
+X244 I2294 O_2_29_4 WL_2_4 BL BLB W_2_29_4 W_2_29_4_bar CIM_cell
+X245 I2301 O_2_30_1 WL_2_1 BL BLB W_2_30_1 W_2_30_1_bar CIM_cell
+X246 I2302 O_2_30_2 WL_2_2 BL BLB W_2_30_2 W_2_30_2_bar CIM_cell
+X247 I2303 O_2_30_3 WL_2_3 BL BLB W_2_30_3 W_2_30_3_bar CIM_cell
+X248 I2304 O_2_30_4 WL_2_4 BL BLB W_2_30_4 W_2_30_4_bar CIM_cell
+X249 I2311 O_2_31_1 WL_2_1 BL BLB W_2_31_1 W_2_31_1_bar CIM_cell
+X250 I2312 O_2_31_2 WL_2_2 BL BLB W_2_31_2 W_2_31_2_bar CIM_cell
+X251 I2313 O_2_31_3 WL_2_3 BL BLB W_2_31_3 W_2_31_3_bar CIM_cell
+X252 I2314 O_2_31_4 WL_2_4 BL BLB W_2_31_4 W_2_31_4_bar CIM_cell
+X253 I2321 O_2_32_1 WL_2_1 BL BLB W_2_32_1 W_2_32_1_bar CIM_cell
+X254 I2322 O_2_32_2 WL_2_2 BL BLB W_2_32_2 W_2_32_2_bar CIM_cell
+X255 I2323 O_2_32_3 WL_2_3 BL BLB W_2_32_3 W_2_32_3_bar CIM_cell
+X256 I2324 O_2_32_4 WL_2_4 BL BLB W_2_32_4 W_2_32_4_bar CIM_cell
+X257 I311 O_3_1_1 WL_3_1 BL BLB W_3_1_1 W_3_1_1_bar CIM_cell
+X258 I312 O_3_1_2 WL_3_2 BL BLB W_3_1_2 W_3_1_2_bar CIM_cell
+X259 I313 O_3_1_3 WL_3_3 BL BLB W_3_1_3 W_3_1_3_bar CIM_cell
+X260 I314 O_3_1_4 WL_3_4 BL BLB W_3_1_4 W_3_1_4_bar CIM_cell
+X261 I321 O_3_2_1 WL_3_1 BL BLB W_3_2_1 W_3_2_1_bar CIM_cell
+X262 I322 O_3_2_2 WL_3_2 BL BLB W_3_2_2 W_3_2_2_bar CIM_cell
+X263 I323 O_3_2_3 WL_3_3 BL BLB W_3_2_3 W_3_2_3_bar CIM_cell
+X264 I324 O_3_2_4 WL_3_4 BL BLB W_3_2_4 W_3_2_4_bar CIM_cell
+X265 I331 O_3_3_1 WL_3_1 BL BLB W_3_3_1 W_3_3_1_bar CIM_cell
+X266 I332 O_3_3_2 WL_3_2 BL BLB W_3_3_2 W_3_3_2_bar CIM_cell
+X267 I333 O_3_3_3 WL_3_3 BL BLB W_3_3_3 W_3_3_3_bar CIM_cell
+X268 I334 O_3_3_4 WL_3_4 BL BLB W_3_3_4 W_3_3_4_bar CIM_cell
+X269 I341 O_3_4_1 WL_3_1 BL BLB W_3_4_1 W_3_4_1_bar CIM_cell
+X270 I342 O_3_4_2 WL_3_2 BL BLB W_3_4_2 W_3_4_2_bar CIM_cell
+X271 I343 O_3_4_3 WL_3_3 BL BLB W_3_4_3 W_3_4_3_bar CIM_cell
+X272 I344 O_3_4_4 WL_3_4 BL BLB W_3_4_4 W_3_4_4_bar CIM_cell
+X273 I351 O_3_5_1 WL_3_1 BL BLB W_3_5_1 W_3_5_1_bar CIM_cell
+X274 I352 O_3_5_2 WL_3_2 BL BLB W_3_5_2 W_3_5_2_bar CIM_cell
+X275 I353 O_3_5_3 WL_3_3 BL BLB W_3_5_3 W_3_5_3_bar CIM_cell
+X276 I354 O_3_5_4 WL_3_4 BL BLB W_3_5_4 W_3_5_4_bar CIM_cell
+X277 I361 O_3_6_1 WL_3_1 BL BLB W_3_6_1 W_3_6_1_bar CIM_cell
+X278 I362 O_3_6_2 WL_3_2 BL BLB W_3_6_2 W_3_6_2_bar CIM_cell
+X279 I363 O_3_6_3 WL_3_3 BL BLB W_3_6_3 W_3_6_3_bar CIM_cell
+X280 I364 O_3_6_4 WL_3_4 BL BLB W_3_6_4 W_3_6_4_bar CIM_cell
+X281 I371 O_3_7_1 WL_3_1 BL BLB W_3_7_1 W_3_7_1_bar CIM_cell
+X282 I372 O_3_7_2 WL_3_2 BL BLB W_3_7_2 W_3_7_2_bar CIM_cell
+X283 I373 O_3_7_3 WL_3_3 BL BLB W_3_7_3 W_3_7_3_bar CIM_cell
+X284 I374 O_3_7_4 WL_3_4 BL BLB W_3_7_4 W_3_7_4_bar CIM_cell
+X285 I381 O_3_8_1 WL_3_1 BL BLB W_3_8_1 W_3_8_1_bar CIM_cell
+X286 I382 O_3_8_2 WL_3_2 BL BLB W_3_8_2 W_3_8_2_bar CIM_cell
+X287 I383 O_3_8_3 WL_3_3 BL BLB W_3_8_3 W_3_8_3_bar CIM_cell
+X288 I384 O_3_8_4 WL_3_4 BL BLB W_3_8_4 W_3_8_4_bar CIM_cell
+X289 I391 O_3_9_1 WL_3_1 BL BLB W_3_9_1 W_3_9_1_bar CIM_cell
+X290 I392 O_3_9_2 WL_3_2 BL BLB W_3_9_2 W_3_9_2_bar CIM_cell
+X291 I393 O_3_9_3 WL_3_3 BL BLB W_3_9_3 W_3_9_3_bar CIM_cell
+X292 I394 O_3_9_4 WL_3_4 BL BLB W_3_9_4 W_3_9_4_bar CIM_cell
+X293 I3101 O_3_10_1 WL_3_1 BL BLB W_3_10_1 W_3_10_1_bar CIM_cell
+X294 I3102 O_3_10_2 WL_3_2 BL BLB W_3_10_2 W_3_10_2_bar CIM_cell
+X295 I3103 O_3_10_3 WL_3_3 BL BLB W_3_10_3 W_3_10_3_bar CIM_cell
+X296 I3104 O_3_10_4 WL_3_4 BL BLB W_3_10_4 W_3_10_4_bar CIM_cell
+X297 I3111 O_3_11_1 WL_3_1 BL BLB W_3_11_1 W_3_11_1_bar CIM_cell
+X298 I3112 O_3_11_2 WL_3_2 BL BLB W_3_11_2 W_3_11_2_bar CIM_cell
+X299 I3113 O_3_11_3 WL_3_3 BL BLB W_3_11_3 W_3_11_3_bar CIM_cell
+X300 I3114 O_3_11_4 WL_3_4 BL BLB W_3_11_4 W_3_11_4_bar CIM_cell
+X301 I3121 O_3_12_1 WL_3_1 BL BLB W_3_12_1 W_3_12_1_bar CIM_cell
+X302 I3122 O_3_12_2 WL_3_2 BL BLB W_3_12_2 W_3_12_2_bar CIM_cell
+X303 I3123 O_3_12_3 WL_3_3 BL BLB W_3_12_3 W_3_12_3_bar CIM_cell
+X304 I3124 O_3_12_4 WL_3_4 BL BLB W_3_12_4 W_3_12_4_bar CIM_cell
+X305 I3131 O_3_13_1 WL_3_1 BL BLB W_3_13_1 W_3_13_1_bar CIM_cell
+X306 I3132 O_3_13_2 WL_3_2 BL BLB W_3_13_2 W_3_13_2_bar CIM_cell
+X307 I3133 O_3_13_3 WL_3_3 BL BLB W_3_13_3 W_3_13_3_bar CIM_cell
+X308 I3134 O_3_13_4 WL_3_4 BL BLB W_3_13_4 W_3_13_4_bar CIM_cell
+X309 I3141 O_3_14_1 WL_3_1 BL BLB W_3_14_1 W_3_14_1_bar CIM_cell
+X310 I3142 O_3_14_2 WL_3_2 BL BLB W_3_14_2 W_3_14_2_bar CIM_cell
+X311 I3143 O_3_14_3 WL_3_3 BL BLB W_3_14_3 W_3_14_3_bar CIM_cell
+X312 I3144 O_3_14_4 WL_3_4 BL BLB W_3_14_4 W_3_14_4_bar CIM_cell
+X313 I3151 O_3_15_1 WL_3_1 BL BLB W_3_15_1 W_3_15_1_bar CIM_cell
+X314 I3152 O_3_15_2 WL_3_2 BL BLB W_3_15_2 W_3_15_2_bar CIM_cell
+X315 I3153 O_3_15_3 WL_3_3 BL BLB W_3_15_3 W_3_15_3_bar CIM_cell
+X316 I3154 O_3_15_4 WL_3_4 BL BLB W_3_15_4 W_3_15_4_bar CIM_cell
+X317 I3161 O_3_16_1 WL_3_1 BL BLB W_3_16_1 W_3_16_1_bar CIM_cell
+X318 I3162 O_3_16_2 WL_3_2 BL BLB W_3_16_2 W_3_16_2_bar CIM_cell
+X319 I3163 O_3_16_3 WL_3_3 BL BLB W_3_16_3 W_3_16_3_bar CIM_cell
+X320 I3164 O_3_16_4 WL_3_4 BL BLB W_3_16_4 W_3_16_4_bar CIM_cell
+X321 I3171 O_3_17_1 WL_3_1 BL BLB W_3_17_1 W_3_17_1_bar CIM_cell
+X322 I3172 O_3_17_2 WL_3_2 BL BLB W_3_17_2 W_3_17_2_bar CIM_cell
+X323 I3173 O_3_17_3 WL_3_3 BL BLB W_3_17_3 W_3_17_3_bar CIM_cell
+X324 I3174 O_3_17_4 WL_3_4 BL BLB W_3_17_4 W_3_17_4_bar CIM_cell
+X325 I3181 O_3_18_1 WL_3_1 BL BLB W_3_18_1 W_3_18_1_bar CIM_cell
+X326 I3182 O_3_18_2 WL_3_2 BL BLB W_3_18_2 W_3_18_2_bar CIM_cell
+X327 I3183 O_3_18_3 WL_3_3 BL BLB W_3_18_3 W_3_18_3_bar CIM_cell
+X328 I3184 O_3_18_4 WL_3_4 BL BLB W_3_18_4 W_3_18_4_bar CIM_cell
+X329 I3191 O_3_19_1 WL_3_1 BL BLB W_3_19_1 W_3_19_1_bar CIM_cell
+X330 I3192 O_3_19_2 WL_3_2 BL BLB W_3_19_2 W_3_19_2_bar CIM_cell
+X331 I3193 O_3_19_3 WL_3_3 BL BLB W_3_19_3 W_3_19_3_bar CIM_cell
+X332 I3194 O_3_19_4 WL_3_4 BL BLB W_3_19_4 W_3_19_4_bar CIM_cell
+X333 I3201 O_3_20_1 WL_3_1 BL BLB W_3_20_1 W_3_20_1_bar CIM_cell
+X334 I3202 O_3_20_2 WL_3_2 BL BLB W_3_20_2 W_3_20_2_bar CIM_cell
+X335 I3203 O_3_20_3 WL_3_3 BL BLB W_3_20_3 W_3_20_3_bar CIM_cell
+X336 I3204 O_3_20_4 WL_3_4 BL BLB W_3_20_4 W_3_20_4_bar CIM_cell
+X337 I3211 O_3_21_1 WL_3_1 BL BLB W_3_21_1 W_3_21_1_bar CIM_cell
+X338 I3212 O_3_21_2 WL_3_2 BL BLB W_3_21_2 W_3_21_2_bar CIM_cell
+X339 I3213 O_3_21_3 WL_3_3 BL BLB W_3_21_3 W_3_21_3_bar CIM_cell
+X340 I3214 O_3_21_4 WL_3_4 BL BLB W_3_21_4 W_3_21_4_bar CIM_cell
+X341 I3221 O_3_22_1 WL_3_1 BL BLB W_3_22_1 W_3_22_1_bar CIM_cell
+X342 I3222 O_3_22_2 WL_3_2 BL BLB W_3_22_2 W_3_22_2_bar CIM_cell
+X343 I3223 O_3_22_3 WL_3_3 BL BLB W_3_22_3 W_3_22_3_bar CIM_cell
+X344 I3224 O_3_22_4 WL_3_4 BL BLB W_3_22_4 W_3_22_4_bar CIM_cell
+X345 I3231 O_3_23_1 WL_3_1 BL BLB W_3_23_1 W_3_23_1_bar CIM_cell
+X346 I3232 O_3_23_2 WL_3_2 BL BLB W_3_23_2 W_3_23_2_bar CIM_cell
+X347 I3233 O_3_23_3 WL_3_3 BL BLB W_3_23_3 W_3_23_3_bar CIM_cell
+X348 I3234 O_3_23_4 WL_3_4 BL BLB W_3_23_4 W_3_23_4_bar CIM_cell
+X349 I3241 O_3_24_1 WL_3_1 BL BLB W_3_24_1 W_3_24_1_bar CIM_cell
+X350 I3242 O_3_24_2 WL_3_2 BL BLB W_3_24_2 W_3_24_2_bar CIM_cell
+X351 I3243 O_3_24_3 WL_3_3 BL BLB W_3_24_3 W_3_24_3_bar CIM_cell
+X352 I3244 O_3_24_4 WL_3_4 BL BLB W_3_24_4 W_3_24_4_bar CIM_cell
+X353 I3251 O_3_25_1 WL_3_1 BL BLB W_3_25_1 W_3_25_1_bar CIM_cell
+X354 I3252 O_3_25_2 WL_3_2 BL BLB W_3_25_2 W_3_25_2_bar CIM_cell
+X355 I3253 O_3_25_3 WL_3_3 BL BLB W_3_25_3 W_3_25_3_bar CIM_cell
+X356 I3254 O_3_25_4 WL_3_4 BL BLB W_3_25_4 W_3_25_4_bar CIM_cell
+X357 I3261 O_3_26_1 WL_3_1 BL BLB W_3_26_1 W_3_26_1_bar CIM_cell
+X358 I3262 O_3_26_2 WL_3_2 BL BLB W_3_26_2 W_3_26_2_bar CIM_cell
+X359 I3263 O_3_26_3 WL_3_3 BL BLB W_3_26_3 W_3_26_3_bar CIM_cell
+X360 I3264 O_3_26_4 WL_3_4 BL BLB W_3_26_4 W_3_26_4_bar CIM_cell
+X361 I3271 O_3_27_1 WL_3_1 BL BLB W_3_27_1 W_3_27_1_bar CIM_cell
+X362 I3272 O_3_27_2 WL_3_2 BL BLB W_3_27_2 W_3_27_2_bar CIM_cell
+X363 I3273 O_3_27_3 WL_3_3 BL BLB W_3_27_3 W_3_27_3_bar CIM_cell
+X364 I3274 O_3_27_4 WL_3_4 BL BLB W_3_27_4 W_3_27_4_bar CIM_cell
+X365 I3281 O_3_28_1 WL_3_1 BL BLB W_3_28_1 W_3_28_1_bar CIM_cell
+X366 I3282 O_3_28_2 WL_3_2 BL BLB W_3_28_2 W_3_28_2_bar CIM_cell
+X367 I3283 O_3_28_3 WL_3_3 BL BLB W_3_28_3 W_3_28_3_bar CIM_cell
+X368 I3284 O_3_28_4 WL_3_4 BL BLB W_3_28_4 W_3_28_4_bar CIM_cell
+X369 I3291 O_3_29_1 WL_3_1 BL BLB W_3_29_1 W_3_29_1_bar CIM_cell
+X370 I3292 O_3_29_2 WL_3_2 BL BLB W_3_29_2 W_3_29_2_bar CIM_cell
+X371 I3293 O_3_29_3 WL_3_3 BL BLB W_3_29_3 W_3_29_3_bar CIM_cell
+X372 I3294 O_3_29_4 WL_3_4 BL BLB W_3_29_4 W_3_29_4_bar CIM_cell
+X373 I3301 O_3_30_1 WL_3_1 BL BLB W_3_30_1 W_3_30_1_bar CIM_cell
+X374 I3302 O_3_30_2 WL_3_2 BL BLB W_3_30_2 W_3_30_2_bar CIM_cell
+X375 I3303 O_3_30_3 WL_3_3 BL BLB W_3_30_3 W_3_30_3_bar CIM_cell
+X376 I3304 O_3_30_4 WL_3_4 BL BLB W_3_30_4 W_3_30_4_bar CIM_cell
+X377 I3311 O_3_31_1 WL_3_1 BL BLB W_3_31_1 W_3_31_1_bar CIM_cell
+X378 I3312 O_3_31_2 WL_3_2 BL BLB W_3_31_2 W_3_31_2_bar CIM_cell
+X379 I3313 O_3_31_3 WL_3_3 BL BLB W_3_31_3 W_3_31_3_bar CIM_cell
+X380 I3314 O_3_31_4 WL_3_4 BL BLB W_3_31_4 W_3_31_4_bar CIM_cell
+X381 I3321 O_3_32_1 WL_3_1 BL BLB W_3_32_1 W_3_32_1_bar CIM_cell
+X382 I3322 O_3_32_2 WL_3_2 BL BLB W_3_32_2 W_3_32_2_bar CIM_cell
+X383 I3323 O_3_32_3 WL_3_3 BL BLB W_3_32_3 W_3_32_3_bar CIM_cell
+X384 I3324 O_3_32_4 WL_3_4 BL BLB W_3_32_4 W_3_32_4_bar CIM_cell
+X385 I411 O_4_1_1 WL_4_1 BL BLB W_4_1_1 W_4_1_1_bar CIM_cell
+X386 I412 O_4_1_2 WL_4_2 BL BLB W_4_1_2 W_4_1_2_bar CIM_cell
+X387 I413 O_4_1_3 WL_4_3 BL BLB W_4_1_3 W_4_1_3_bar CIM_cell
+X388 I414 O_4_1_4 WL_4_4 BL BLB W_4_1_4 W_4_1_4_bar CIM_cell
+X389 I421 O_4_2_1 WL_4_1 BL BLB W_4_2_1 W_4_2_1_bar CIM_cell
+X390 I422 O_4_2_2 WL_4_2 BL BLB W_4_2_2 W_4_2_2_bar CIM_cell
+X391 I423 O_4_2_3 WL_4_3 BL BLB W_4_2_3 W_4_2_3_bar CIM_cell
+X392 I424 O_4_2_4 WL_4_4 BL BLB W_4_2_4 W_4_2_4_bar CIM_cell
+X393 I431 O_4_3_1 WL_4_1 BL BLB W_4_3_1 W_4_3_1_bar CIM_cell
+X394 I432 O_4_3_2 WL_4_2 BL BLB W_4_3_2 W_4_3_2_bar CIM_cell
+X395 I433 O_4_3_3 WL_4_3 BL BLB W_4_3_3 W_4_3_3_bar CIM_cell
+X396 I434 O_4_3_4 WL_4_4 BL BLB W_4_3_4 W_4_3_4_bar CIM_cell
+X397 I441 O_4_4_1 WL_4_1 BL BLB W_4_4_1 W_4_4_1_bar CIM_cell
+X398 I442 O_4_4_2 WL_4_2 BL BLB W_4_4_2 W_4_4_2_bar CIM_cell
+X399 I443 O_4_4_3 WL_4_3 BL BLB W_4_4_3 W_4_4_3_bar CIM_cell
+X400 I444 O_4_4_4 WL_4_4 BL BLB W_4_4_4 W_4_4_4_bar CIM_cell
+X401 I451 O_4_5_1 WL_4_1 BL BLB W_4_5_1 W_4_5_1_bar CIM_cell
+X402 I452 O_4_5_2 WL_4_2 BL BLB W_4_5_2 W_4_5_2_bar CIM_cell
+X403 I453 O_4_5_3 WL_4_3 BL BLB W_4_5_3 W_4_5_3_bar CIM_cell
+X404 I454 O_4_5_4 WL_4_4 BL BLB W_4_5_4 W_4_5_4_bar CIM_cell
+X405 I461 O_4_6_1 WL_4_1 BL BLB W_4_6_1 W_4_6_1_bar CIM_cell
+X406 I462 O_4_6_2 WL_4_2 BL BLB W_4_6_2 W_4_6_2_bar CIM_cell
+X407 I463 O_4_6_3 WL_4_3 BL BLB W_4_6_3 W_4_6_3_bar CIM_cell
+X408 I464 O_4_6_4 WL_4_4 BL BLB W_4_6_4 W_4_6_4_bar CIM_cell
+X409 I471 O_4_7_1 WL_4_1 BL BLB W_4_7_1 W_4_7_1_bar CIM_cell
+X410 I472 O_4_7_2 WL_4_2 BL BLB W_4_7_2 W_4_7_2_bar CIM_cell
+X411 I473 O_4_7_3 WL_4_3 BL BLB W_4_7_3 W_4_7_3_bar CIM_cell
+X412 I474 O_4_7_4 WL_4_4 BL BLB W_4_7_4 W_4_7_4_bar CIM_cell
+X413 I481 O_4_8_1 WL_4_1 BL BLB W_4_8_1 W_4_8_1_bar CIM_cell
+X414 I482 O_4_8_2 WL_4_2 BL BLB W_4_8_2 W_4_8_2_bar CIM_cell
+X415 I483 O_4_8_3 WL_4_3 BL BLB W_4_8_3 W_4_8_3_bar CIM_cell
+X416 I484 O_4_8_4 WL_4_4 BL BLB W_4_8_4 W_4_8_4_bar CIM_cell
+X417 I491 O_4_9_1 WL_4_1 BL BLB W_4_9_1 W_4_9_1_bar CIM_cell
+X418 I492 O_4_9_2 WL_4_2 BL BLB W_4_9_2 W_4_9_2_bar CIM_cell
+X419 I493 O_4_9_3 WL_4_3 BL BLB W_4_9_3 W_4_9_3_bar CIM_cell
+X420 I494 O_4_9_4 WL_4_4 BL BLB W_4_9_4 W_4_9_4_bar CIM_cell
+X421 I4101 O_4_10_1 WL_4_1 BL BLB W_4_10_1 W_4_10_1_bar CIM_cell
+X422 I4102 O_4_10_2 WL_4_2 BL BLB W_4_10_2 W_4_10_2_bar CIM_cell
+X423 I4103 O_4_10_3 WL_4_3 BL BLB W_4_10_3 W_4_10_3_bar CIM_cell
+X424 I4104 O_4_10_4 WL_4_4 BL BLB W_4_10_4 W_4_10_4_bar CIM_cell
+X425 I4111 O_4_11_1 WL_4_1 BL BLB W_4_11_1 W_4_11_1_bar CIM_cell
+X426 I4112 O_4_11_2 WL_4_2 BL BLB W_4_11_2 W_4_11_2_bar CIM_cell
+X427 I4113 O_4_11_3 WL_4_3 BL BLB W_4_11_3 W_4_11_3_bar CIM_cell
+X428 I4114 O_4_11_4 WL_4_4 BL BLB W_4_11_4 W_4_11_4_bar CIM_cell
+X429 I4121 O_4_12_1 WL_4_1 BL BLB W_4_12_1 W_4_12_1_bar CIM_cell
+X430 I4122 O_4_12_2 WL_4_2 BL BLB W_4_12_2 W_4_12_2_bar CIM_cell
+X431 I4123 O_4_12_3 WL_4_3 BL BLB W_4_12_3 W_4_12_3_bar CIM_cell
+X432 I4124 O_4_12_4 WL_4_4 BL BLB W_4_12_4 W_4_12_4_bar CIM_cell
+X433 I4131 O_4_13_1 WL_4_1 BL BLB W_4_13_1 W_4_13_1_bar CIM_cell
+X434 I4132 O_4_13_2 WL_4_2 BL BLB W_4_13_2 W_4_13_2_bar CIM_cell
+X435 I4133 O_4_13_3 WL_4_3 BL BLB W_4_13_3 W_4_13_3_bar CIM_cell
+X436 I4134 O_4_13_4 WL_4_4 BL BLB W_4_13_4 W_4_13_4_bar CIM_cell
+X437 I4141 O_4_14_1 WL_4_1 BL BLB W_4_14_1 W_4_14_1_bar CIM_cell
+X438 I4142 O_4_14_2 WL_4_2 BL BLB W_4_14_2 W_4_14_2_bar CIM_cell
+X439 I4143 O_4_14_3 WL_4_3 BL BLB W_4_14_3 W_4_14_3_bar CIM_cell
+X440 I4144 O_4_14_4 WL_4_4 BL BLB W_4_14_4 W_4_14_4_bar CIM_cell
+X441 I4151 O_4_15_1 WL_4_1 BL BLB W_4_15_1 W_4_15_1_bar CIM_cell
+X442 I4152 O_4_15_2 WL_4_2 BL BLB W_4_15_2 W_4_15_2_bar CIM_cell
+X443 I4153 O_4_15_3 WL_4_3 BL BLB W_4_15_3 W_4_15_3_bar CIM_cell
+X444 I4154 O_4_15_4 WL_4_4 BL BLB W_4_15_4 W_4_15_4_bar CIM_cell
+X445 I4161 O_4_16_1 WL_4_1 BL BLB W_4_16_1 W_4_16_1_bar CIM_cell
+X446 I4162 O_4_16_2 WL_4_2 BL BLB W_4_16_2 W_4_16_2_bar CIM_cell
+X447 I4163 O_4_16_3 WL_4_3 BL BLB W_4_16_3 W_4_16_3_bar CIM_cell
+X448 I4164 O_4_16_4 WL_4_4 BL BLB W_4_16_4 W_4_16_4_bar CIM_cell
+X449 I4171 O_4_17_1 WL_4_1 BL BLB W_4_17_1 W_4_17_1_bar CIM_cell
+X450 I4172 O_4_17_2 WL_4_2 BL BLB W_4_17_2 W_4_17_2_bar CIM_cell
+X451 I4173 O_4_17_3 WL_4_3 BL BLB W_4_17_3 W_4_17_3_bar CIM_cell
+X452 I4174 O_4_17_4 WL_4_4 BL BLB W_4_17_4 W_4_17_4_bar CIM_cell
+X453 I4181 O_4_18_1 WL_4_1 BL BLB W_4_18_1 W_4_18_1_bar CIM_cell
+X454 I4182 O_4_18_2 WL_4_2 BL BLB W_4_18_2 W_4_18_2_bar CIM_cell
+X455 I4183 O_4_18_3 WL_4_3 BL BLB W_4_18_3 W_4_18_3_bar CIM_cell
+X456 I4184 O_4_18_4 WL_4_4 BL BLB W_4_18_4 W_4_18_4_bar CIM_cell
+X457 I4191 O_4_19_1 WL_4_1 BL BLB W_4_19_1 W_4_19_1_bar CIM_cell
+X458 I4192 O_4_19_2 WL_4_2 BL BLB W_4_19_2 W_4_19_2_bar CIM_cell
+X459 I4193 O_4_19_3 WL_4_3 BL BLB W_4_19_3 W_4_19_3_bar CIM_cell
+X460 I4194 O_4_19_4 WL_4_4 BL BLB W_4_19_4 W_4_19_4_bar CIM_cell
+X461 I4201 O_4_20_1 WL_4_1 BL BLB W_4_20_1 W_4_20_1_bar CIM_cell
+X462 I4202 O_4_20_2 WL_4_2 BL BLB W_4_20_2 W_4_20_2_bar CIM_cell
+X463 I4203 O_4_20_3 WL_4_3 BL BLB W_4_20_3 W_4_20_3_bar CIM_cell
+X464 I4204 O_4_20_4 WL_4_4 BL BLB W_4_20_4 W_4_20_4_bar CIM_cell
+X465 I4211 O_4_21_1 WL_4_1 BL BLB W_4_21_1 W_4_21_1_bar CIM_cell
+X466 I4212 O_4_21_2 WL_4_2 BL BLB W_4_21_2 W_4_21_2_bar CIM_cell
+X467 I4213 O_4_21_3 WL_4_3 BL BLB W_4_21_3 W_4_21_3_bar CIM_cell
+X468 I4214 O_4_21_4 WL_4_4 BL BLB W_4_21_4 W_4_21_4_bar CIM_cell
+X469 I4221 O_4_22_1 WL_4_1 BL BLB W_4_22_1 W_4_22_1_bar CIM_cell
+X470 I4222 O_4_22_2 WL_4_2 BL BLB W_4_22_2 W_4_22_2_bar CIM_cell
+X471 I4223 O_4_22_3 WL_4_3 BL BLB W_4_22_3 W_4_22_3_bar CIM_cell
+X472 I4224 O_4_22_4 WL_4_4 BL BLB W_4_22_4 W_4_22_4_bar CIM_cell
+X473 I4231 O_4_23_1 WL_4_1 BL BLB W_4_23_1 W_4_23_1_bar CIM_cell
+X474 I4232 O_4_23_2 WL_4_2 BL BLB W_4_23_2 W_4_23_2_bar CIM_cell
+X475 I4233 O_4_23_3 WL_4_3 BL BLB W_4_23_3 W_4_23_3_bar CIM_cell
+X476 I4234 O_4_23_4 WL_4_4 BL BLB W_4_23_4 W_4_23_4_bar CIM_cell
+X477 I4241 O_4_24_1 WL_4_1 BL BLB W_4_24_1 W_4_24_1_bar CIM_cell
+X478 I4242 O_4_24_2 WL_4_2 BL BLB W_4_24_2 W_4_24_2_bar CIM_cell
+X479 I4243 O_4_24_3 WL_4_3 BL BLB W_4_24_3 W_4_24_3_bar CIM_cell
+X480 I4244 O_4_24_4 WL_4_4 BL BLB W_4_24_4 W_4_24_4_bar CIM_cell
+X481 I4251 O_4_25_1 WL_4_1 BL BLB W_4_25_1 W_4_25_1_bar CIM_cell
+X482 I4252 O_4_25_2 WL_4_2 BL BLB W_4_25_2 W_4_25_2_bar CIM_cell
+X483 I4253 O_4_25_3 WL_4_3 BL BLB W_4_25_3 W_4_25_3_bar CIM_cell
+X484 I4254 O_4_25_4 WL_4_4 BL BLB W_4_25_4 W_4_25_4_bar CIM_cell
+X485 I4261 O_4_26_1 WL_4_1 BL BLB W_4_26_1 W_4_26_1_bar CIM_cell
+X486 I4262 O_4_26_2 WL_4_2 BL BLB W_4_26_2 W_4_26_2_bar CIM_cell
+X487 I4263 O_4_26_3 WL_4_3 BL BLB W_4_26_3 W_4_26_3_bar CIM_cell
+X488 I4264 O_4_26_4 WL_4_4 BL BLB W_4_26_4 W_4_26_4_bar CIM_cell
+X489 I4271 O_4_27_1 WL_4_1 BL BLB W_4_27_1 W_4_27_1_bar CIM_cell
+X490 I4272 O_4_27_2 WL_4_2 BL BLB W_4_27_2 W_4_27_2_bar CIM_cell
+X491 I4273 O_4_27_3 WL_4_3 BL BLB W_4_27_3 W_4_27_3_bar CIM_cell
+X492 I4274 O_4_27_4 WL_4_4 BL BLB W_4_27_4 W_4_27_4_bar CIM_cell
+X493 I4281 O_4_28_1 WL_4_1 BL BLB W_4_28_1 W_4_28_1_bar CIM_cell
+X494 I4282 O_4_28_2 WL_4_2 BL BLB W_4_28_2 W_4_28_2_bar CIM_cell
+X495 I4283 O_4_28_3 WL_4_3 BL BLB W_4_28_3 W_4_28_3_bar CIM_cell
+X496 I4284 O_4_28_4 WL_4_4 BL BLB W_4_28_4 W_4_28_4_bar CIM_cell
+X497 I4291 O_4_29_1 WL_4_1 BL BLB W_4_29_1 W_4_29_1_bar CIM_cell
+X498 I4292 O_4_29_2 WL_4_2 BL BLB W_4_29_2 W_4_29_2_bar CIM_cell
+X499 I4293 O_4_29_3 WL_4_3 BL BLB W_4_29_3 W_4_29_3_bar CIM_cell
+X500 I4294 O_4_29_4 WL_4_4 BL BLB W_4_29_4 W_4_29_4_bar CIM_cell
+X501 I4301 O_4_30_1 WL_4_1 BL BLB W_4_30_1 W_4_30_1_bar CIM_cell
+X502 I4302 O_4_30_2 WL_4_2 BL BLB W_4_30_2 W_4_30_2_bar CIM_cell
+X503 I4303 O_4_30_3 WL_4_3 BL BLB W_4_30_3 W_4_30_3_bar CIM_cell
+X504 I4304 O_4_30_4 WL_4_4 BL BLB W_4_30_4 W_4_30_4_bar CIM_cell
+X505 I4311 O_4_31_1 WL_4_1 BL BLB W_4_31_1 W_4_31_1_bar CIM_cell
+X506 I4312 O_4_31_2 WL_4_2 BL BLB W_4_31_2 W_4_31_2_bar CIM_cell
+X507 I4313 O_4_31_3 WL_4_3 BL BLB W_4_31_3 W_4_31_3_bar CIM_cell
+X508 I4314 O_4_31_4 WL_4_4 BL BLB W_4_31_4 W_4_31_4_bar CIM_cell
+X509 I4321 O_4_32_1 WL_4_1 BL BLB W_4_32_1 W_4_32_1_bar CIM_cell
+X510 I4322 O_4_32_2 WL_4_2 BL BLB W_4_32_2 W_4_32_2_bar CIM_cell
+X511 I4323 O_4_32_3 WL_4_3 BL BLB W_4_32_3 W_4_32_3_bar CIM_cell
+X512 I4324 O_4_32_4 WL_4_4 BL BLB W_4_32_4 W_4_32_4_bar CIM_cell
+
+***-----------------------***
+***      sub-circuit      ***
+***-----------------------***
+
+* // QB : weight 
+* // input 
+* // output 
+* .subckt CIM_cell Input Output WL BL BLB q qb
+*     X01 WL BL BLB q qb SRAM_6T
+*     X02 qb Input Output NOR_2
+* .ends
+
+.subckt CIM_cell Input Output WL BL BLB q qb
+    X01 WL BL BLB q qb SRAM_6T
+    X02 q q q1 NOR_2
+    X03 Input Input Input1 NOR_2
+    X04 q1 Input1 Output NOR_2
+.ends
+
+
+.subckt SRAM_6T WL BL BLB q qb
+    MP1 q   qb  VDD VDD pmos_sram m=1
+    MP2 qb  q   VDD VDD pmos_sram m=1
+    MN1 q   qb  GND GND nmos_sram m=1
+    MN2 qb  q   GND GND nmos_sram m=1
+    MN3 BL  WL  q   GND nmos_sram m=1
+    MN4 qb  WL  BLB GND nmos_sram m=1
+.ends
+
+.subckt NOR_2 A B Y
+    MP1 N1  A   VDD VDD pmos_lvt m=1
+    MP2 Y   B   N1  VDD pmos_lvt m=1
+    MN1 Y   A   GND GND nmos_lvt m=1
+    MN2 Y   B   GND GND nmos_lvt m=1
+.ends
+
+.subckt Buffer in out
+    X_INV1 in   in_b INV
+    X_INV2 in_b out  INV
+.ends
+
+.subckt INV in out
+    Mp  out  in  VDD  VDD  pmos_lvt  m=1
+    Mn  out  in  GND  GND  nmos_lvt  m=1
+.ends
+
+* Example .IC file for initializing SRAM weights
+.IC V(W_1_1_1) = 0 V(W_1_1_1_bar) = 1
+.IC V(W_1_1_2) = 1 V(W_1_1_2_bar) = 0
+.IC V(W_1_1_3) = 0 V(W_1_1_3_bar) = 1
+.IC V(W_1_1_4) = 1 V(W_1_1_4_bar) = 0
+.IC V(W_1_2_1) = 0 V(W_1_2_1_bar) = 1
+.IC V(W_1_2_2) = 1 V(W_1_2_2_bar) = 0
+.IC V(W_1_2_3) = 0 V(W_1_2_3_bar) = 1
+.IC V(W_1_2_4) = 1 V(W_1_2_4_bar) = 0
+.IC V(W_1_3_1) = 0 V(W_1_3_1_bar) = 1
+.IC V(W_1_3_2) = 1 V(W_1_3_2_bar) = 0
+.IC V(W_1_3_3) = 0 V(W_1_3_3_bar) = 1
+.IC V(W_1_3_4) = 1 V(W_1_3_4_bar) = 0
+.IC V(W_1_4_1) = 0 V(W_1_4_1_bar) = 1
+.IC V(W_1_4_2) = 1 V(W_1_4_2_bar) = 0
+.IC V(W_1_4_3) = 0 V(W_1_4_3_bar) = 1
+.IC V(W_1_4_4) = 1 V(W_1_4_4_bar) = 0
+.IC V(W_1_5_1) = 0 V(W_1_5_1_bar) = 1
+.IC V(W_1_5_2) = 1 V(W_1_5_2_bar) = 0
+.IC V(W_1_5_3) = 0 V(W_1_5_3_bar) = 1
+.IC V(W_1_5_4) = 1 V(W_1_5_4_bar) = 0
+.IC V(W_1_6_1) = 0 V(W_1_6_1_bar) = 1
+.IC V(W_1_6_2) = 1 V(W_1_6_2_bar) = 0
+.IC V(W_1_6_3) = 0 V(W_1_6_3_bar) = 1
+.IC V(W_1_6_4) = 1 V(W_1_6_4_bar) = 0
+.IC V(W_1_7_1) = 0 V(W_1_7_1_bar) = 1
+.IC V(W_1_7_2) = 1 V(W_1_7_2_bar) = 0
+.IC V(W_1_7_3) = 0 V(W_1_7_3_bar) = 1
+.IC V(W_1_7_4) = 1 V(W_1_7_4_bar) = 0
+.IC V(W_1_8_1) = 0 V(W_1_8_1_bar) = 1
+.IC V(W_1_8_2) = 1 V(W_1_8_2_bar) = 0
+.IC V(W_1_8_3) = 0 V(W_1_8_3_bar) = 1
+.IC V(W_1_8_4) = 1 V(W_1_8_4_bar) = 0
+.IC V(W_1_9_1) = 0 V(W_1_9_1_bar) = 1
+.IC V(W_1_9_2) = 1 V(W_1_9_2_bar) = 0
+.IC V(W_1_9_3) = 0 V(W_1_9_3_bar) = 1
+.IC V(W_1_9_4) = 1 V(W_1_9_4_bar) = 0
+.IC V(W_1_10_1) = 0 V(W_1_10_1_bar) = 1
+.IC V(W_1_10_2) = 1 V(W_1_10_2_bar) = 0
+.IC V(W_1_10_3) = 0 V(W_1_10_3_bar) = 1
+.IC V(W_1_10_4) = 1 V(W_1_10_4_bar) = 0
+.IC V(W_1_11_1) = 0 V(W_1_11_1_bar) = 1
+.IC V(W_1_11_2) = 1 V(W_1_11_2_bar) = 0
+.IC V(W_1_11_3) = 0 V(W_1_11_3_bar) = 1
+.IC V(W_1_11_4) = 1 V(W_1_11_4_bar) = 0
+.IC V(W_1_12_1) = 0 V(W_1_12_1_bar) = 1
+.IC V(W_1_12_2) = 1 V(W_1_12_2_bar) = 0
+.IC V(W_1_12_3) = 0 V(W_1_12_3_bar) = 1
+.IC V(W_1_12_4) = 1 V(W_1_12_4_bar) = 0
+.IC V(W_1_13_1) = 0 V(W_1_13_1_bar) = 1
+.IC V(W_1_13_2) = 1 V(W_1_13_2_bar) = 0
+.IC V(W_1_13_3) = 0 V(W_1_13_3_bar) = 1
+.IC V(W_1_13_4) = 1 V(W_1_13_4_bar) = 0
+.IC V(W_1_14_1) = 0 V(W_1_14_1_bar) = 1
+.IC V(W_1_14_2) = 1 V(W_1_14_2_bar) = 0
+.IC V(W_1_14_3) = 0 V(W_1_14_3_bar) = 1
+.IC V(W_1_14_4) = 1 V(W_1_14_4_bar) = 0
+.IC V(W_1_15_1) = 0 V(W_1_15_1_bar) = 1
+.IC V(W_1_15_2) = 1 V(W_1_15_2_bar) = 0
+.IC V(W_1_15_3) = 0 V(W_1_15_3_bar) = 1
+.IC V(W_1_15_4) = 1 V(W_1_15_4_bar) = 0
+.IC V(W_1_16_1) = 0 V(W_1_16_1_bar) = 1
+.IC V(W_1_16_2) = 1 V(W_1_16_2_bar) = 0
+.IC V(W_1_16_3) = 0 V(W_1_16_3_bar) = 1
+.IC V(W_1_16_4) = 1 V(W_1_16_4_bar) = 0
+.IC V(W_1_17_1) = 0 V(W_1_17_1_bar) = 1
+.IC V(W_1_17_2) = 1 V(W_1_17_2_bar) = 0
+.IC V(W_1_17_3) = 0 V(W_1_17_3_bar) = 1
+.IC V(W_1_17_4) = 1 V(W_1_17_4_bar) = 0
+.IC V(W_1_18_1) = 0 V(W_1_18_1_bar) = 1
+.IC V(W_1_18_2) = 1 V(W_1_18_2_bar) = 0
+.IC V(W_1_18_3) = 0 V(W_1_18_3_bar) = 1
+.IC V(W_1_18_4) = 1 V(W_1_18_4_bar) = 0
+.IC V(W_1_19_1) = 0 V(W_1_19_1_bar) = 1
+.IC V(W_1_19_2) = 1 V(W_1_19_2_bar) = 0
+.IC V(W_1_19_3) = 0 V(W_1_19_3_bar) = 1
+.IC V(W_1_19_4) = 1 V(W_1_19_4_bar) = 0
+.IC V(W_1_20_1) = 0 V(W_1_20_1_bar) = 1
+.IC V(W_1_20_2) = 1 V(W_1_20_2_bar) = 0
+.IC V(W_1_20_3) = 0 V(W_1_20_3_bar) = 1
+.IC V(W_1_20_4) = 1 V(W_1_20_4_bar) = 0
+.IC V(W_1_21_1) = 0 V(W_1_21_1_bar) = 1
+.IC V(W_1_21_2) = 1 V(W_1_21_2_bar) = 0
+.IC V(W_1_21_3) = 0 V(W_1_21_3_bar) = 1
+.IC V(W_1_21_4) = 1 V(W_1_21_4_bar) = 0
+.IC V(W_1_22_1) = 0 V(W_1_22_1_bar) = 1
+.IC V(W_1_22_2) = 1 V(W_1_22_2_bar) = 0
+.IC V(W_1_22_3) = 0 V(W_1_22_3_bar) = 1
+.IC V(W_1_22_4) = 1 V(W_1_22_4_bar) = 0
+.IC V(W_1_23_1) = 0 V(W_1_23_1_bar) = 1
+.IC V(W_1_23_2) = 1 V(W_1_23_2_bar) = 0
+.IC V(W_1_23_3) = 0 V(W_1_23_3_bar) = 1
+.IC V(W_1_23_4) = 1 V(W_1_23_4_bar) = 0
+.IC V(W_1_24_1) = 0 V(W_1_24_1_bar) = 1
+.IC V(W_1_24_2) = 1 V(W_1_24_2_bar) = 0
+.IC V(W_1_24_3) = 0 V(W_1_24_3_bar) = 1
+.IC V(W_1_24_4) = 1 V(W_1_24_4_bar) = 0
+.IC V(W_1_25_1) = 0 V(W_1_25_1_bar) = 1
+.IC V(W_1_25_2) = 1 V(W_1_25_2_bar) = 0
+.IC V(W_1_25_3) = 0 V(W_1_25_3_bar) = 1
+.IC V(W_1_25_4) = 1 V(W_1_25_4_bar) = 0
+.IC V(W_1_26_1) = 0 V(W_1_26_1_bar) = 1
+.IC V(W_1_26_2) = 1 V(W_1_26_2_bar) = 0
+.IC V(W_1_26_3) = 0 V(W_1_26_3_bar) = 1
+.IC V(W_1_26_4) = 1 V(W_1_26_4_bar) = 0
+.IC V(W_1_27_1) = 0 V(W_1_27_1_bar) = 1
+.IC V(W_1_27_2) = 1 V(W_1_27_2_bar) = 0
+.IC V(W_1_27_3) = 0 V(W_1_27_3_bar) = 1
+.IC V(W_1_27_4) = 1 V(W_1_27_4_bar) = 0
+.IC V(W_1_28_1) = 0 V(W_1_28_1_bar) = 1
+.IC V(W_1_28_2) = 1 V(W_1_28_2_bar) = 0
+.IC V(W_1_28_3) = 0 V(W_1_28_3_bar) = 1
+.IC V(W_1_28_4) = 1 V(W_1_28_4_bar) = 0
+.IC V(W_1_29_1) = 0 V(W_1_29_1_bar) = 1
+.IC V(W_1_29_2) = 1 V(W_1_29_2_bar) = 0
+.IC V(W_1_29_3) = 0 V(W_1_29_3_bar) = 1
+.IC V(W_1_29_4) = 1 V(W_1_29_4_bar) = 0
+.IC V(W_1_30_1) = 0 V(W_1_30_1_bar) = 1
+.IC V(W_1_30_2) = 1 V(W_1_30_2_bar) = 0
+.IC V(W_1_30_3) = 0 V(W_1_30_3_bar) = 1
+.IC V(W_1_30_4) = 1 V(W_1_30_4_bar) = 0
+.IC V(W_1_31_1) = 0 V(W_1_31_1_bar) = 1
+.IC V(W_1_31_2) = 1 V(W_1_31_2_bar) = 0
+.IC V(W_1_31_3) = 0 V(W_1_31_3_bar) = 1
+.IC V(W_1_31_4) = 1 V(W_1_31_4_bar) = 0
+.IC V(W_1_32_1) = 0 V(W_1_32_1_bar) = 1
+.IC V(W_1_32_2) = 1 V(W_1_32_2_bar) = 0
+.IC V(W_1_32_3) = 0 V(W_1_32_3_bar) = 1
+.IC V(W_1_32_4) = 1 V(W_1_32_4_bar) = 0
+.IC V(W_2_1_1) = 0 V(W_2_1_1_bar) = 1
+.IC V(W_2_1_2) = 1 V(W_2_1_2_bar) = 0
+.IC V(W_2_1_3) = 0 V(W_2_1_3_bar) = 1
+.IC V(W_2_1_4) = 1 V(W_2_1_4_bar) = 0
+.IC V(W_2_2_1) = 0 V(W_2_2_1_bar) = 1
+.IC V(W_2_2_2) = 1 V(W_2_2_2_bar) = 0
+.IC V(W_2_2_3) = 0 V(W_2_2_3_bar) = 1
+.IC V(W_2_2_4) = 1 V(W_2_2_4_bar) = 0
+.IC V(W_2_3_1) = 0 V(W_2_3_1_bar) = 1
+.IC V(W_2_3_2) = 1 V(W_2_3_2_bar) = 0
+.IC V(W_2_3_3) = 0 V(W_2_3_3_bar) = 1
+.IC V(W_2_3_4) = 1 V(W_2_3_4_bar) = 0
+.IC V(W_2_4_1) = 0 V(W_2_4_1_bar) = 1
+.IC V(W_2_4_2) = 1 V(W_2_4_2_bar) = 0
+.IC V(W_2_4_3) = 0 V(W_2_4_3_bar) = 1
+.IC V(W_2_4_4) = 1 V(W_2_4_4_bar) = 0
+.IC V(W_2_5_1) = 0 V(W_2_5_1_bar) = 1
+.IC V(W_2_5_2) = 1 V(W_2_5_2_bar) = 0
+.IC V(W_2_5_3) = 0 V(W_2_5_3_bar) = 1
+.IC V(W_2_5_4) = 1 V(W_2_5_4_bar) = 0
+.IC V(W_2_6_1) = 0 V(W_2_6_1_bar) = 1
+.IC V(W_2_6_2) = 1 V(W_2_6_2_bar) = 0
+.IC V(W_2_6_3) = 0 V(W_2_6_3_bar) = 1
+.IC V(W_2_6_4) = 1 V(W_2_6_4_bar) = 0
+.IC V(W_2_7_1) = 0 V(W_2_7_1_bar) = 1
+.IC V(W_2_7_2) = 1 V(W_2_7_2_bar) = 0
+.IC V(W_2_7_3) = 0 V(W_2_7_3_bar) = 1
+.IC V(W_2_7_4) = 1 V(W_2_7_4_bar) = 0
+.IC V(W_2_8_1) = 0 V(W_2_8_1_bar) = 1
+.IC V(W_2_8_2) = 1 V(W_2_8_2_bar) = 0
+.IC V(W_2_8_3) = 0 V(W_2_8_3_bar) = 1
+.IC V(W_2_8_4) = 1 V(W_2_8_4_bar) = 0
+.IC V(W_2_9_1) = 0 V(W_2_9_1_bar) = 1
+.IC V(W_2_9_2) = 1 V(W_2_9_2_bar) = 0
+.IC V(W_2_9_3) = 0 V(W_2_9_3_bar) = 1
+.IC V(W_2_9_4) = 1 V(W_2_9_4_bar) = 0
+.IC V(W_2_10_1) = 0 V(W_2_10_1_bar) = 1
+.IC V(W_2_10_2) = 1 V(W_2_10_2_bar) = 0
+.IC V(W_2_10_3) = 0 V(W_2_10_3_bar) = 1
+.IC V(W_2_10_4) = 1 V(W_2_10_4_bar) = 0
+.IC V(W_2_11_1) = 0 V(W_2_11_1_bar) = 1
+.IC V(W_2_11_2) = 1 V(W_2_11_2_bar) = 0
+.IC V(W_2_11_3) = 0 V(W_2_11_3_bar) = 1
+.IC V(W_2_11_4) = 1 V(W_2_11_4_bar) = 0
+.IC V(W_2_12_1) = 0 V(W_2_12_1_bar) = 1
+.IC V(W_2_12_2) = 1 V(W_2_12_2_bar) = 0
+.IC V(W_2_12_3) = 0 V(W_2_12_3_bar) = 1
+.IC V(W_2_12_4) = 1 V(W_2_12_4_bar) = 0
+.IC V(W_2_13_1) = 0 V(W_2_13_1_bar) = 1
+.IC V(W_2_13_2) = 1 V(W_2_13_2_bar) = 0
+.IC V(W_2_13_3) = 0 V(W_2_13_3_bar) = 1
+.IC V(W_2_13_4) = 1 V(W_2_13_4_bar) = 0
+.IC V(W_2_14_1) = 0 V(W_2_14_1_bar) = 1
+.IC V(W_2_14_2) = 1 V(W_2_14_2_bar) = 0
+.IC V(W_2_14_3) = 0 V(W_2_14_3_bar) = 1
+.IC V(W_2_14_4) = 1 V(W_2_14_4_bar) = 0
+.IC V(W_2_15_1) = 0 V(W_2_15_1_bar) = 1
+.IC V(W_2_15_2) = 1 V(W_2_15_2_bar) = 0
+.IC V(W_2_15_3) = 0 V(W_2_15_3_bar) = 1
+.IC V(W_2_15_4) = 1 V(W_2_15_4_bar) = 0
+.IC V(W_2_16_1) = 0 V(W_2_16_1_bar) = 1
+.IC V(W_2_16_2) = 1 V(W_2_16_2_bar) = 0
+.IC V(W_2_16_3) = 0 V(W_2_16_3_bar) = 1
+.IC V(W_2_16_4) = 1 V(W_2_16_4_bar) = 0
+.IC V(W_2_17_1) = 0 V(W_2_17_1_bar) = 1
+.IC V(W_2_17_2) = 1 V(W_2_17_2_bar) = 0
+.IC V(W_2_17_3) = 0 V(W_2_17_3_bar) = 1
+.IC V(W_2_17_4) = 1 V(W_2_17_4_bar) = 0
+.IC V(W_2_18_1) = 0 V(W_2_18_1_bar) = 1
+.IC V(W_2_18_2) = 1 V(W_2_18_2_bar) = 0
+.IC V(W_2_18_3) = 0 V(W_2_18_3_bar) = 1
+.IC V(W_2_18_4) = 1 V(W_2_18_4_bar) = 0
+.IC V(W_2_19_1) = 0 V(W_2_19_1_bar) = 1
+.IC V(W_2_19_2) = 1 V(W_2_19_2_bar) = 0
+.IC V(W_2_19_3) = 0 V(W_2_19_3_bar) = 1
+.IC V(W_2_19_4) = 1 V(W_2_19_4_bar) = 0
+.IC V(W_2_20_1) = 0 V(W_2_20_1_bar) = 1
+.IC V(W_2_20_2) = 1 V(W_2_20_2_bar) = 0
+.IC V(W_2_20_3) = 0 V(W_2_20_3_bar) = 1
+.IC V(W_2_20_4) = 1 V(W_2_20_4_bar) = 0
+.IC V(W_2_21_1) = 0 V(W_2_21_1_bar) = 1
+.IC V(W_2_21_2) = 1 V(W_2_21_2_bar) = 0
+.IC V(W_2_21_3) = 0 V(W_2_21_3_bar) = 1
+.IC V(W_2_21_4) = 1 V(W_2_21_4_bar) = 0
+.IC V(W_2_22_1) = 0 V(W_2_22_1_bar) = 1
+.IC V(W_2_22_2) = 1 V(W_2_22_2_bar) = 0
+.IC V(W_2_22_3) = 0 V(W_2_22_3_bar) = 1
+.IC V(W_2_22_4) = 1 V(W_2_22_4_bar) = 0
+.IC V(W_2_23_1) = 0 V(W_2_23_1_bar) = 1
+.IC V(W_2_23_2) = 1 V(W_2_23_2_bar) = 0
+.IC V(W_2_23_3) = 0 V(W_2_23_3_bar) = 1
+.IC V(W_2_23_4) = 1 V(W_2_23_4_bar) = 0
+.IC V(W_2_24_1) = 0 V(W_2_24_1_bar) = 1
+.IC V(W_2_24_2) = 1 V(W_2_24_2_bar) = 0
+.IC V(W_2_24_3) = 0 V(W_2_24_3_bar) = 1
+.IC V(W_2_24_4) = 1 V(W_2_24_4_bar) = 0
+.IC V(W_2_25_1) = 0 V(W_2_25_1_bar) = 1
+.IC V(W_2_25_2) = 1 V(W_2_25_2_bar) = 0
+.IC V(W_2_25_3) = 0 V(W_2_25_3_bar) = 1
+.IC V(W_2_25_4) = 1 V(W_2_25_4_bar) = 0
+.IC V(W_2_26_1) = 0 V(W_2_26_1_bar) = 1
+.IC V(W_2_26_2) = 1 V(W_2_26_2_bar) = 0
+.IC V(W_2_26_3) = 0 V(W_2_26_3_bar) = 1
+.IC V(W_2_26_4) = 1 V(W_2_26_4_bar) = 0
+.IC V(W_2_27_1) = 0 V(W_2_27_1_bar) = 1
+.IC V(W_2_27_2) = 1 V(W_2_27_2_bar) = 0
+.IC V(W_2_27_3) = 0 V(W_2_27_3_bar) = 1
+.IC V(W_2_27_4) = 1 V(W_2_27_4_bar) = 0
+.IC V(W_2_28_1) = 0 V(W_2_28_1_bar) = 1
+.IC V(W_2_28_2) = 1 V(W_2_28_2_bar) = 0
+.IC V(W_2_28_3) = 0 V(W_2_28_3_bar) = 1
+.IC V(W_2_28_4) = 1 V(W_2_28_4_bar) = 0
+.IC V(W_2_29_1) = 0 V(W_2_29_1_bar) = 1
+.IC V(W_2_29_2) = 1 V(W_2_29_2_bar) = 0
+.IC V(W_2_29_3) = 0 V(W_2_29_3_bar) = 1
+.IC V(W_2_29_4) = 1 V(W_2_29_4_bar) = 0
+.IC V(W_2_30_1) = 0 V(W_2_30_1_bar) = 1
+.IC V(W_2_30_2) = 1 V(W_2_30_2_bar) = 0
+.IC V(W_2_30_3) = 0 V(W_2_30_3_bar) = 1
+.IC V(W_2_30_4) = 1 V(W_2_30_4_bar) = 0
+.IC V(W_2_31_1) = 0 V(W_2_31_1_bar) = 1
+.IC V(W_2_31_2) = 1 V(W_2_31_2_bar) = 0
+.IC V(W_2_31_3) = 0 V(W_2_31_3_bar) = 1
+.IC V(W_2_31_4) = 1 V(W_2_31_4_bar) = 0
+.IC V(W_2_32_1) = 0 V(W_2_32_1_bar) = 1
+.IC V(W_2_32_2) = 1 V(W_2_32_2_bar) = 0
+.IC V(W_2_32_3) = 0 V(W_2_32_3_bar) = 1
+.IC V(W_2_32_4) = 1 V(W_2_32_4_bar) = 0
+.IC V(W_3_1_1) = 0 V(W_3_1_1_bar) = 1
+.IC V(W_3_1_2) = 1 V(W_3_1_2_bar) = 0
+.IC V(W_3_1_3) = 0 V(W_3_1_3_bar) = 1
+.IC V(W_3_1_4) = 1 V(W_3_1_4_bar) = 0
+.IC V(W_3_2_1) = 0 V(W_3_2_1_bar) = 1
+.IC V(W_3_2_2) = 1 V(W_3_2_2_bar) = 0
+.IC V(W_3_2_3) = 0 V(W_3_2_3_bar) = 1
+.IC V(W_3_2_4) = 1 V(W_3_2_4_bar) = 0
+.IC V(W_3_3_1) = 0 V(W_3_3_1_bar) = 1
+.IC V(W_3_3_2) = 1 V(W_3_3_2_bar) = 0
+.IC V(W_3_3_3) = 0 V(W_3_3_3_bar) = 1
+.IC V(W_3_3_4) = 1 V(W_3_3_4_bar) = 0
+.IC V(W_3_4_1) = 0 V(W_3_4_1_bar) = 1
+.IC V(W_3_4_2) = 1 V(W_3_4_2_bar) = 0
+.IC V(W_3_4_3) = 0 V(W_3_4_3_bar) = 1
+.IC V(W_3_4_4) = 1 V(W_3_4_4_bar) = 0
+.IC V(W_3_5_1) = 0 V(W_3_5_1_bar) = 1
+.IC V(W_3_5_2) = 1 V(W_3_5_2_bar) = 0
+.IC V(W_3_5_3) = 0 V(W_3_5_3_bar) = 1
+.IC V(W_3_5_4) = 1 V(W_3_5_4_bar) = 0
+.IC V(W_3_6_1) = 0 V(W_3_6_1_bar) = 1
+.IC V(W_3_6_2) = 1 V(W_3_6_2_bar) = 0
+.IC V(W_3_6_3) = 0 V(W_3_6_3_bar) = 1
+.IC V(W_3_6_4) = 1 V(W_3_6_4_bar) = 0
+.IC V(W_3_7_1) = 0 V(W_3_7_1_bar) = 1
+.IC V(W_3_7_2) = 1 V(W_3_7_2_bar) = 0
+.IC V(W_3_7_3) = 0 V(W_3_7_3_bar) = 1
+.IC V(W_3_7_4) = 1 V(W_3_7_4_bar) = 0
+.IC V(W_3_8_1) = 0 V(W_3_8_1_bar) = 1
+.IC V(W_3_8_2) = 1 V(W_3_8_2_bar) = 0
+.IC V(W_3_8_3) = 0 V(W_3_8_3_bar) = 1
+.IC V(W_3_8_4) = 1 V(W_3_8_4_bar) = 0
+.IC V(W_3_9_1) = 0 V(W_3_9_1_bar) = 1
+.IC V(W_3_9_2) = 1 V(W_3_9_2_bar) = 0
+.IC V(W_3_9_3) = 0 V(W_3_9_3_bar) = 1
+.IC V(W_3_9_4) = 1 V(W_3_9_4_bar) = 0
+.IC V(W_3_10_1) = 0 V(W_3_10_1_bar) = 1
+.IC V(W_3_10_2) = 1 V(W_3_10_2_bar) = 0
+.IC V(W_3_10_3) = 0 V(W_3_10_3_bar) = 1
+.IC V(W_3_10_4) = 1 V(W_3_10_4_bar) = 0
+.IC V(W_3_11_1) = 0 V(W_3_11_1_bar) = 1
+.IC V(W_3_11_2) = 1 V(W_3_11_2_bar) = 0
+.IC V(W_3_11_3) = 0 V(W_3_11_3_bar) = 1
+.IC V(W_3_11_4) = 1 V(W_3_11_4_bar) = 0
+.IC V(W_3_12_1) = 0 V(W_3_12_1_bar) = 1
+.IC V(W_3_12_2) = 1 V(W_3_12_2_bar) = 0
+.IC V(W_3_12_3) = 0 V(W_3_12_3_bar) = 1
+.IC V(W_3_12_4) = 1 V(W_3_12_4_bar) = 0
+.IC V(W_3_13_1) = 0 V(W_3_13_1_bar) = 1
+.IC V(W_3_13_2) = 1 V(W_3_13_2_bar) = 0
+.IC V(W_3_13_3) = 0 V(W_3_13_3_bar) = 1
+.IC V(W_3_13_4) = 1 V(W_3_13_4_bar) = 0
+.IC V(W_3_14_1) = 0 V(W_3_14_1_bar) = 1
+.IC V(W_3_14_2) = 1 V(W_3_14_2_bar) = 0
+.IC V(W_3_14_3) = 0 V(W_3_14_3_bar) = 1
+.IC V(W_3_14_4) = 1 V(W_3_14_4_bar) = 0
+.IC V(W_3_15_1) = 0 V(W_3_15_1_bar) = 1
+.IC V(W_3_15_2) = 1 V(W_3_15_2_bar) = 0
+.IC V(W_3_15_3) = 0 V(W_3_15_3_bar) = 1
+.IC V(W_3_15_4) = 1 V(W_3_15_4_bar) = 0
+.IC V(W_3_16_1) = 0 V(W_3_16_1_bar) = 1
+.IC V(W_3_16_2) = 1 V(W_3_16_2_bar) = 0
+.IC V(W_3_16_3) = 0 V(W_3_16_3_bar) = 1
+.IC V(W_3_16_4) = 1 V(W_3_16_4_bar) = 0
+.IC V(W_3_17_1) = 0 V(W_3_17_1_bar) = 1
+.IC V(W_3_17_2) = 1 V(W_3_17_2_bar) = 0
+.IC V(W_3_17_3) = 0 V(W_3_17_3_bar) = 1
+.IC V(W_3_17_4) = 1 V(W_3_17_4_bar) = 0
+.IC V(W_3_18_1) = 0 V(W_3_18_1_bar) = 1
+.IC V(W_3_18_2) = 1 V(W_3_18_2_bar) = 0
+.IC V(W_3_18_3) = 0 V(W_3_18_3_bar) = 1
+.IC V(W_3_18_4) = 1 V(W_3_18_4_bar) = 0
+.IC V(W_3_19_1) = 0 V(W_3_19_1_bar) = 1
+.IC V(W_3_19_2) = 1 V(W_3_19_2_bar) = 0
+.IC V(W_3_19_3) = 0 V(W_3_19_3_bar) = 1
+.IC V(W_3_19_4) = 1 V(W_3_19_4_bar) = 0
+.IC V(W_3_20_1) = 0 V(W_3_20_1_bar) = 1
+.IC V(W_3_20_2) = 1 V(W_3_20_2_bar) = 0
+.IC V(W_3_20_3) = 0 V(W_3_20_3_bar) = 1
+.IC V(W_3_20_4) = 1 V(W_3_20_4_bar) = 0
+.IC V(W_3_21_1) = 0 V(W_3_21_1_bar) = 1
+.IC V(W_3_21_2) = 1 V(W_3_21_2_bar) = 0
+.IC V(W_3_21_3) = 0 V(W_3_21_3_bar) = 1
+.IC V(W_3_21_4) = 1 V(W_3_21_4_bar) = 0
+.IC V(W_3_22_1) = 0 V(W_3_22_1_bar) = 1
+.IC V(W_3_22_2) = 1 V(W_3_22_2_bar) = 0
+.IC V(W_3_22_3) = 0 V(W_3_22_3_bar) = 1
+.IC V(W_3_22_4) = 1 V(W_3_22_4_bar) = 0
+.IC V(W_3_23_1) = 0 V(W_3_23_1_bar) = 1
+.IC V(W_3_23_2) = 1 V(W_3_23_2_bar) = 0
+.IC V(W_3_23_3) = 0 V(W_3_23_3_bar) = 1
+.IC V(W_3_23_4) = 1 V(W_3_23_4_bar) = 0
+.IC V(W_3_24_1) = 0 V(W_3_24_1_bar) = 1
+.IC V(W_3_24_2) = 1 V(W_3_24_2_bar) = 0
+.IC V(W_3_24_3) = 0 V(W_3_24_3_bar) = 1
+.IC V(W_3_24_4) = 1 V(W_3_24_4_bar) = 0
+.IC V(W_3_25_1) = 0 V(W_3_25_1_bar) = 1
+.IC V(W_3_25_2) = 1 V(W_3_25_2_bar) = 0
+.IC V(W_3_25_3) = 0 V(W_3_25_3_bar) = 1
+.IC V(W_3_25_4) = 1 V(W_3_25_4_bar) = 0
+.IC V(W_3_26_1) = 0 V(W_3_26_1_bar) = 1
+.IC V(W_3_26_2) = 1 V(W_3_26_2_bar) = 0
+.IC V(W_3_26_3) = 0 V(W_3_26_3_bar) = 1
+.IC V(W_3_26_4) = 1 V(W_3_26_4_bar) = 0
+.IC V(W_3_27_1) = 0 V(W_3_27_1_bar) = 1
+.IC V(W_3_27_2) = 1 V(W_3_27_2_bar) = 0
+.IC V(W_3_27_3) = 0 V(W_3_27_3_bar) = 1
+.IC V(W_3_27_4) = 1 V(W_3_27_4_bar) = 0
+.IC V(W_3_28_1) = 0 V(W_3_28_1_bar) = 1
+.IC V(W_3_28_2) = 1 V(W_3_28_2_bar) = 0
+.IC V(W_3_28_3) = 0 V(W_3_28_3_bar) = 1
+.IC V(W_3_28_4) = 1 V(W_3_28_4_bar) = 0
+.IC V(W_3_29_1) = 0 V(W_3_29_1_bar) = 1
+.IC V(W_3_29_2) = 1 V(W_3_29_2_bar) = 0
+.IC V(W_3_29_3) = 0 V(W_3_29_3_bar) = 1
+.IC V(W_3_29_4) = 1 V(W_3_29_4_bar) = 0
+.IC V(W_3_30_1) = 0 V(W_3_30_1_bar) = 1
+.IC V(W_3_30_2) = 1 V(W_3_30_2_bar) = 0
+.IC V(W_3_30_3) = 0 V(W_3_30_3_bar) = 1
+.IC V(W_3_30_4) = 1 V(W_3_30_4_bar) = 0
+.IC V(W_3_31_1) = 0 V(W_3_31_1_bar) = 1
+.IC V(W_3_31_2) = 1 V(W_3_31_2_bar) = 0
+.IC V(W_3_31_3) = 0 V(W_3_31_3_bar) = 1
+.IC V(W_3_31_4) = 1 V(W_3_31_4_bar) = 0
+.IC V(W_3_32_1) = 0 V(W_3_32_1_bar) = 1
+.IC V(W_3_32_2) = 1 V(W_3_32_2_bar) = 0
+.IC V(W_3_32_3) = 0 V(W_3_32_3_bar) = 1
+.IC V(W_3_32_4) = 1 V(W_3_32_4_bar) = 0
+.IC V(W_4_1_1) = 0 V(W_4_1_1_bar) = 1
+.IC V(W_4_1_2) = 1 V(W_4_1_2_bar) = 0
+.IC V(W_4_1_3) = 0 V(W_4_1_3_bar) = 1
+.IC V(W_4_1_4) = 1 V(W_4_1_4_bar) = 0
+.IC V(W_4_2_1) = 0 V(W_4_2_1_bar) = 1
+.IC V(W_4_2_2) = 1 V(W_4_2_2_bar) = 0
+.IC V(W_4_2_3) = 0 V(W_4_2_3_bar) = 1
+.IC V(W_4_2_4) = 1 V(W_4_2_4_bar) = 0
+.IC V(W_4_3_1) = 0 V(W_4_3_1_bar) = 1
+.IC V(W_4_3_2) = 1 V(W_4_3_2_bar) = 0
+.IC V(W_4_3_3) = 0 V(W_4_3_3_bar) = 1
+.IC V(W_4_3_4) = 1 V(W_4_3_4_bar) = 0
+.IC V(W_4_4_1) = 0 V(W_4_4_1_bar) = 1
+.IC V(W_4_4_2) = 1 V(W_4_4_2_bar) = 0
+.IC V(W_4_4_3) = 0 V(W_4_4_3_bar) = 1
+.IC V(W_4_4_4) = 1 V(W_4_4_4_bar) = 0
+.IC V(W_4_5_1) = 0 V(W_4_5_1_bar) = 1
+.IC V(W_4_5_2) = 1 V(W_4_5_2_bar) = 0
+.IC V(W_4_5_3) = 0 V(W_4_5_3_bar) = 1
+.IC V(W_4_5_4) = 1 V(W_4_5_4_bar) = 0
+.IC V(W_4_6_1) = 0 V(W_4_6_1_bar) = 1
+.IC V(W_4_6_2) = 1 V(W_4_6_2_bar) = 0
+.IC V(W_4_6_3) = 0 V(W_4_6_3_bar) = 1
+.IC V(W_4_6_4) = 1 V(W_4_6_4_bar) = 0
+.IC V(W_4_7_1) = 0 V(W_4_7_1_bar) = 1
+.IC V(W_4_7_2) = 1 V(W_4_7_2_bar) = 0
+.IC V(W_4_7_3) = 0 V(W_4_7_3_bar) = 1
+.IC V(W_4_7_4) = 1 V(W_4_7_4_bar) = 0
+.IC V(W_4_8_1) = 0 V(W_4_8_1_bar) = 1
+.IC V(W_4_8_2) = 1 V(W_4_8_2_bar) = 0
+.IC V(W_4_8_3) = 0 V(W_4_8_3_bar) = 1
+.IC V(W_4_8_4) = 1 V(W_4_8_4_bar) = 0
+.IC V(W_4_9_1) = 0 V(W_4_9_1_bar) = 1
+.IC V(W_4_9_2) = 1 V(W_4_9_2_bar) = 0
+.IC V(W_4_9_3) = 0 V(W_4_9_3_bar) = 1
+.IC V(W_4_9_4) = 1 V(W_4_9_4_bar) = 0
+.IC V(W_4_10_1) = 0 V(W_4_10_1_bar) = 1
+.IC V(W_4_10_2) = 1 V(W_4_10_2_bar) = 0
+.IC V(W_4_10_3) = 0 V(W_4_10_3_bar) = 1
+.IC V(W_4_10_4) = 1 V(W_4_10_4_bar) = 0
+.IC V(W_4_11_1) = 0 V(W_4_11_1_bar) = 1
+.IC V(W_4_11_2) = 1 V(W_4_11_2_bar) = 0
+.IC V(W_4_11_3) = 0 V(W_4_11_3_bar) = 1
+.IC V(W_4_11_4) = 1 V(W_4_11_4_bar) = 0
+.IC V(W_4_12_1) = 0 V(W_4_12_1_bar) = 1
+.IC V(W_4_12_2) = 1 V(W_4_12_2_bar) = 0
+.IC V(W_4_12_3) = 0 V(W_4_12_3_bar) = 1
+.IC V(W_4_12_4) = 1 V(W_4_12_4_bar) = 0
+.IC V(W_4_13_1) = 0 V(W_4_13_1_bar) = 1
+.IC V(W_4_13_2) = 1 V(W_4_13_2_bar) = 0
+.IC V(W_4_13_3) = 0 V(W_4_13_3_bar) = 1
+.IC V(W_4_13_4) = 1 V(W_4_13_4_bar) = 0
+.IC V(W_4_14_1) = 0 V(W_4_14_1_bar) = 1
+.IC V(W_4_14_2) = 1 V(W_4_14_2_bar) = 0
+.IC V(W_4_14_3) = 0 V(W_4_14_3_bar) = 1
+.IC V(W_4_14_4) = 1 V(W_4_14_4_bar) = 0
+.IC V(W_4_15_1) = 0 V(W_4_15_1_bar) = 1
+.IC V(W_4_15_2) = 1 V(W_4_15_2_bar) = 0
+.IC V(W_4_15_3) = 0 V(W_4_15_3_bar) = 1
+.IC V(W_4_15_4) = 1 V(W_4_15_4_bar) = 0
+.IC V(W_4_16_1) = 0 V(W_4_16_1_bar) = 1
+.IC V(W_4_16_2) = 1 V(W_4_16_2_bar) = 0
+.IC V(W_4_16_3) = 0 V(W_4_16_3_bar) = 1
+.IC V(W_4_16_4) = 1 V(W_4_16_4_bar) = 0
+.IC V(W_4_17_1) = 0 V(W_4_17_1_bar) = 1
+.IC V(W_4_17_2) = 1 V(W_4_17_2_bar) = 0
+.IC V(W_4_17_3) = 0 V(W_4_17_3_bar) = 1
+.IC V(W_4_17_4) = 1 V(W_4_17_4_bar) = 0
+.IC V(W_4_18_1) = 0 V(W_4_18_1_bar) = 1
+.IC V(W_4_18_2) = 1 V(W_4_18_2_bar) = 0
+.IC V(W_4_18_3) = 0 V(W_4_18_3_bar) = 1
+.IC V(W_4_18_4) = 1 V(W_4_18_4_bar) = 0
+.IC V(W_4_19_1) = 0 V(W_4_19_1_bar) = 1
+.IC V(W_4_19_2) = 1 V(W_4_19_2_bar) = 0
+.IC V(W_4_19_3) = 0 V(W_4_19_3_bar) = 1
+.IC V(W_4_19_4) = 1 V(W_4_19_4_bar) = 0
+.IC V(W_4_20_1) = 0 V(W_4_20_1_bar) = 1
+.IC V(W_4_20_2) = 1 V(W_4_20_2_bar) = 0
+.IC V(W_4_20_3) = 0 V(W_4_20_3_bar) = 1
+.IC V(W_4_20_4) = 1 V(W_4_20_4_bar) = 0
+.IC V(W_4_21_1) = 0 V(W_4_21_1_bar) = 1
+.IC V(W_4_21_2) = 1 V(W_4_21_2_bar) = 0
+.IC V(W_4_21_3) = 0 V(W_4_21_3_bar) = 1
+.IC V(W_4_21_4) = 1 V(W_4_21_4_bar) = 0
+.IC V(W_4_22_1) = 0 V(W_4_22_1_bar) = 1
+.IC V(W_4_22_2) = 1 V(W_4_22_2_bar) = 0
+.IC V(W_4_22_3) = 0 V(W_4_22_3_bar) = 1
+.IC V(W_4_22_4) = 1 V(W_4_22_4_bar) = 0
+.IC V(W_4_23_1) = 0 V(W_4_23_1_bar) = 1
+.IC V(W_4_23_2) = 1 V(W_4_23_2_bar) = 0
+.IC V(W_4_23_3) = 0 V(W_4_23_3_bar) = 1
+.IC V(W_4_23_4) = 1 V(W_4_23_4_bar) = 0
+.IC V(W_4_24_1) = 0 V(W_4_24_1_bar) = 1
+.IC V(W_4_24_2) = 1 V(W_4_24_2_bar) = 0
+.IC V(W_4_24_3) = 0 V(W_4_24_3_bar) = 1
+.IC V(W_4_24_4) = 1 V(W_4_24_4_bar) = 0
+.IC V(W_4_25_1) = 0 V(W_4_25_1_bar) = 1
+.IC V(W_4_25_2) = 1 V(W_4_25_2_bar) = 0
+.IC V(W_4_25_3) = 0 V(W_4_25_3_bar) = 1
+.IC V(W_4_25_4) = 1 V(W_4_25_4_bar) = 0
+.IC V(W_4_26_1) = 0 V(W_4_26_1_bar) = 1
+.IC V(W_4_26_2) = 1 V(W_4_26_2_bar) = 0
+.IC V(W_4_26_3) = 0 V(W_4_26_3_bar) = 1
+.IC V(W_4_26_4) = 1 V(W_4_26_4_bar) = 0
+.IC V(W_4_27_1) = 0 V(W_4_27_1_bar) = 1
+.IC V(W_4_27_2) = 1 V(W_4_27_2_bar) = 0
+.IC V(W_4_27_3) = 0 V(W_4_27_3_bar) = 1
+.IC V(W_4_27_4) = 1 V(W_4_27_4_bar) = 0
+.IC V(W_4_28_1) = 0 V(W_4_28_1_bar) = 1
+.IC V(W_4_28_2) = 1 V(W_4_28_2_bar) = 0
+.IC V(W_4_28_3) = 0 V(W_4_28_3_bar) = 1
+.IC V(W_4_28_4) = 1 V(W_4_28_4_bar) = 0
+.IC V(W_4_29_1) = 0 V(W_4_29_1_bar) = 1
+.IC V(W_4_29_2) = 1 V(W_4_29_2_bar) = 0
+.IC V(W_4_29_3) = 0 V(W_4_29_3_bar) = 1
+.IC V(W_4_29_4) = 1 V(W_4_29_4_bar) = 0
+.IC V(W_4_30_1) = 0 V(W_4_30_1_bar) = 1
+.IC V(W_4_30_2) = 1 V(W_4_30_2_bar) = 0
+.IC V(W_4_30_3) = 0 V(W_4_30_3_bar) = 1
+.IC V(W_4_30_4) = 1 V(W_4_30_4_bar) = 0
+.IC V(W_4_31_1) = 0 V(W_4_31_1_bar) = 1
+.IC V(W_4_31_2) = 1 V(W_4_31_2_bar) = 0
+.IC V(W_4_31_3) = 0 V(W_4_31_3_bar) = 1
+.IC V(W_4_31_4) = 1 V(W_4_31_4_bar) = 0
+.IC V(W_4_32_1) = 0 V(W_4_32_1_bar) = 1
+.IC V(W_4_32_2) = 1 V(W_4_32_2_bar) = 0
+.IC V(W_4_32_3) = 0 V(W_4_32_3_bar) = 1
+.IC V(W_4_32_4) = 1 V(W_4_32_4_bar) = 0
+
+.end
