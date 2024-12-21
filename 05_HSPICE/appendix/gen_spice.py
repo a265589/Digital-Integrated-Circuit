@@ -230,26 +230,75 @@
 #             else:
 #                 pattern.append("0")
 #         file.write(" ".join(pattern) + "\n")
-with open("LENG.txt", "r") as leng_file:
-    leng_lines = leng_file.readlines()
+# with open("LENG.txt", "r") as leng_file:
+#     leng_lines = leng_file.readlines()
 
-with open("WL_pattern.txt", "r") as wl_file:
-    wl_lines = wl_file.readlines()
+# with open("WL_pattern.txt", "r") as wl_file:
+#     wl_lines = wl_file.readlines()
 
-# 確保 LENG.txt 有 20 行，WL_pattern.txt 每行有 16 個值
-if len(leng_lines) != 20 or not all(len(wl_line.split()) == 16 for wl_line in wl_lines):
-    raise ValueError("LENG.txt 必須有 20 行，且 WL_pattern.txt 每行必須有 16 個數字！")
+# # 確保 LENG.txt 有 20 行，WL_pattern.txt 每行有 16 個值
+# if len(leng_lines) != 20 or not all(len(wl_line.split()) == 16 for wl_line in wl_lines):
+#     raise ValueError("LENG.txt 必須有 20 行，且 WL_pattern.txt 每行必須有 16 個數字！")
 
-# 替換 LENG.txt 每行的最後 16 個 0 或 1
-updated_lines = []
-for i in range(20):
-    # 取得 LENG.txt 當前行，並去掉最後 16 個數字
-    leng_line = leng_lines[i].strip().rsplit(" ", 16)[0]
-    # 加上 WL_pattern.txt 的對應行
-    updated_line = leng_line + " " + wl_lines[i].strip()
-    updated_lines.append(updated_line)
+# # 替換 LENG.txt 每行的最後 16 個 0 或 1
+# updated_lines = []
+# for i in range(20):
+#     # 取得 LENG.txt 當前行，並去掉最後 16 個數字
+#     leng_line = leng_lines[i].strip().rsplit(" ", 16)[0]
+#     # 加上 WL_pattern.txt 的對應行
+#     updated_line = leng_line + " " + wl_lines[i].strip()
+#     updated_lines.append(updated_line)
 
-# 將更新後的內容寫回 LENG.txt
-with open("LENG.txt", "w") as leng_file:
-    leng_file.write("\n".join(updated_lines) + "\n")
+# # 將更新後的內容寫回 LENG.txt
+# with open("LENG.txt", "w") as leng_file:
+#     leng_file.write("\n".join(updated_lines) + "\n")
+
+
+def process_pro_txt(input_file, output_file):
+    with open(input_file, 'r') as infile:
+        lines = infile.readlines()
+    
+    new_lines = []
+    
+    for line in lines:
+        # 分割行為元素
+        parts = line.strip().split()
+        if len(parts) < 9:
+            continue
+
+        # 提取原始元素
+        x_prefix = parts[0]  # X1, X2, ...
+        input_signal = parts[1]  # I111, I112, ...
+        output_signal = parts[2]  # O_1_1_1, O_1_1_2, ...
+        wl = parts[3]  # WL_1_1, WL_1_2, ...
+        bl = parts[4]  # BL
+        blb = parts[5]  # BLB
+        w_prefix = parts[6]  # W_1_1_1
+        w_bar_prefix = parts[7]  # W_1_1_1_bar
+
+        # 解析 X 和 O 的信息
+        x_index = int(x_prefix[1:])  # 提取數字部分
+        o_parts = output_signal.split("_")
+
+        # 生成新的行
+        for i in range(1, 5):  # 循環生成 _1, _2, _3, _4
+            new_x = f"{x_index}{i}"  # 更新 X 編號
+            new_output_signal = f"{'_'.join(o_parts)}_{i}"  # 更新 O 編號
+            new_w = f"{w_prefix[:-1]}{i}"  # 更新 W
+            new_w_bar = f"{w_bar_prefix[:-5]}{i}_bar"  # 正確更新 W_bar
+            new_line = f"X{new_x} {input_signal} {new_output_signal} {wl} {bl} {blb} {new_w} {new_w_bar} CIM_cell"
+            new_lines.append(new_line)
+    
+    # 寫入輸出文件
+    with open(output_file, 'w') as outfile:
+        outfile.write("\n".join(new_lines) + "\n")
+
+
+# 指定輸入和輸出文件
+input_file = "pro.txt"
+output_file = "pro.txt"
+
+# 處理文件
+process_pro_txt(input_file, output_file)
+
 
