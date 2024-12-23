@@ -296,31 +296,60 @@
 
 # # 指定輸入和輸出文件
 # input_file = "pro.txt"
-def process_file(input_file):
-    updated_lines = []
+# def process_file(input_file):
+#     updated_lines = []
 
+#     with open(input_file, 'r') as infile:
+#         lines = infile.readlines()
+
+#     with open(input_file, 'w') as outfile:
+#         for line in lines:
+#             # 移除多餘的空格並增加 "0 0 0" 到行的前面
+#             line = line.strip()
+#             original_line = f"1 1 1 {line}\n"
+#             modified_line = f"0 1 1 {line}\n"  # 第一個 0 改為 1
+            
+#             # 原行和修改行都加入結果
+#             updated_lines.append(original_line)
+#             updated_lines.append(modified_line)
+
+#         # 寫回處理後的內容
+#         outfile.writelines(updated_lines)
+
+# # 指定檔案名稱
+# file_name = "fixori.txt"
+
+# # 執行函式
+# process_file(file_name)
+
+def modify_inv(input_file, output_file):
     with open(input_file, 'r') as infile:
         lines = infile.readlines()
 
-    with open(input_file, 'w') as outfile:
-        for line in lines:
-            # 移除多餘的空格並增加 "0 0 0" 到行的前面
-            line = line.strip()
-            original_line = f"1 1 1 {line}\n"
-            modified_line = f"0 1 1 {line}\n"  # 第一個 0 改為 1
-            
-            # 原行和修改行都加入結果
-            updated_lines.append(original_line)
-            updated_lines.append(modified_line)
+    with open(output_file, 'w') as outfile:
+        for index, line in enumerate(lines):
+            # 解析每行的內容，提取所需的數據
+            parts = line.split()
+            if len(parts) > 2:  # 確保行格式正確
+                input_name = parts[1]  # I_x_x_x_inv
+                new_name = input_name.replace('_inv', '')
+                xi_name = f"XI{index + 11}"  # XI開頭的名字遞增
+                outfile.write(f"{xi_name} {new_name} {input_name} INV\n")
 
-        # 寫回處理後的內容
-        outfile.writelines(updated_lines)
+# 指定輸入與輸出檔案
+input_file = "ori.txt"
+output_file = "orii.txt"
 
-# 指定檔案名稱
-file_name = "fixori.txt"
+# 執行
+modify_inv(input_file, output_file)
 
-# 執行函式
-process_file(file_name)
+
+
+
+
+
+
+
 
 
 
