@@ -254,51 +254,78 @@
 #     leng_file.write("\n".join(updated_lines) + "\n")
 
 
-def process_pro_txt(input_file, output_file):
+# def process_pro_txt(input_file, output_file):
+#     with open(input_file, 'r') as infile:
+#         lines = infile.readlines()
+    
+#     new_lines = []
+    
+#     for line in lines:
+#         # 分割行為元素
+#         parts = line.strip().split()
+#         if len(parts) < 9:
+#             continue
+
+#         # 提取原始元素
+#         x_prefix = parts[0]  # X1, X2, ...
+#         input_signal = parts[1]  # I111, I112, ...
+#         output_signal = parts[2]  # O_1_1_1, O_1_1_2, ...
+#         wl = parts[3]  # WL_1_1, WL_1_2, ...
+#         bl = parts[4]  # BL
+#         blb = parts[5]  # BLB
+#         w_prefix = parts[6]  # W_1_1_1
+#         w_bar_prefix = parts[7]  # W_1_1_1_bar
+
+#         # 解析 X 和 O 的信息
+#         x_index = int(x_prefix[1:])  # 提取數字部分
+#         o_parts = output_signal.split("_")
+
+#         # 生成新的行
+#         for i in range(1, 5):  # 循環生成 _1, _2, _3, _4
+#             new_x = f"{x_index}{i}"  # 更新 X 編號
+#             new_output_signal = f"{'_'.join(o_parts)}_{i}"  # 更新 O 編號
+#             new_w = f"{w_prefix[:-1]}{i}"  # 更新 W
+#             new_w_bar = f"{w_bar_prefix[:-5]}{i}_bar"  # 正確更新 W_bar
+#             new_line = f"X{new_x} {input_signal} {new_output_signal} {wl} {bl} {blb} {new_w} {new_w_bar} CIM_cell"
+#             new_lines.append(new_line)
+    
+#     # 寫入輸出文件
+#     with open(output_file, 'w') as outfile:
+#         outfile.write("\n".join(new_lines) + "\n")
+
+
+# # 指定輸入和輸出文件
+# input_file = "pro.txt"
+def process_file(input_file):
+    updated_lines = []
+
     with open(input_file, 'r') as infile:
         lines = infile.readlines()
-    
-    new_lines = []
-    
-    for line in lines:
-        # 分割行為元素
-        parts = line.strip().split()
-        if len(parts) < 9:
-            continue
 
-        # 提取原始元素
-        x_prefix = parts[0]  # X1, X2, ...
-        input_signal = parts[1]  # I111, I112, ...
-        output_signal = parts[2]  # O_1_1_1, O_1_1_2, ...
-        wl = parts[3]  # WL_1_1, WL_1_2, ...
-        bl = parts[4]  # BL
-        blb = parts[5]  # BLB
-        w_prefix = parts[6]  # W_1_1_1
-        w_bar_prefix = parts[7]  # W_1_1_1_bar
+    with open(input_file, 'w') as outfile:
+        for line in lines:
+            # 移除多餘的空格並增加 "0 0 0" 到行的前面
+            line = line.strip()
+            original_line = f"1 1 1 {line}\n"
+            modified_line = f"0 1 1 {line}\n"  # 第一個 0 改為 1
+            
+            # 原行和修改行都加入結果
+            updated_lines.append(original_line)
+            updated_lines.append(modified_line)
 
-        # 解析 X 和 O 的信息
-        x_index = int(x_prefix[1:])  # 提取數字部分
-        o_parts = output_signal.split("_")
+        # 寫回處理後的內容
+        outfile.writelines(updated_lines)
 
-        # 生成新的行
-        for i in range(1, 5):  # 循環生成 _1, _2, _3, _4
-            new_x = f"{x_index}{i}"  # 更新 X 編號
-            new_output_signal = f"{'_'.join(o_parts)}_{i}"  # 更新 O 編號
-            new_w = f"{w_prefix[:-1]}{i}"  # 更新 W
-            new_w_bar = f"{w_bar_prefix[:-5]}{i}_bar"  # 正確更新 W_bar
-            new_line = f"X{new_x} {input_signal} {new_output_signal} {wl} {bl} {blb} {new_w} {new_w_bar} CIM_cell"
-            new_lines.append(new_line)
-    
-    # 寫入輸出文件
-    with open(output_file, 'w') as outfile:
-        outfile.write("\n".join(new_lines) + "\n")
+# 指定檔案名稱
+file_name = "fixori.txt"
+
+# 執行函式
+process_file(file_name)
 
 
-# 指定輸入和輸出文件
-input_file = "pro.txt"
-output_file = "pro.txt"
 
-# 處理文件
-process_pro_txt(input_file, output_file)
+
+
+
 
 
