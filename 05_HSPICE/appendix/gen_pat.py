@@ -1,22 +1,5 @@
-def decimal_to_binary_4bits(decimal_list):
-    binary_list = [format(num, '04b') for num in decimal_list]
-    return binary_list
+# 
 
-file_path = 'pattern.txt'
-
-with open(file_path, 'r') as file:
-    lines = file.readlines()
-
-binary_lines = []
-for line in lines:
-    decimal_numbers = [int(num) for num in line.split()]
-    binary_numbers = decimal_to_binary_4bits(decimal_numbers)
-    binary_lines.append(' '.join(binary_numbers))
-
-# 將輸出寫入 value_lists.txt 檔案
-with open("value_lists.txt", "w") as file:
-    for binary_line in binary_lines:
-        file.write(binary_line + '\n')
 
 
 
@@ -56,3 +39,39 @@ with open("value_lists.txt", "w") as file:
 #         file.write(' '.join(str(x) for x in values)+'\n')
 
 #     # file.write(f"weight: {weight_value}\n")
+
+def process_cal_file(input_file, output_file):
+    """
+    Read `cal.txt`, modify the content by adding buffer stages, 
+    and write the modified content back to `cal.txt`.
+    """
+    with open(input_file, 'r') as infile:
+        lines = infile.readlines()
+
+    modified_lines = []
+
+    for line in lines:
+        parts = line.strip().split()
+        if len(parts) == 4 and parts[0].startswith("XI"):
+            # Extract original values
+            xi, input_signal, output_signal, gate_type = parts
+            
+            # Generate buffer signals
+            buffer_signal = output_signal.replace("_inv", "_buf")
+            
+            # Add the new lines
+            modified_lines.append(f"{xi} {input_signal} {buffer_signal} {gate_type}\n")
+            modified_lines.append(f"XB{xi[2:]} {buffer_signal} {output_signal} Buffer\n")
+        else:
+            # Keep other lines unchanged
+            modified_lines.append(line)
+
+    with open(output_file, 'w') as outfile:
+        outfile.writelines(modified_lines)
+
+# Specify the file name
+input_file = "cal.txt"
+output_file = "cal.txt"
+
+# Execute the function
+process_cal_file(input_file, output_file)

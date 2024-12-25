@@ -202,39 +202,39 @@
 
 # # 輸出結果
 # print(f" '1' : {count}")
-# input_file = "mul.vec"
-# output_file = "mul.vec"
+input_file = "mul.vec"
+output_file = "mul.vec"
 
-# with open(input_file, "r") as infile:
-#     lines = infile.readlines()
+with open(input_file, "r") as infile:
+    lines = infile.readlines()
 
-# # 處理每一行
-# with open(output_file, "w") as outfile:
-#     for line in lines:
-#         if line.strip().startswith("Radix"):
-#             # 移除 Radix 部分的空格
-#             modified_line = line.replace(" ", "")
-#             outfile.write(modified_line)
-#         else:
-#             # 保持其他內容不變
-#             outfile.write(line)
-# output_file = "WL_pattern.txt"
 
-# # Generate 20 groups of 16 WL values based on the specified rules
-# with open(output_file, "w") as file:
-#     for group in range(20):
-#         pattern = []
-#         for i in range(16):
-#             if i % 4 == 0 or i % 4 == 1:  # WL_1_1, WL_2_1, WL_3_1, WL_4_1 and WL_1_2, WL_2_2, WL_3_2, WL_4_2
-#                 pattern.append("1")
-#             else:
-#                 pattern.append("0")
-#         file.write(" ".join(pattern) + "\n")
-# with open("LENG.txt", "r") as leng_file:
-#     leng_lines = leng_file.readlines()
+with open(output_file, "w") as outfile:
+    for line in lines:
+        if line.strip().startswith("Radix"):
+            
+            modified_line = line.replace(" ", "")
+            outfile.write(modified_line)
+        else:
+            
+            outfile.write(line)
+output_file = "WL_pattern.txt"
 
-# with open("WL_pattern.txt", "r") as wl_file:
-#     wl_lines = wl_file.readlines()
+# Generate 20 groups of 16 WL values based on the specified rules
+with open(output_file, "w") as file:
+    for group in range(20):
+        pattern = []
+        for i in range(16):
+            if i % 4 == 0 or i % 4 == 1:  # WL_1_1, WL_2_1, WL_3_1, WL_4_1 and WL_1_2, WL_2_2, WL_3_2, WL_4_2
+                pattern.append("1")
+            else:
+                pattern.append("0")
+        file.write(" ".join(pattern) + "\n")
+with open("LENG.txt", "r") as leng_file:
+    leng_lines = leng_file.readlines()
+
+with open("WL_pattern.txt", "r") as wl_file:
+    wl_lines = wl_file.readlines()
 
 # # 確保 LENG.txt 有 20 行，WL_pattern.txt 每行有 16 個值
 # if len(leng_lines) != 20 or not all(len(wl_line.split()) == 16 for wl_line in wl_lines):

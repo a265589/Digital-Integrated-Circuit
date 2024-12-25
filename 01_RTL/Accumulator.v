@@ -8,7 +8,7 @@ module Accumulator (
 
 always@(posedge clk or negedge rst_n)
 begin
-    if(!rst_n)
+    if(!rst_n) 
     begin
         result <= 13'd0;
     end
