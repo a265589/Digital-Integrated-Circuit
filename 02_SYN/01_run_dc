@@ -1,0 +1,1 @@
+/usr/cad/synopsys/synthesis/2019.03-sp1-1/amd64/syn/bin/dc_shell -f syn.tcl | tee syn.log 

@@ -1,0 +1,3824 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version P-2019.03-SP1-1 for linux64 - May 06, 2019 
+
+                    Copyright (c) 1988 - 2019 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+#======================================================
+#
+# Synopsys Synthesis Scripts (Design Vision dctcl mode)
+#
+#======================================================
+#======================================================
+#  Set Libraries
+#======================================================
+set search_path {
+       ./        ../01_RTL/        ../08_TECH/LIB/ }  
+
+       ./        ../01_RTL/        ../08_TECH/LIB/ 
+set link_library {dw_foundation.sldb }
+dw_foundation.sldb 
+set synthetic_library { asap7sc7p5t_AO_RVT_TT_08302018.db asap7sc7p5t_OA_RVT_TT_08302018.db asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db}
+ asap7sc7p5t_AO_RVT_TT_08302018.db asap7sc7p5t_OA_RVT_TT_08302018.db asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db
+set target_library {asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db }         
+asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db 
+#======================================================
+#  Global Parameters
+#======================================================
+set DESIGN "Adder_tree"
+Adder_tree
+set MAX_Delay 1000
+1000
+#======================================================
+#  Read RTL Code
+#======================================================
+#read_sverilog {$DESIGN\.v}
+#current_design $DESIGN
+analyze -f verilog $DESIGN\.v
+Running PRESTO HDLC
+Compiling source file ../01_RTL/Adder_tree.v
+Warning:  ../01_RTL/Adder_tree.v:14: A unnamed generate block with an LRM-defined name 'genblk1' is detected, which is incompatible with Verilog standard 2001 or 1995. (VER-944)
+Presto compilation completed successfully.
+Loading db file '/usr/cad/synopsys/synthesis/2019.03-sp1-1/libraries/syn/dw_foundation.sldb'
+1
+elaborate $DESIGN
+Loading db file '/usr/cad/synopsys/synthesis/2019.03-sp1-1/libraries/syn/gtech.db'
+Loading db file '/usr/cad/synopsys/synthesis/2019.03-sp1-1/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully. (Adder_tree)
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_AO_RVT_TT_08302018.db'
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_OA_RVT_TT_08302018.db'
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_INVBUF_RVT_TT_08302018.db'
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SEQ_RVT_TT_08302018.db'
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SIMPLE_RVT_TT_08302018.db'
+Elaborated 1 design.
+Current design is now 'Adder_tree'.
+1
+current_design $DESIGN
+Current design is 'Adder_tree'.
+{Adder_tree}
+#======================================================
+#  Global Setting
+#======================================================
+#set_operating_conditions -max slow -min fast
+#======================================================
+#  Set Design Constraints
+#======================================================
+set_max_delay $MAX_Delay -from [all_inputs] -to [all_outputs]
+1
+#======================================================
+#  Optimization
+#======================================================
+uniquify
+1
+set_fix_multiple_port_nets -all -buffer_constants
+1
+compile_ultra
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | P-2019.03-DWBB_201903.1 |     *     |
+| Licensed DW Building Blocks        | P-2019.03-DWBB_201903.1 |     *     |
+| asap7sc7p5t_AO_RVT_TT_08302018     | 1.0                     |           |
+| asap7sc7p5t_OA_RVT_TT_08302018     | 1.0                     |           |
+| asap7sc7p5t_INVBUF_RVT_TT_08302018 | 1.0                     |           |
+| asap7sc7p5t_SEQ_RVT_TT_08302018    | 1.0                     |           |
+| asap7sc7p5t_SIMPLE_RVT_TT_08302018 | 1.0                     |           |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 7 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'Adder_tree'
+
+  Loading target library 'asap7sc7p5t_SIMPLE_RVT_TT_08302018'
+  Loading target library 'asap7sc7p5t_SEQ_RVT_TT_08302018'
+LNC WARNING: Found output_to_output lib arc on HAxp5_ASAP7_75t_R.
+Loaded alib file './alib-52/asap7sc7p5t_INVBUF_RVT_TT_08302018.db.alib' (placeholder)
+Loaded alib file './alib-52/asap7sc7p5t_SIMPLE_RVT_TT_08302018.db.alib' (placeholder)
+Loaded alib file './alib-52/asap7sc7p5t_SEQ_RVT_TT_08302018.db.alib' (placeholder)
+Warning: Only placeholder alibs were found. Proceeding with library analysis. (OPT-1311)
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'Adder_tree'
+ Implement Synthetic for 'Adder_tree'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'TIELOx1_ASAP7_75t_R' in the library 'asap7sc7p5t_SIMPLE_RVT_TT_08302018' is not characterized for internal power. (PWR-536)
+Information: The library cell 'TIEHIx1_ASAP7_75t_R' in the library 'asap7sc7p5t_SIMPLE_RVT_TT_08302018' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'Adder_tree'. (DDB-72)
+Information: There is no timing violation in design Adder_tree. Delay-based auto_ungroup will not be performed. (OPT-780)
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*19, level = 3
+	Fanout cell *cell*19, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*19, level = 3
+	Fanout cell *cell*19, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*19, level = 3
+	Fanout cell *cell*19, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*19, level = 3
+	Fanout cell *cell*19, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*19, level = 3
+	Fanout cell *cell*19, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*19, level = 3
+	Fanout cell *cell*19, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*19, level = 3
+	Fanout cell *cell*19, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*23, level = 3
+	Fanout cell *cell*23, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*23, level = 3
+	Fanout cell *cell*23, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*23, level = 3
+	Fanout cell *cell*23, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*23, level = 3
+	Fanout cell *cell*23, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*23, level = 3
+	Fanout cell *cell*23, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*23, level = 3
+	Fanout cell *cell*23, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*23, level = 3
+	Fanout cell *cell*23, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*25, level = 3
+	Fanout cell *cell*25, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*25, level = 3
+	Fanout cell *cell*25, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*25, level = 3
+	Fanout cell *cell*25, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*25, level = 3
+	Fanout cell *cell*25, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*25, level = 3
+	Fanout cell *cell*25, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*25, level = 3
+	Fanout cell *cell*25, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*25, level = 3
+	Fanout cell *cell*25, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*28, level = 3
+	Fanout cell *cell*28, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*28, level = 3
+	Fanout cell *cell*28, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*28, level = 3
+	Fanout cell *cell*28, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*28, level = 3
+	Fanout cell *cell*28, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*28, level = 3
+	Fanout cell *cell*28, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*28, level = 3
+	Fanout cell *cell*28, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*28, level = 3
+	Fanout cell *cell*28, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*31, level = 3
+	Fanout cell *cell*31, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*31, level = 3
+	Fanout cell *cell*31, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*31, level = 3
+	Fanout cell *cell*31, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*31, level = 3
+	Fanout cell *cell*31, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*31, level = 3
+	Fanout cell *cell*31, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*31, level = 3
+	Fanout cell *cell*31, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*31, level = 3
+	Fanout cell *cell*31, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*34, level = 3
+	Fanout cell *cell*34, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*34, level = 3
+	Fanout cell *cell*34, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*34, level = 3
+	Fanout cell *cell*34, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*34, level = 3
+	Fanout cell *cell*34, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*34, level = 3
+	Fanout cell *cell*34, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*34, level = 3
+	Fanout cell *cell*34, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*34, level = 3
+	Fanout cell *cell*34, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*36, level = 3
+	Fanout cell *cell*36, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*36, level = 3
+	Fanout cell *cell*36, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*36, level = 3
+	Fanout cell *cell*36, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*36, level = 3
+	Fanout cell *cell*36, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*36, level = 3
+	Fanout cell *cell*36, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*36, level = 3
+	Fanout cell *cell*36, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*36, level = 3
+	Fanout cell *cell*36, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*39, level = 3
+	Fanout cell *cell*39, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*39, level = 3
+	Fanout cell *cell*39, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*39, level = 3
+	Fanout cell *cell*39, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*39, level = 3
+	Fanout cell *cell*39, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*39, level = 3
+	Fanout cell *cell*39, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*39, level = 3
+	Fanout cell *cell*39, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*39, level = 3
+	Fanout cell *cell*39, level = 3
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U43, level = 7
+	Fanout cell DP_OP_94J1_122_9915/U43, level = 7
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U43, level = 7
+	Fanout cell DP_OP_94J1_122_9915/U43, level = 7
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U43, level = 7
+	Fanout cell DP_OP_94J1_122_9915/U43, level = 7
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U43, level = 7
+	Fanout cell DP_OP_94J1_122_9915/U43, level = 7
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U43, level = 7
+	Fanout cell DP_OP_94J1_122_9915/U43, level = 7
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U43, level = 7
+	Fanout cell DP_OP_94J1_122_9915/U43, level = 7
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U43, level = 7
+	Fanout cell DP_OP_94J1_122_9915/U43, level = 7
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U46, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U46, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U46, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U46, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U46, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U46, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U46, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U46, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U46, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U46, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U46, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U46, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U46, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U46, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U44, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U44, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U44, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U44, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U44, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U44, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U44, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U44, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U44, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U44, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U44, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U44, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U44, level = 9
+	Fanout cell DP_OP_94J1_122_9915/U44, level = 9
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U56, level = 10
+	Fanout cell DP_OP_94J1_122_9915/U56, level = 10
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U56, level = 10
+	Fanout cell DP_OP_94J1_122_9915/U56, level = 10
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U56, level = 10
+	Fanout cell DP_OP_94J1_122_9915/U56, level = 10
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U56, level = 10
+	Fanout cell DP_OP_94J1_122_9915/U56, level = 10
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U56, level = 10
+	Fanout cell DP_OP_94J1_122_9915/U56, level = 10
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U56, level = 10
+	Fanout cell DP_OP_94J1_122_9915/U56, level = 10
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U56, level = 10
+	Fanout cell DP_OP_94J1_122_9915/U56, level = 10
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U55, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U55, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U55, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U55, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U55, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U55, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U55, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U55, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U55, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U55, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U55, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U55, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U55, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U55, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U49, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U49, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U49, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U49, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U49, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U49, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U49, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U49, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U49, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U49, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U49, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U49, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U49, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U49, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U47, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U47, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U47, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U47, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U47, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U47, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U47, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U47, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U47, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U47, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U47, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U47, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U47, level = 11
+	Fanout cell DP_OP_94J1_122_9915/U47, level = 11
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U77, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U77, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U77, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U77, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U77, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U77, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U77, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U77, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U77, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U77, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U77, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U77, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U77, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U77, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U75, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U75, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U75, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U75, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U75, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U75, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U75, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U75, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U75, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U75, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U75, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U75, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U75, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U75, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U60, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U60, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U60, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U60, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U60, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U60, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U60, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U60, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U60, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U60, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U60, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U60, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U60, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U60, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U58, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U58, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U58, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U58, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U58, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U58, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U58, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U58, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U58, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U58, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U58, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U58, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U58, level = 12
+	Fanout cell DP_OP_94J1_122_9915/U58, level = 12
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U119, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U119, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U119, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U119, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U119, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U119, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U119, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U119, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U119, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U119, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U119, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U119, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U119, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U119, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U57, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U57, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U57, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U57, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U57, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U57, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U57, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U57, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U57, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U57, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U57, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U57, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U57, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U57, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U51, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U51, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U51, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U51, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U51, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U51, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U51, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U51, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U51, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U51, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U51, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U51, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U51, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U51, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U50, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U50, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U50, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U50, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U50, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U50, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U50, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U50, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U50, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U50, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U50, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U50, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U50, level = 13
+	Fanout cell DP_OP_94J1_122_9915/U50, level = 13
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U156, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U156, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U156, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U156, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U156, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U156, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U156, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U156, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U156, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U156, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U156, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U156, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U156, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U156, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U118, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U118, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U118, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U118, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U118, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U118, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U118, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U118, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U118, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U118, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U118, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U118, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U118, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U118, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U84, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U84, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U84, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U84, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U84, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U84, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U84, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U84, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U84, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U84, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U84, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U84, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U84, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U84, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U82, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U82, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U82, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U82, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U82, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U82, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U82, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U82, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U82, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U82, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U82, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U82, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U82, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U82, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U80, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U80, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U80, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U80, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U80, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U80, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U80, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U80, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U80, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U80, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U80, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U80, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U80, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U80, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U78, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U78, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U78, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U78, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U78, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U78, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U78, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U78, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U78, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U78, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U78, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U78, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U78, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U78, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U65, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U65, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U65, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U65, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U65, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U65, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U65, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U65, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U65, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U65, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U65, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U65, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U65, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U65, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U63, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U63, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U63, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U63, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U63, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U63, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U63, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U63, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U63, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U63, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U63, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U63, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U63, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U63, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U62, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U62, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U62, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U62, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U62, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U62, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U62, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U62, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U62, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U62, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U62, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U62, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U62, level = 14
+	Fanout cell DP_OP_94J1_122_9915/U62, level = 14
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U154, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U154, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U154, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U154, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U154, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U154, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U154, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U154, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U154, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U154, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U154, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U154, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U154, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U154, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U126, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U126, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U126, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U126, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U126, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U126, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U126, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U126, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U126, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U126, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U126, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U126, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U126, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U126, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U121, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U121, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U121, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U121, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U121, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U121, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U121, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U121, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U121, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U121, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U121, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U121, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U121, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U121, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U61, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U61, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U61, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U61, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U61, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U61, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U61, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U61, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U61, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U61, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U61, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U61, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U61, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U61, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U53, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U53, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U53, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U53, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U53, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U53, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U53, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U53, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U53, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U53, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U53, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U53, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U53, level = 15
+	Fanout cell DP_OP_94J1_122_9915/U53, level = 15
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U123, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U123, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U123, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U123, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U123, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U123, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U123, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U123, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U123, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U123, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U123, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U123, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U123, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U123, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U120, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U120, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U120, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U120, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U120, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U120, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U120, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U120, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U120, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U120, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U120, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U120, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U120, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U120, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U97, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U97, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U97, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U97, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U97, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U97, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U97, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U97, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U97, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U97, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U97, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U97, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U97, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U97, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U91, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U91, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U91, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U91, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U91, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U91, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U91, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U91, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U91, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U91, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U91, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U91, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U91, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U91, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U89, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U89, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U89, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U89, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U89, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U89, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U89, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U89, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U89, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U89, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U89, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U89, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U89, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U89, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U88, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U88, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U88, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U88, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U88, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U88, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U88, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U88, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U88, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U88, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U88, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U88, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U88, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U88, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U86, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U86, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U86, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U86, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U86, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U86, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U86, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U86, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U86, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U86, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U86, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U86, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U86, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U86, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U69, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U69, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U69, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U69, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U69, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U69, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U69, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U69, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U69, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U69, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U69, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U69, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U69, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U69, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U68, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U68, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U68, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U68, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U68, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U68, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U68, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U68, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U68, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U68, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U68, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U68, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U68, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U68, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U67, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U67, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U67, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U67, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U67, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U67, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U67, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U67, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U67, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U67, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U67, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U67, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U67, level = 16
+	Fanout cell DP_OP_94J1_122_9915/U67, level = 16
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U183, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U183, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U183, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U183, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U183, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U183, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U183, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U183, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U183, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U183, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U183, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U183, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U183, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U183, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U160, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U160, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U160, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U160, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U160, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U160, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U160, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U160, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U160, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U160, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U160, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U160, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U160, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U160, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U159, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U159, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U159, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U159, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U159, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U159, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U159, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U159, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U159, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U159, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U159, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U159, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U159, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U159, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U158, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U158, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U158, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U158, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U158, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U158, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U158, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U158, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U158, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U158, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U158, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U158, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U158, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U158, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U137, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U137, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U137, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U137, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U137, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U137, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U137, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U137, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U137, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U137, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U137, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U137, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U137, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U137, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U136, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U136, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U136, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U136, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U136, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U136, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U136, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U136, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U136, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U136, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U136, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U136, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U136, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U136, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U130, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U130, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U130, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U130, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U130, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U130, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U130, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U130, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U130, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U130, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U130, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U130, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U130, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U130, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U129, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U129, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U129, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U129, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U129, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U129, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U129, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U129, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U129, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U129, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U129, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U129, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U129, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U129, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U95, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U95, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U95, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U95, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U95, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U95, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U95, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U95, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U95, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U95, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U95, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U95, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U95, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U95, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U94, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U94, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U94, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U94, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U94, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U94, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U94, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U94, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U94, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U94, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U94, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U94, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U94, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U94, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U66, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U66, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U66, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U66, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U66, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U66, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U66, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U66, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U66, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U66, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U66, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U66, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U66, level = 17
+	Fanout cell DP_OP_94J1_122_9915/U66, level = 17
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U186, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U186, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U186, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U186, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U186, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U186, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U186, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U186, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U186, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U186, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U186, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U186, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U186, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U186, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U185, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U185, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U185, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U185, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U185, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U185, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U185, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U185, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U185, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U185, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U185, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U185, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U185, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U185, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U133, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U133, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U133, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U133, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U133, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U133, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U133, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U133, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U133, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U133, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U133, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U133, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U133, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U133, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U127, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U127, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U127, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U127, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U127, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U127, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U127, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U127, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U127, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U127, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U127, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U127, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U127, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U127, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U125, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U125, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U125, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U125, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U125, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U125, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U125, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U125, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U125, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U125, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U125, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U125, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U125, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U125, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U103, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U103, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U103, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U103, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U103, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U103, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U103, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U103, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U103, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U103, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U103, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U103, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U103, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U103, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U101, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U101, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U101, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U101, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U101, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U101, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U101, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U101, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U101, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U101, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U101, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U101, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U101, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U101, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U100, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U100, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U100, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U100, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U100, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U100, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U100, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U100, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U100, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U100, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U100, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U100, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U100, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U100, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U99, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U99, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U99, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U99, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U99, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U99, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U99, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U99, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U99, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U99, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U99, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U99, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U99, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U99, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U93, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U93, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U93, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U93, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U93, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U93, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U93, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U93, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U93, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U93, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U93, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U93, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U93, level = 18
+	Fanout cell DP_OP_94J1_122_9915/U93, level = 18
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U169, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U169, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U169, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U169, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U169, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U169, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U169, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U169, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U169, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U169, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U169, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U169, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U169, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U169, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U167, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U167, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U167, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U167, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U167, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U167, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U167, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U167, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U167, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U167, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U167, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U167, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U167, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U167, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U166, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U166, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U166, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U166, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U166, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U166, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U166, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U166, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U166, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U166, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U166, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U166, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U166, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U166, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U164, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U164, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U164, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U164, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U164, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U164, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U164, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U164, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U164, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U164, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U164, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U164, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U164, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U164, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U163, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U163, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U163, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U163, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U163, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U163, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U163, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U163, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U163, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U163, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U163, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U163, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U163, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U163, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U162, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U162, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U162, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U162, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U162, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U162, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U162, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U162, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U162, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U162, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U162, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U162, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U162, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U162, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U150, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U150, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U150, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U150, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U150, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U150, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U150, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U150, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U150, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U150, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U150, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U150, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U150, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U150, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U149, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U149, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U149, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U149, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U149, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U149, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U149, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U149, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U149, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U149, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U149, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U149, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U149, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U149, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U148, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U148, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U148, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U148, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U148, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U148, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U148, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U148, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U148, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U148, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U148, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U148, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U148, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U148, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U145, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U145, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U145, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U145, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U145, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U145, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U145, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U145, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U145, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U145, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U145, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U145, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U145, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U145, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U144, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U144, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U144, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U144, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U144, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U144, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U144, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U144, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U144, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U144, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U144, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U144, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U144, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U144, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U142, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U142, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U142, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U142, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U142, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U142, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U142, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U142, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U142, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U142, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U142, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U142, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U142, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U142, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U135, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U135, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U135, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U135, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U135, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U135, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U135, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U135, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U135, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U135, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U135, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U135, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U135, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U135, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U131, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U131, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U131, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U131, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U131, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U131, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U131, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U131, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U131, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U131, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U131, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U131, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U131, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U131, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U112, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U112, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U112, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U112, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U112, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U112, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U112, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U112, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U112, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U112, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U112, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U112, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U112, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U112, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U111, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U111, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U111, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U111, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U111, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U111, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U111, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U111, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U111, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U111, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U111, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U111, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U111, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U111, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U110, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U110, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U110, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U110, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U110, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U110, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U110, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U110, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U110, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U110, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U110, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U110, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U110, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U110, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U108, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U108, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U108, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U108, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U108, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U108, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U108, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U108, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U108, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U108, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U108, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U108, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U108, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U108, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U107, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U107, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U107, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U107, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U107, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U107, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U107, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U107, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U107, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U107, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U107, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U107, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U107, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U107, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U106, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U106, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U106, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U106, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U106, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U106, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U106, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U106, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U106, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U106, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U106, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U106, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U106, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U106, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U105, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U105, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U105, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U105, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U105, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U105, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U105, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U105, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U105, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U105, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U105, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U105, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U105, level = 19
+	Fanout cell DP_OP_94J1_122_9915/U105, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*49, level = 19
+	Fanout cell *cell*49, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*49, level = 19
+	Fanout cell *cell*49, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*49, level = 19
+	Fanout cell *cell*49, level = 19
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U198, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U198, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U198, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U198, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U198, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U198, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U198, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U198, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U198, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U198, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U198, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U198, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U198, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U198, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U197, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U197, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U197, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U197, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U197, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U197, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U197, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U197, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U197, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U197, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U197, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U197, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U197, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U197, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U196, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U196, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U196, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U196, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U196, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U196, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U196, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U196, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U196, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U196, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U196, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U196, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U196, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U196, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U192, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U192, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U192, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U192, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U192, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U192, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U192, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U192, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U192, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U192, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U192, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U192, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U192, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U192, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U189, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U189, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U189, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U189, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U189, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U189, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U189, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U189, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U189, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U189, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U189, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U189, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U189, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U189, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U187, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U187, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U187, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U187, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U187, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U187, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U187, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U187, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U187, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U187, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U187, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U187, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U187, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U187, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U139, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U139, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U139, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U139, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U139, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U139, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U139, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U139, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U139, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U139, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U139, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U139, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U139, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U139, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U114, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U114, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U114, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U114, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U114, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U114, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U114, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U114, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U114, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U114, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U114, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U114, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U114, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U114, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U113, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U113, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U113, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U113, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U113, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U113, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U113, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U113, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U113, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U113, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U113, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U113, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U113, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U113, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U109, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U109, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U109, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U109, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U109, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U109, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U109, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U109, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U109, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U109, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U109, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U109, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U109, level = 20
+	Fanout cell DP_OP_94J1_122_9915/U109, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*56, level = 20
+	Fanout cell *cell*56, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*56, level = 20
+	Fanout cell *cell*56, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*56, level = 20
+	Fanout cell *cell*56, level = 20
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U180, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U180, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U180, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U180, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U180, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U180, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U180, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U180, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U180, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U180, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U180, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U180, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U180, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U180, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U179, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U179, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U179, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U179, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U179, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U179, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U179, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U179, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U179, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U179, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U179, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U179, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U179, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U179, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U178, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U178, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U178, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U178, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U178, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U178, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U178, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U178, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U178, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U178, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U178, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U178, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U178, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U178, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U177, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U177, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U177, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U177, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U177, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U177, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U177, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U177, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U177, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U177, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U177, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U177, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U177, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U177, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U176, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U176, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U176, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U176, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U176, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U176, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U176, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U176, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U176, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U176, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U176, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U176, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U176, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U176, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U175, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U175, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U175, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U175, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U175, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U175, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U175, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U175, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U175, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U175, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U175, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U175, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U175, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U175, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U174, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U174, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U174, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U174, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U174, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U174, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U174, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U174, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U174, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U174, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U174, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U174, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U174, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U174, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U173, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U173, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U173, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U173, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U173, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U173, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U173, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U173, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U173, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U173, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U173, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U173, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U173, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U173, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U172, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U172, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U172, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U172, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U172, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U172, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U172, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U172, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U172, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U172, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U172, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U172, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U172, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U172, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U171, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U171, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U171, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U171, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U171, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U171, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U171, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U171, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U171, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U171, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U171, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U171, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U171, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U171, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U165, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U165, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U165, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U165, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U165, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U165, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U165, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U165, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U165, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U165, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U165, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U165, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U165, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U165, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U147, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U147, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U147, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U147, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U147, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U147, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U147, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U147, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U147, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U147, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U147, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U147, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U147, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U147, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U146, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U146, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U146, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U146, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U146, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U146, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U146, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U146, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U146, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U146, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U146, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U146, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U146, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U146, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U143, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U143, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U143, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U143, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U143, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U143, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U143, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U143, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U143, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U143, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U143, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U143, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U143, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U143, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U141, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U141, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U141, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U141, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U141, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U141, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U141, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U141, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U141, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U141, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U141, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U141, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U141, level = 21
+	Fanout cell DP_OP_94J1_122_9915/U141, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*44, level = 21
+	Fanout cell *cell*44, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*44, level = 21
+	Fanout cell *cell*44, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*44, level = 21
+	Fanout cell *cell*44, level = 21
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U195, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U195, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U195, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U195, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U195, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U195, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U195, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U195, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U195, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U195, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U195, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U195, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U195, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U195, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U194, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U194, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U194, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U194, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U194, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U194, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U194, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U194, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U194, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U194, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U194, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U194, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U194, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U194, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U193, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U193, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U193, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U193, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U193, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U193, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U193, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U193, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U193, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U193, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U193, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U193, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U193, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U193, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U191, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U191, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U191, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U191, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U191, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U191, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U191, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U191, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U191, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U191, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U191, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U191, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U191, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U191, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U190, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U190, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U190, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U190, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U190, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U190, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U190, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U190, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U190, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U190, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U190, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U190, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell DP_OP_94J1_122_9915/U190, level = 22
+	Fanout cell DP_OP_94J1_122_9915/U190, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*41, level = 22
+	Fanout cell *cell*41, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*41, level = 22
+	Fanout cell *cell*41, level = 22
+
+Warning: Unexpected level numbers (Fanout Level is more than Fanin):
+	Optimized cell *cell*41, level = 22
+	Fanout cell *cell*41, level = 22
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:40     440.4      0.00       0.0    1927.7                           28649.8613
+    0:00:40     440.4      0.00       0.0    1927.7                           28649.8613
+    0:00:40     440.4      0.00       0.0    1927.7                           28649.8613
+    0:00:40     440.4      0.00       0.0    1927.7                           28649.8613
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+
+
+  Beginning Design Rule Fixing  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:40     440.4      0.00       0.0    1927.7                           28592.2051
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+    0:00:41     459.6      0.00       0.0    1581.0                           31091.3672
+    0:00:41     459.6      0.00       0.0    1581.0                           31091.3672
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:41     459.6      0.00       0.0    1581.0                           31091.3672
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     459.6      0.00       0.0    1581.0                           31072.1484
+    0:00:42     462.4      0.00       0.0    1581.0                           31139.5762
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:42     458.9      0.00       0.0    1581.0                           31070.4922
+    0:00:42     452.3      0.00       0.0    1647.6                           29994.1660
+    0:00:42     452.3      0.00       0.0    1647.6                           29994.1660
+    0:00:42     452.3      0.00       0.0    1647.6                           29994.1660
+    0:00:42     451.4      0.00       0.0    1614.1                           29789.5488
+    0:00:43     456.3      0.00       0.0    1558.4                           30588.8047
+    0:00:43     456.3      0.00       0.0    1558.4                           30588.8047
+    0:00:43     459.8      0.00       0.0    1558.4                           30794.3008
+    0:00:43     459.8      0.00       0.0    1558.4                           30794.3008
+    0:00:43     459.1      0.00       0.0    1557.8                           30638.0762
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_INVBUF_RVT_TT_08302018.db'
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SIMPLE_RVT_TT_08302018.db'
+Loading db file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SEQ_RVT_TT_08302018.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+  Loading target library 'asap7sc7p5t_SIMPLE_RVT_TT_08302018'
+  Loading target library 'asap7sc7p5t_SEQ_RVT_TT_08302018'
+Warning: Unable to resolve reference 'FAx1_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'INVx2_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'XOR2xp5_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'TIEHIx1_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'INVx1_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'INVx3_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'BUFx4_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'INVx4_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'NAND2xp33_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'NOR2x1_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'NAND2xp5_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'INVxp67_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'MAJIxp5_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'MAJx2_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Warning: Unable to resolve reference 'HAxp5_ASAP7_75t_R' in 'Adder_tree'. (LINK-5)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1
+#======================================================
+#  Output Reports 
+#======================================================
+report_timing >  Report/$DESIGN\.timing
+report_area >  Report/$DESIGN\.area
+report_resource >  Report/$DESIGN\.resource
+#======================================================
+#  Change Naming Rule
+#======================================================
+set bus_inference_style "%s\[%d\]"
+%s[%d]
+set bus_naming_style "%s\[%d\]"
+%s[%d]
+set hdlout_internal_busses true
+true
+change_names -hierarchy -rule verilog
+1
+define_name_rules name_rule -allowed "a-z A-Z 0-9 _" -max_length 255 -type cell
+1
+define_name_rules name_rule -allowed "a-z A-Z 0-9 _[]" -max_length 255 -type net
+1
+define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
+1
+change_names -hierarchy -rules name_rule
+1
+#======================================================
+#  Output Results
+#======================================================
+set verilogout_higher_designs_first true
+true
+write -format verilog -output Netlist/$DESIGN\_SYN.v -hierarchy
+Writing verilog file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/02_SYN/Netlist/Adder_tree_SYN.v'.
+1
+write_sdf -version 3.0 -context verilog -load_delay cell Netlist/$DESIGN\_SYN.sdf -significant_digits 6
+Information: Writing timing information to file '/RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/02_SYN/Netlist/Adder_tree_SYN.sdf'. (WT-3)
+1
+#======================================================
+#  Finish and Quit
+#======================================================
+report_area
+ 
+****************************************
+Report : area
+Design : Adder_tree
+Version: P-2019.03-SP1-1
+Date   : Wed Dec 25 14:38:52 2024
+****************************************
+
+Library(s) Used:
+
+    asap7sc7p5t_SIMPLE_RVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SIMPLE_RVT_TT_08302018.db)
+    asap7sc7p5t_INVBUF_RVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_INVBUF_RVT_TT_08302018.db)
+
+Number of ports:                          141
+Number of nets:                           418
+Number of cells:                          179
+Number of combinational cells:            179
+Number of sequential cells:                 0
+Number of macros/black boxes:               0
+Number of buf/inv:                         36
+Number of references:                      15
+
+Combinational area:                459.095030
+Buf/Inv area:                       29.393280
+Noncombinational area:               0.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                   459.095030
+Total area:                 undefined
+1
+report_timing
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Adder_tree
+Version: P-2019.03-SP1-1
+Date   : Wed Dec 25 14:38:52 2024
+****************************************
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7sc7p5t_INVBUF_RVT_TT_08302018
+Wire Load Model Mode: top
+
+  Startpoint: in[92] (input port)
+  Endpoint: out[7] (output port)
+  Path Group: default
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  in[92] (in)                                             0.00       0.00 f
+  DP_OP_94J1_122_9915_U195/SN (FAx1_ASAP7_75t_R)         97.53      97.53 f
+  DP_OP_94J1_122_9915_U185/CON (FAx1_ASAP7_75t_R)        49.38     146.92 r
+  DP_OP_94J1_122_9915_U158/SN (FAx1_ASAP7_75t_R)         71.25     218.16 f
+  DP_OP_94J1_122_9915_U154/CON (FAx1_ASAP7_75t_R)        38.48     256.64 r
+  DP_OP_94J1_122_9915_U118/CON (FAx1_ASAP7_75t_R)        23.55     280.19 f
+  U30/Y (INVx1_ASAP7_75t_R)                              17.27     297.45 r
+  DP_OP_94J1_122_9915_U75/SN (FAx1_ASAP7_75t_R)          85.72     383.17 f
+  U65/Y (MAJx2_ASAP7_75t_R)                              51.14     434.32 f
+  U23/Y (MAJIxp5_ASAP7_75t_R)                            24.30     458.62 r
+  U26/Y (MAJx2_ASAP7_75t_R)                              30.21     488.83 r
+  U25/Y (MAJx2_ASAP7_75t_R)                              24.42     513.25 r
+  U69/SN (FAx1_ASAP7_75t_R)                              25.03     538.27 f
+  out[7] (out)                                            0.00     538.27 f
+  data arrival time                                                538.27
+
+  max_delay                                            1000.00    1000.00
+  output external delay                                   0.00    1000.00
+  data required time                                              1000.00
+  --------------------------------------------------------------------------
+  data required time                                              1000.00
+  data arrival time                                               -538.27
+  --------------------------------------------------------------------------
+  slack (MET)                                                      461.73
+
+
+1
+exit
+
+Thank you...

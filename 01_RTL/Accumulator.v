@@ -16,7 +16,10 @@ begin
     begin
         result <= (result << 13'd1) + partial_sum;
     end
-
+    else
+    begin
+        result <= 13'd0;
+    end
 end
 
 endmodule

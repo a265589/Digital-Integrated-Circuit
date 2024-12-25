@@ -12,6 +12,8 @@
 .include '../08_TECH/LIB/asap7sc7p5t_INVBUF_RVT.sp' 
 .include '../08_TECH/LIB/asap7sc7p5t_AO_RVT.sp'     
 .include '../08_TECH/LIB/asap7sc7p5t_OA_RVT.sp'     
+.include './Adder_tree_SYN_new.sp'
+.include './Accumulator_SYN_new.sp'
 .unprotect
 
 .VEC "mul.vec" 
@@ -1096,9 +1098,56 @@ X510 I4322_inv O_4_32_2 WL_4_2 BL BLB W_4_32_2 W_4_32_2_bar CIM_cell
 X511 I4323_inv O_4_32_3 WL_4_3 BL BLB W_4_32_3 W_4_32_3_bar CIM_cell
 X512 I4324_inv O_4_32_4 WL_4_4 BL BLB W_4_32_4 W_4_32_4_bar CIM_cell
 
+X513 GND VDD O_1_1_4 O_1_1_3 O_1_1_2 O_1_1_1 O_1_2_4 O_1_2_3 O_1_2_2 O_1_2_1 O_1_3_4 O_1_3_3 O_1_3_2 O_1_3_1 O_1_4_4 O_1_4_3 O_1_4_2 O_1_4_1 + 
+O_1_5_4 O_1_5_3 O_1_5_2 O_1_5_1 O_1_6_4 O_1_6_3 O_1_6_2 O_1_6_1 O_1_7_4 O_1_7_3 O_1_7_2 O_1_7_1 O_1_8_4 O_1_8_3 O_1_8_2 O_1_8_1 + 
+O_1_9_4 O_1_9_3 O_1_9_2 O_1_9_1 O_1_10_4 O_1_10_3 O_1_10_2 O_1_10_1 O_1_11_4 O_1_11_3 O_1_11_2 O_1_11_1 O_1_12_4 O_1_12_3 O_1_12_2 O_1_12_1 + 
+O_1_13_4 O_1_13_3 O_1_13_2 O_1_13_1 O_1_14_4 O_1_14_3 O_1_14_2 O_1_14_1 O_1_15_4 O_1_15_3 O_1_15_2 O_1_15_1 O_1_16_4 O_1_16_3 O_1_16_2 O_1_16_1 +
+O_1_17_4 O_1_17_3 O_1_17_2 O_1_17_1 O_1_18_4 O_1_18_3 O_1_18_2 O_1_18_1 O_1_19_4 O_1_19_3 O_1_19_2 O_1_19_1 O_1_20_4 O_1_20_3 O_1_20_2 O_1_20_1 +
+O_1_21_4 O_1_21_3 O_1_21_2 O_1_21_1 O_1_22_4 O_1_22_3 O_1_22_2 O_1_22_1 O_1_23_4 O_1_23_3 O_1_23_2 O_1_23_1 O_1_24_4 O_1_24_3 O_1_24_2 O_1_24_1 + 
+O_1_25_4 O_1_25_3 O_1_25_2 O_1_25_1 O_1_26_4 O_1_26_3 O_1_26_2 O_1_26_1 O_1_27_4 O_1_27_3 O_1_27_2 O_1_27_1 O_1_28_4 O_1_28_3 O_1_28_2 O_1_28_1 + 
+O_1_29_4 O_1_29_3 O_1_29_2 O_1_29_1 O_1_30_4 O_1_30_3 O_1_30_2 O_1_30_1 O_1_31_4 O_1_31_3 O_1_31_2 O_1_31_1 O_1_32_4 O_1_32_3 O_1_32_2 O_1_32_1 ​+
+partial_sum_12_1 partial_sum_11_1 partial_sum_10_1 partial_sum_9_1 partial_sum_8_1 partial_sum_7_1 partial_sum_6_1 partial_sum_5_1 partial_sum_4_1 partial_sum_3_1 partial_sum_2_1 partial_sum_1_1 partial_sum_0_1 Adder_tree
+
+X514 GND VDD O_2_1_4 O_2_1_3 O_2_1_2 O_2_1_1 O_2_2_4 O_2_2_3 O_2_2_2 O_2_2_1 O_2_3_4 O_2_3_3 O_2_3_2 O_2_3_1 O_2_4_4 O_2_4_3 O_2_4_2 O_2_4_1 + 
+O_2_5_4 O_2_5_3 O_2_5_2 O_2_5_1 O_2_6_4 O_2_6_3 O_2_6_2 O_2_6_1 O_2_7_4 O_2_7_3 O_2_7_2 O_2_7_1 O_2_8_4 O_2_8_3 O_2_8_2 O_2_8_1 + 
+O_2_9_4 O_2_9_3 O_2_9_2 O_2_9_1 O_2_10_4 O_2_10_3 O_2_10_2 O_2_10_1 O_2_11_4 O_2_11_3 O_2_11_2 O_2_11_1 O_2_12_4 O_2_12_3 O_2_12_2 O_2_12_1 + 
+O_2_13_4 O_2_13_3 O_2_13_2 O_2_13_1 O_2_14_4 O_2_14_3 O_2_14_2 O_2_14_1 O_2_15_4 O_2_15_3 O_2_15_2 O_2_15_1 O_2_16_4 O_2_16_3 O_2_16_2 O_2_16_1 + 
+O_2_17_4 O_2_17_3 O_2_17_2 O_2_17_1 O_2_18_4 O_2_18_3 O_2_18_2 O_2_18_1 O_2_19_4 O_2_19_3 O_2_19_2 O_2_19_1 O_2_20_4 O_2_20_3 O_2_20_2 O_2_20_1 +
+O_2_21_4 O_2_21_3 O_2_21_2 O_2_21_1 O_2_22_4 O_2_22_3 O_2_22_2 O_2_22_1 O_2_23_4 O_2_23_3 O_2_23_2 O_2_23_1 O_2_24_4 O_2_24_3 O_2_24_2 O_2_24_1 +
+O_2_25_4 O_2_25_3 O_2_25_2 O_2_25_1 O_2_26_4 O_2_26_3 O_2_26_2 O_2_26_1 O_2_27_4 O_2_27_3 O_2_27_2 O_2_27_1 O_2_28_4 O_2_28_3 O_2_28_2 O_2_28_1 + 
+O_2_29_4 O_2_29_3 O_2_29_2 O_2_29_1 O_2_30_4 O_2_30_3 O_2_30_2 O_2_30_1 O_2_31_4 O_2_31_3 O_2_31_2 O_2_31_1 O_2_32_4 O_2_32_3 O_2_32_2 O_2_32_1 +
+partial_sum_12_2 partial_sum_11_2 partial_sum_10_2 partial_sum_9_2 partial_sum_8_2 partial_sum_7_2 partial_sum_6_2 partial_sum_5_2 partial_sum_4_2 partial_sum_3_2 partial_sum_2_2 partial_sum_1_2 partial_sum_0_2 Adder_tree
+
+X515 GND VDD O_3_1_4 O_3_1_3 O_3_1_2 O_3_1_1 O_3_2_4 O_3_2_3 O_3_2_2 O_3_2_1 O_3_3_4 O_3_3_3 O_3_3_2 O_3_3_1 O_3_4_4 O_3_4_3 O_3_4_2 O_3_4_1 + 
+O_3_5_4 O_3_5_3 O_3_5_2 O_3_5_1 O_3_6_4 O_3_6_3 O_3_6_2 O_3_6_1 O_3_7_4 O_3_7_3 O_3_7_2 O_3_7_1 O_3_8_4 O_3_8_3 O_3_8_2 O_3_8_1 + 
+O_3_9_4 O_3_9_3 O_3_9_2 O_3_9_1 O_3_10_4 O_3_10_3 O_3_10_2 O_3_10_1 O_3_11_4 O_3_11_3 O_3_11_2 O_3_11_1 O_3_12_4 O_3_12_3 O_3_12_2 O_3_12_1 + 
+O_3_13_4 O_3_13_3 O_3_13_2 O_3_13_1 O_3_14_4 O_3_14_3 O_3_14_2 O_3_14_1 O_3_15_4 O_3_15_3 O_3_15_2 O_3_15_1 O_3_16_4 O_3_16_3 O_3_16_2 O_3_16_1 +
+O_3_17_4 O_3_17_3 O_3_17_2 O_3_17_1 O_3_18_4 O_3_18_3 O_3_18_2 O_3_18_1 O_3_19_4 O_3_19_3 O_3_19_2 O_3_19_1 O_3_20_4 O_3_20_3 O_3_20_2 O_3_20_1 +
+O_3_21_4 O_3_21_3 O_3_21_2 O_3_21_1 O_3_22_4 O_3_22_3 O_3_22_2 O_3_22_1 O_3_23_4 O_3_23_3 O_3_23_2 O_3_23_1 O_3_24_4 O_3_24_3 O_3_24_2 O_3_24_1 + 
+O_3_25_4 O_3_25_3 O_3_25_2 O_3_25_1 O_3_26_4 O_3_26_3 O_3_26_2 O_3_26_1 O_3_27_4 O_3_27_3 O_3_27_2 O_3_27_1 O_3_28_4 O_3_28_3 O_3_28_2 O_3_28_1 +
+O_3_29_4 O_3_29_3 O_3_29_2 O_3_29_1 O_3_30_4 O_3_30_3 O_3_30_2 O_3_30_1 O_3_31_4 O_3_31_3 O_3_31_2 O_3_31_1 O_3_32_4 O_3_32_3 O_3_32_2 O_3_32_1 +
+partial_sum_12_3 partial_sum_11_3 partial_sum_10_3 partial_sum_9_3 partial_sum_8_3 partial_sum_7_3 partial_sum_6_3 partial_sum_5_3 partial_sum_4_3 partial_sum_3_3 partial_sum_2_3 partial_sum_1_3 partial_sum_0_3 Adder_tree
+
+X516 GND VDD O_4_1_4 O_4_1_3 O_4_1_2 O_4_1_1 O_4_2_4 O_4_2_3 O_4_2_2 O_4_2_1 O_4_3_4 O_4_3_3 O_4_3_2 O_4_3_1 O_4_4_4 O_4_4_3 O_4_4_2 O_4_4_1 +
+O_4_5_4 O_4_5_3 O_4_5_2 O_4_5_1 O_4_6_4 O_4_6_3 O_4_6_2 O_4_6_1 O_4_7_4 O_4_7_3 O_4_7_2 O_4_7_1 O_4_8_4 O_4_8_3 O_4_8_2 O_4_8_1 +
+O_4_9_4 O_4_9_3 O_4_9_2 O_4_9_1 O_4_10_4 O_4_10_3 O_4_10_2 O_4_10_1 O_4_11_4 O_4_11_3 O_4_11_2 O_4_11_1 O_4_12_4 O_4_12_3 O_4_12_2 O_4_12_1 +
+O_4_13_4 O_4_13_3 O_4_13_2 O_4_13_1 O_4_14_4 O_4_14_3 O_4_14_2 O_4_14_1 O_4_15_4 O_4_15_3 O_4_15_2 O_4_15_1 O_4_16_4 O_4_16_3 O_4_16_2 O_4_16_1 +
+O_4_17_4 O_4_17_3 O_4_17_2 O_4_17_1 O_4_18_4 O_4_18_3 O_4_18_2 O_4_18_1 O_4_19_4 O_4_19_3 O_4_19_2 O_4_19_1 O_4_20_4 O_4_20_3 O_4_20_2 O_4_20_1 + 
+O_4_21_4 O_4_21_3 O_4_21_2 O_4_21_1 O_4_22_4 O_4_22_3 O_4_22_2 O_4_22_1 O_4_23_4 O_4_23_3 O_4_23_2 O_4_23_1 O_4_24_4 O_4_24_3 O_4_24_2 O_4_24_1 + 
+O_4_25_4 O_4_25_3 O_4_25_2 O_4_25_1 O_4_26_4 O_4_26_3 O_4_26_2 O_4_26_1 O_4_27_4 O_4_27_3 O_4_27_2 O_4_27_1 O_4_28_4 O_4_28_3 O_4_28_2 O_4_28_1 + 
+O_4_29_4 O_4_29_3 O_4_29_2 O_4_29_1 O_4_30_4 O_4_30_3 O_4_30_2 O_4_30_1 O_4_31_4 O_4_31_3 O_4_31_2 O_4_31_1 O_4_32_4 O_4_32_3 O_4_32_2 O_4_32_1 +
+partial_sum_12_4 partial_sum_11_4 partial_sum_10_4 partial_sum_9_4 partial_sum_8_4 partial_sum_7_4 partial_sum_6_4 partial_sum_5_4 partial_sum_4_4 partial_sum_3_4 partial_sum_2_4 partial_sum_1_4 partial_sum_0_4 Adder_tree
 
 
+X517 GND VDD clk rst_n in_valid partial_sum_12_1 partial_sum_11_1 partial_sum_10_1 partial_sum_9_1 partial_sum_8_1 partial_sum_7_1 partial_sum_6_1 partial_sum_5_1 partial_sum_4_1 partial_sum_3_1 partial_sum_2_1 partial_sum_1_1 partial_sum_0_1  Output_12_1 Output_11_1 Output_10_1 Output_9_1 Output_8_1 Output_7_1 Output_6_1 Output_5_1 Output_4_1 Output_3_1 Output_2_1 Output_1_1 Output_0_1  Accumulator          
+X518 GND VDD clk rst_n in_valid partial_sum_12_2 partial_sum_11_2 partial_sum_10_2 partial_sum_9_2 partial_sum_8_2 partial_sum_7_2 partial_sum_6_2 partial_sum_5_2 partial_sum_4_2 partial_sum_3_2 partial_sum_2_2 partial_sum_1_2 partial_sum_0_2  Output_12_2 Output_11_2 Output_10_2 Output_9_2 Output_8_2 Output_7_2 Output_6_2 Output_5_2 Output_4_2 Output_3_2 Output_2_2 Output_1_2 Output_0_2  Accumulator 
+X519 GND VDD clk rst_n in_valid partial_sum_12_3 partial_sum_11_3 partial_sum_10_3 partial_sum_9_3 partial_sum_8_3 partial_sum_7_3 partial_sum_6_3 partial_sum_5_3 partial_sum_4_3 partial_sum_3_3 partial_sum_2_3 partial_sum_1_3 partial_sum_0_3  Output_12_3 Output_11_3 Output_10_3 Output_9_3 Output_8_3 Output_7_3 Output_6_3 Output_5_3 Output_4_3 Output_3_3 Output_2_3 Output_1_3 Output_0_3  Accumulator 
+X520 GND VDD clk rst_n in_valid partial_sum_12_4 partial_sum_11_4 partial_sum_10_4 partial_sum_9_4 partial_sum_8_4 partial_sum_7_4 partial_sum_6_4 partial_sum_5_4 partial_sum_4_4 partial_sum_3_4 partial_sum_2_4 partial_sum_1_4 partial_sum_0_4  Output_12_4 Output_11_4 Output_10_4 Output_9_4 Output_8_4 Output_7_4 Output_6_4 Output_5_4 Output_4_4 Output_3_4 Output_2_4 Output_1_4 Output_0_4  Accumulator 
 
+.CONCATE Output_col_1  Output_12_1 Output_11_1 Output_10_1 Output_9_1 Output_8_1 Output_7_1 Output_6_1 Output_5_1 Output_4_1 Output_3_1 Output_2_1 Output_1_1 Output_0_1 
+.CONCATE Output_col_2  Output_12_2 Output_11_2 Output_10_2 Output_9_2 Output_8_2 Output_7_2 Output_6_2 Output_5_2 Output_4_2 Output_3_2 Output_2_2 Output_1_2 Output_0_2  
+.CONCATE Output_col_3  Output_12_3 Output_11_3 Output_10_3 Output_9_3 Output_8_3 Output_7_3 Output_6_3 Output_5_3 Output_4_3 Output_3_3 Output_2_3 Output_1_3 Output_0_3
+.CONCATE Output_col_4  Output_12_4 Output_11_4 Output_10_4 Output_9_4 Output_8_4 Output_7_4 Output_6_4 Output_5_4 Output_4_4 Output_3_4 Output_2_4 Output_1_4 Output_0_4
 
 
 ***-----------------------***
