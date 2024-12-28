@@ -1,17 +1,17 @@
 .SUBCKT Accumulator VSS VDD  clk rst_n in_valid partial_sum[12] partial_sum[11] partial_sum[10] partial_sum[9] partial_sum[8] partial_sum[7] partial_sum[6] partial_sum[5] partial_sum[4] partial_sum[3] partial_sum[2] partial_sum[1] partial_sum[0] result[12] result[11] result[10] result[9] result[8] result[7] result[6] result[5] result[4] result[3] result[2] result[1] result[0]
-Xresult_reg_12_ VSS VDD  N30 clk n2 n30 n14 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_11_ VSS VDD  N29 clk n2 n56 n13 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_10_ VSS VDD  N28 clk n2 n28 n12 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_9_ VSS VDD  N27 clk n2 n57 n11 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_8_ VSS VDD  N26 clk n2 n29 n10 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_7_ VSS VDD  N25 clk n2 n25 n9 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_6_ VSS VDD  N24 clk n2 n55 n8 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_5_ VSS VDD  N23 clk n2 n27 n7 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_4_ VSS VDD  N22 clk n2 n32 n6 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_3_ VSS VDD  N21 clk n2 n54 n5 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_2_ VSS VDD  N20 clk n2 n15 n4 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_1_ VSS VDD  N19 clk n2 n31 n3 ASYNC_DFFHx1_ASAP7_75t_R
-Xresult_reg_0_ VSS VDD  N18 clk n2 n26 n1 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_12_ VSS VDD  clk N30 n2 n30 n14 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_11_ VSS VDD  clk N29 n2 n56 n13 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_10_ VSS VDD  clk N28 n2 n28 n12 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_9_ VSS VDD  clk N27 n2 n57 n11 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_8_ VSS VDD  clk N26 n2 n29 n10 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_7_ VSS VDD  clk N25 n2 n25 n9 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_6_ VSS VDD  clk N24 n2 n55 n8 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_5_ VSS VDD  clk N23 n2 n27 n7 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_4_ VSS VDD  clk N22 n2 n32 n6 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_3_ VSS VDD  clk N21 n2 n54 n5 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_2_ VSS VDD  clk N20 n2 n15 n4 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_1_ VSS VDD  clk N19 n2 n31 n3 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_0_ VSS VDD  clk N18 n2 n26 n1 ASYNC_DFFHx1_ASAP7_75t_R
 XU31 VSS VDD  n37 result[7] INVx1_ASAP7_75t_R
 XU32 VSS VDD  n36 result[5] INVx1_ASAP7_75t_R
 XU33 VSS VDD  n35 result[3] INVx1_ASAP7_75t_R
