@@ -89,44 +89,137 @@
 #     print("Successfully processed and saved to 11.txt.")
 # except Exception as e:
 #     print(f"An error occurred: {e}")
-def process_w_to_rows(input_file, output_file):
+# def process_w_to_rows(input_file, output_file):
+#     try:
+#         # Read the input file
+#         with open(input_file, "r") as file:
+#             lines = file.readlines()
+
+#         # Extract numbers and build a list
+#         numbers = []
+#         for line in lines:
+#             # Split and extract the numeric value after ":"
+#             _, value = line.split(":")
+#             numbers.append(int(value.strip()))
+
+#         # Prepare 32 rows (divide into 4 columns per row)
+#         processed_rows = []
+#         for i in range(0, len(numbers), 4):  # Break into rows of 4
+#             processed_rows.append(numbers[i:i + 4])
+
+#         # Write to a file in row format
+#         with open(output_file, "w") as file:
+#             for row in processed_rows:
+#                 file.write(" ".join(map(str, row)) + "\n")
+
+#         print(f"Successfully processed and saved rows to {output_file}.")
+#     except Exception as e:
+#         print(f"An error occurred: {e}")
+
+# # Call the function with file names
+
+
+# process_w_to_rows("4.txt", "44.txt")
+
+#===
+
+# Function to process the input file and modify the last 16 numbers of each row
+# Function to process the input file and create Ixy to INM[] mapping
+# def create_mapping(input_file, output_file):
+#     try:
+#         # Read the input file
+#         with open(input_file, "r") as file:
+#             line = file.readline().strip()  # Single row input
+
+#         # Split the line into elements
+#         elements = line.split()
+
+#         # Generate mappings
+#         mapping_lines = []
+#         for idx, element in enumerate(elements):
+#             mapping_lines.append(f"{element} : INM[{idx}]")
+
+#         # Write the mappings to the output file
+#         with open(output_file, "w") as file:
+#             file.write("\n".join(mapping_lines) + "\n")
+
+#         print(f"Successfully processed and saved mappings to {output_file}.")
+#     except Exception as e:
+#         print(f"An error occurred: {e}")
+
+# # Call the function with file names
+# create_mapping("9.txt", "99.txt")
+
+
+
+
+# Function to generate 128 consecutive '1's and 'i's in two rows
+# def generate_repeat_file(output_file):
+#     try:
+#         # Generate 128 consecutive '1's for the first row
+#         first_row = ["1"] * 128
+#         # Generate 128 consecutive 'i's for the second row
+#         second_row = ["i"] * 128
+        
+#         # Write the rows to the output file
+#         with open(output_file, "w") as file:
+#             file.write("".join(first_row) + "\n")
+#             file.write("".join(second_row) + "\n")
+        
+#         print(f"Successfully generated and saved to {output_file}.")
+#     except Exception as e:
+#         print(f"An error occurred: {e}")
+
+# # Call the function to create the file
+# generate_repeat_file("repeat.txt")
+
+
+
+
+#===
+
+# Function to process input files and modify XI rows based on mappings
+def process_rows_with_mapping(input_file, mapping_file, output_file):
     try:
+        # Read the mapping file
+        with open(mapping_file, "r") as file:
+            mapping_lines = file.readlines()
+
+        # Create a dictionary for the mappings
+        mapping_dict = {}
+        for line in mapping_lines:
+            if ":" in line:
+                key, value = line.split(":")
+                mapping_dict[key.strip()] = value.strip()
+
         # Read the input file
         with open(input_file, "r") as file:
             lines = file.readlines()
 
-        # Extract numbers and build a list
-        numbers = []
+        # Process each row
+        processed_lines = []
         for line in lines:
-            # Split and extract the numeric value after ":"
-            _, value = line.split(":")
-            numbers.append(int(value.strip()))
+            if line.startswith("XI"):
+                # Split the line into parts
+                parts = line.split()
+                # Replace the second part (e.g., I315) with its mapping if available
+                if parts[1] in mapping_dict:
+                    parts[1] = mapping_dict[parts[1]]
+                processed_lines.append(" ".join(parts))
+            else:
+                # Keep XB rows unchanged
+                processed_lines.append(line.strip())
 
-        # Prepare 32 rows (divide into 4 columns per row)
-        processed_rows = []
-        for i in range(0, len(numbers), 4):  # Break into rows of 4
-            processed_rows.append(numbers[i:i + 4])
-
-        # Write to a file in row format
+        # Write the processed lines to the output file
         with open(output_file, "w") as file:
-            for row in processed_rows:
-                file.write(" ".join(map(str, row)) + "\n")
+            file.write("\n".join(processed_lines) + "\n")
 
-        print(f"Successfully processed and saved rows to {output_file}.")
+        print(f"Successfully processed and saved to {output_file}.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
 # Call the function with file names
-
-
-process_w_to_rows("4.txt", "44.txt")
-
-
-
-
-
-
-
+process_rows_with_mapping("9.txt", "99.txt", "999.txt")
 
 
 

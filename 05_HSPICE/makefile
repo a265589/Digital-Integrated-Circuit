@@ -1,7 +1,7 @@
 # Run HSPICE to generate the output files
 run:
-	hspice multiplier.sp -o multiplier.lis
+	hspice test.sp -o test.lis
 
 # Clean up the generated files
 clean:
-	rm -f multiplier.lis multiplier.tr0 multiplier.st0 multiplier.ic0 multiplier.mt0 multiplier.pa0
+	rm -rf multiplier.lis *.tr0 *.st0 *.ic0 *.mt0 *.pa0
