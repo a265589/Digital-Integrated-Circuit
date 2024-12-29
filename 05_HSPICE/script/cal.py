@@ -179,48 +179,73 @@
 #===
 
 # Function to process input files and modify XI rows based on mappings
-def process_rows_with_mapping(input_file, mapping_file, output_file):
+# def process_rows_with_mapping(input_file, mapping_file, output_file):
+#     try:
+#         # Read the mapping file
+#         with open(mapping_file, "r") as file:
+#             mapping_lines = file.readlines()
+
+#         # Create a dictionary for the mappings
+#         mapping_dict = {}
+#         for line in mapping_lines:
+#             if ":" in line:
+#                 key, value = line.split(":")
+#                 mapping_dict[key.strip()] = value.strip()
+
+#         # Read the input file
+#         with open(input_file, "r") as file:
+#             lines = file.readlines()
+
+#         # Process each row
+#         processed_lines = []
+#         for line in lines:
+#             if line.startswith("XI"):
+#                 # Split the line into parts
+#                 parts = line.split()
+#                 # Replace the second part (e.g., I315) with its mapping if available
+#                 if parts[1] in mapping_dict:
+#                     parts[1] = mapping_dict[parts[1]]
+#                 processed_lines.append(" ".join(parts))
+#             else:
+#                 # Keep XB rows unchanged
+#                 processed_lines.append(line.strip())
+
+#         # Write the processed lines to the output file
+#         with open(output_file, "w") as file:
+#             file.write("\n".join(processed_lines) + "\n")
+
+#         print(f"Successfully processed and saved to {output_file}.")
+#     except Exception as e:
+#         print(f"An error occurred: {e}")
+
+# # Call the function with file names
+# process_rows_with_mapping("9.txt", "99.txt", "999.txt")
+
+# Function to process the input file and modify as per the requirements
+# Function to count the number of 0s and 1s in each row of a file
+def count_zeros_ones(input_file):
     try:
-        # Read the mapping file
-        with open(mapping_file, "r") as file:
-            mapping_lines = file.readlines()
-
-        # Create a dictionary for the mappings
-        mapping_dict = {}
-        for line in mapping_lines:
-            if ":" in line:
-                key, value = line.split(":")
-                mapping_dict[key.strip()] = value.strip()
-
-        # Read the input file
         with open(input_file, "r") as file:
-            lines = file.readlines()
+            rows = file.readlines()
 
-        # Process each row
-        processed_lines = []
-        for line in lines:
-            if line.startswith("XI"):
-                # Split the line into parts
-                parts = line.split()
-                # Replace the second part (e.g., I315) with its mapping if available
-                if parts[1] in mapping_dict:
-                    parts[1] = mapping_dict[parts[1]]
-                processed_lines.append(" ".join(parts))
-            else:
-                # Keep XB rows unchanged
-                processed_lines.append(line.strip())
+        # Process each row to count 0s and 1s
+        counts = []
+        for index, row in enumerate(rows):
+            numbers = row.strip().split()
+            zero_count = numbers.count("0")
+            one_count = numbers.count("1")
+            counts.append(f"Row {index + 1}: 0s = {zero_count}, 1s = {one_count}")
 
-        # Write the processed lines to the output file
-        with open(output_file, "w") as file:
-            file.write("\n".join(processed_lines) + "\n")
+        # Print the results
+        for count in counts:
+            print(count)
 
-        print(f"Successfully processed and saved to {output_file}.")
+        return counts
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Call the function with file names
-process_rows_with_mapping("9.txt", "99.txt", "999.txt")
-
+# Call the function with the input file name
+count_zeros_ones("2.txt")
 
 
 
