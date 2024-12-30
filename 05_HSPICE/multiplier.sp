@@ -14,12 +14,13 @@
 .include '../08_TECH/LIB/asap7sc7p5t_OA_RVT.sp'     
 .include './Adder_tree_SYN_new.sp'
 .include './Accumulator_SYN_new.sp'
+.include './Control_SYN_new.sp'
 .unprotect
 
 .VEC "mul.vec" 
 
 *** Voltage: 0.7V ***
-.PARAM supply=0.7v
+.PARAM supply=0.45v
 
 *** Temperature: 25C ***
 .TEMP 25
@@ -27,7 +28,7 @@
 ***********************************
 * Transition Analysis             *
 ***********************************
-.TRAN 100ps 8ns 
+.TRAN 100ps 36ns 
 
 ***********************************
 * HSPICE Options                  *
@@ -98,67 +99,8 @@
 .probe tran v(Out_4[11])
 .probe tran v(Out_4[12])
 
-.probe tran v(I1)
-.probe tran v(I1_buf)
-.probe tran v(I2_buf)
-.probe tran v(I3_buf)
-.probe tran v(I2)
-.probe tran v(I3)
-.probe tran v(I4)
+.probe tran v(out_valid)
 
-.probe tran v(I1_inv)
-.probe tran v(I2_inv)
-.probe tran v(I3_inv)
-.probe tran v(I4_inv)
-.probe tran v(I1111_inv)
-
-.probe tran v(O_1_1_4)
-.probe tran v(O_1_1_3)
-.probe tran v(O_1_1_2)
-.probe tran v(O_1_1_1)
-.probe tran v(O_1_2_4)
-.probe tran v(O_1_2_3)
-.probe tran v(O_1_2_2)
-.probe tran v(O_1_2_1)
-.probe tran v(O_1_3_4)
-.probe tran v(O_1_3_3)
-.probe tran v(O_1_3_2)
-.probe tran v(O_1_3_1)
-.probe tran v(O_1_4_1)
-.probe tran v(O_1_4_4)
-.probe tran v(O_1_4_3)
-.probe tran v(O_1_4_2)
-.probe tran v(O_1_4_1)
-.probe tran v(O_1_5_4)
-.probe tran v(O_1_5_3)
-.probe tran v(O_1_5_2)
-.probe tran v(O_1_6_1)
-.probe tran v(O_1_6_4)
-.probe tran v(O_1_6_3)
-.probe tran v(O_1_6_2)
-.probe tran v(O_1_6_1)
-.probe tran v(O_1_6_4)
-.probe tran v(O_1_6_3)
-.probe tran v(O_1_6_2)
-.probe tran v(O_1_7_1)
-.probe tran v(O_1_7_4)
-.probe tran v(O_1_7_3)
-.probe tran v(O_1_7_2)
-.probe tran v(O_1_7_1)
-
-.probe tran v(partial_sum_0_1)
-.probe tran v(partial_sum_1_1)
-.probe tran v(partial_sum_2_1)
-.probe tran v(partial_sum_3_1)
-.probe tran v(partial_sum_4_1)
-.probe tran v(partial_sum_5_1)
-.probe tran v(partial_sum_6_1)
-.probe tran v(partial_sum_7_1)
-.probe tran v(partial_sum_8_1)
-.probe tran v(partial_sum_9_1)
-.probe tran v(partial_sum_10_1)
-.probe tran v(partial_sum_11_1)
-.probe tran v(partial_sum_12_1)
 
 
 ***********************************
@@ -191,6 +133,7 @@ vblb    BLB   0   DC supply/2
 * // WEIGHT IS INITIALIZE IN THE SRAM
 * // SO CIM OPERATION IS READ THE WEIGHT AND THEN DO DOT PRODUCT 
 
+XOUT GND VDD clk rst_n out_valid Control
 
 XI11 I1 I1_buf Buffer
 XB11 I1_buf I1_inv INV
@@ -801,20 +744,52 @@ X510 I32_inv O_4_32_2 WL_4_2 BL BLB W_4_32_2 W_4_32_2_bar CIM_cell
 X511 I32_inv O_4_32_3 WL_4_3 BL BLB W_4_32_3 W_4_32_3_bar CIM_cell
 X512 I32_inv O_4_32_4 WL_4_4 BL BLB W_4_32_4 W_4_32_4_bar CIM_cell
 
-
-X513 GND VDD O_1_1_4 O_1_1_3 O_1_1_2 O_1_1_1 O_1_2_4 O_1_2_3 O_1_2_2 O_1_2_1  O_1_3_4 O_1_3_3 O_1_3_2 O_1_3_1 O_1_4_4 O_1_4_3 O_1_4_2 O_1_4_1 
-+ GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND
-+ GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND
-+ GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND
-+ GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND
-+ GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND
-+ GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND
-+ GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND GND
+X513 GND VDD O_1_1_4 O_1_1_3 O_1_1_2 O_1_1_1 O_1_2_4 O_1_2_3 O_1_2_2 O_1_2_1 O_1_3_4 O_1_3_3 O_1_3_2 O_1_3_1 O_1_4_4 O_1_4_3 O_1_4_2 O_1_4_1 
++ O_1_5_4 O_1_5_3 O_1_5_2 O_1_5_1 O_1_6_4 O_1_6_3 O_1_6_2 O_1_6_1 O_1_7_4 O_1_7_3 O_1_7_2 O_1_7_1 O_1_8_4 O_1_8_3 O_1_8_2 O_1_8_1
++ O_1_9_4 O_1_9_3 O_1_9_2 O_1_9_1 O_1_10_4 O_1_10_3 O_1_10_2 O_1_10_1 O_1_11_4 O_1_11_3 O_1_11_2 O_1_11_1 O_1_12_4 O_1_12_3 O_1_12_2 O_1_12_1 
++ O_1_13_4 O_1_13_3 O_1_13_2 O_1_13_1 O_1_14_4 O_1_14_3 O_1_14_2 O_1_14_1 O_1_15_4 O_1_15_3 O_1_15_2 O_1_15_1 O_1_16_4 O_1_16_3 O_1_16_2 O_1_16_1 
++ O_1_17_4 O_1_17_3 O_1_17_2 O_1_17_1 O_1_18_4 O_1_18_3 O_1_18_2 O_1_18_1 O_1_19_4 O_1_19_3 O_1_19_2 O_1_19_1 O_1_20_4 O_1_20_3 O_1_20_2 O_1_20_1 
++ O_1_21_4 O_1_21_3 O_1_21_2 O_1_21_1 O_1_22_4 O_1_22_3 O_1_22_2 O_1_22_1 O_1_23_4 O_1_23_3 O_1_23_2 O_1_23_1 O_1_24_4 O_1_24_3 O_1_24_2 O_1_24_1 
++ O_1_25_4 O_1_25_3 O_1_25_2 O_1_25_1 O_1_26_4 O_1_26_3 O_1_26_2 O_1_26_1 O_1_27_4 O_1_27_3 O_1_27_2 O_1_27_1 O_1_28_4 O_1_28_3 O_1_28_2 O_1_28_1 
++ O_1_29_4 O_1_29_3 O_1_29_2 O_1_29_1 O_1_30_4 O_1_30_3 O_1_30_2 O_1_30_1 O_1_31_4 O_1_31_3 O_1_31_2 O_1_31_1 O_1_32_4 O_1_32_3 O_1_32_2 O_1_32_1 
 ​+ partial_sum_12_1 partial_sum_11_1 partial_sum_10_1 partial_sum_9_1 partial_sum_8_1 partial_sum_7_1 partial_sum_6_1 partial_sum_5_1 partial_sum_4_1 partial_sum_3_1 partial_sum_2_1 partial_sum_1_1 partial_sum_0_1 Adder_tree
 
+X514 GND VDD O_2_1_4 O_2_1_3 O_2_1_2 O_2_1_1 O_2_2_4 O_2_2_3 O_2_2_2 O_2_2_1 O_2_3_4 O_2_3_3 O_2_3_2 O_2_3_1 O_2_4_4 O_2_4_3 O_2_4_2 O_2_4_1 
++ O_2_5_4 O_2_5_3 O_2_5_2 O_2_5_1 O_2_6_4 O_2_6_3 O_2_6_2 O_2_6_1 O_2_7_4 O_2_7_3 O_2_7_2 O_2_7_1 O_2_8_4 O_2_8_3 O_2_8_2 O_2_8_1 
++ O_2_9_4 O_2_9_3 O_2_9_2 O_2_9_1 O_2_10_4 O_2_10_3 O_2_10_2 O_2_10_1 O_2_11_4 O_2_11_3 O_2_11_2 O_2_11_1 O_2_12_4 O_2_12_3 O_2_12_2 O_2_12_1 
++ O_2_13_4 O_2_13_3 O_2_13_2 O_2_13_1 O_2_14_4 O_2_14_3 O_2_14_2 O_2_14_1 O_2_15_4 O_2_15_3 O_2_15_2 O_2_15_1 O_2_16_4 O_2_16_3 O_2_16_2 O_2_16_1 
++ O_2_17_4 O_2_17_3 O_2_17_2 O_2_17_1 O_2_18_4 O_2_18_3 O_2_18_2 O_2_18_1 O_2_19_4 O_2_19_3 O_2_19_2 O_2_19_1 O_2_20_4 O_2_20_3 O_2_20_2 O_2_20_1
++ O_2_21_4 O_2_21_3 O_2_21_2 O_2_21_1 O_2_22_4 O_2_22_3 O_2_22_2 O_2_22_1 O_2_23_4 O_2_23_3 O_2_23_2 O_2_23_1 O_2_24_4 O_2_24_3 O_2_24_2 O_2_24_1 
++ O_2_25_4 O_2_25_3 O_2_25_2 O_2_25_1 O_2_26_4 O_2_26_3 O_2_26_2 O_2_26_1 O_2_27_4 O_2_27_3 O_2_27_2 O_2_27_1 O_2_28_4 O_2_28_3 O_2_28_2 O_2_28_1 
++ O_2_29_4 O_2_29_3 O_2_29_2 O_2_29_1 O_2_30_4 O_2_30_3 O_2_30_2 O_2_30_1 O_2_31_4 O_2_31_3 O_2_31_2 O_2_31_1 O_2_32_4 O_2_32_3 O_2_32_2 O_2_32_1 
++ partial_sum_12_2 partial_sum_11_2 partial_sum_10_2 partial_sum_9_2 partial_sum_8_2 partial_sum_7_2 partial_sum_6_2 partial_sum_5_2 partial_sum_4_2 partial_sum_3_2 partial_sum_2_2 partial_sum_1_2 partial_sum_0_2 Adder_tree
+
+X515 GND VDD O_3_1_4 O_3_1_3 O_3_1_2 O_3_1_1 O_3_2_4 O_3_2_3 O_3_2_2 O_3_2_1 O_3_3_4 O_3_3_3 O_3_3_2 O_3_3_1 O_3_4_4 O_3_4_3 O_3_4_2 O_3_4_1 
++ O_3_5_4 O_3_5_3 O_3_5_2 O_3_5_1 O_3_6_4 O_3_6_3 O_3_6_2 O_3_6_1 O_3_7_4 O_3_7_3 O_3_7_2 O_3_7_1 O_3_8_4 O_3_8_3 O_3_8_2 O_3_8_1 
++ O_3_9_4 O_3_9_3 O_3_9_2 O_3_9_1 O_3_10_4 O_3_10_3 O_3_10_2 O_3_10_1 O_3_11_4 O_3_11_3 O_3_11_2 O_3_11_1 O_3_12_4 O_3_12_3 O_3_12_2 O_3_12_1 
++ O_3_13_4 O_3_13_3 O_3_13_2 O_3_13_1 O_3_14_4 O_3_14_3 O_3_14_2 O_3_14_1 O_3_15_4 O_3_15_3 O_3_15_2 O_3_15_1 O_3_16_4 O_3_16_3 O_3_16_2 O_3_16_1 
++ O_3_17_4 O_3_17_3 O_3_17_2 O_3_17_1 O_3_18_4 O_3_18_3 O_3_18_2 O_3_18_1 O_3_19_4 O_3_19_3 O_3_19_2 O_3_19_1 O_3_20_4 O_3_20_3 O_3_20_2 O_3_20_1 
++ O_3_21_4 O_3_21_3 O_3_21_2 O_3_21_1 O_3_22_4 O_3_22_3 O_3_22_2 O_3_22_1 O_3_23_4 O_3_23_3 O_3_23_2 O_3_23_1 O_3_24_4 O_3_24_3 O_3_24_2 O_3_24_1 
++ O_3_25_4 O_3_25_3 O_3_25_2 O_3_25_1 O_3_26_4 O_3_26_3 O_3_26_2 O_3_26_1 O_3_27_4 O_3_27_3 O_3_27_2 O_3_27_1 O_3_28_4 O_3_28_3 O_3_28_2 O_3_28_1 
++ O_3_29_4 O_3_29_3 O_3_29_2 O_3_29_1 O_3_30_4 O_3_30_3 O_3_30_2 O_3_30_1 O_3_31_4 O_3_31_3 O_3_31_2 O_3_31_1 O_3_32_4 O_3_32_3 O_3_32_2 O_3_32_1 
++ partial_sum_12_3 partial_sum_11_3 partial_sum_10_3 partial_sum_9_3 partial_sum_8_3 partial_sum_7_3 partial_sum_6_3 partial_sum_5_3 partial_sum_4_3 partial_sum_3_3 partial_sum_2_3 partial_sum_1_3 partial_sum_0_3 Adder_tree
+
+X516 GND VDD O_4_1_4 O_4_1_3 O_4_1_2 O_4_1_1 O_4_2_4 O_4_2_3 O_4_2_2 O_4_2_1 O_4_3_4 O_4_3_3 O_4_3_2 O_4_3_1 O_4_4_4 O_4_4_3 O_4_4_2 O_4_4_1 
++ O_4_5_4 O_4_5_3 O_4_5_2 O_4_5_1 O_4_6_4 O_4_6_3 O_4_6_2 O_4_6_1 O_4_7_4 O_4_7_3 O_4_7_2 O_4_7_1 O_4_8_4 O_4_8_3 O_4_8_2 O_4_8_1 
++ O_4_9_4 O_4_9_3 O_4_9_2 O_4_9_1 O_4_10_4 O_4_10_3 O_4_10_2 O_4_10_1 O_4_11_4 O_4_11_3 O_4_11_2 O_4_11_1 O_4_12_4 O_4_12_3 O_4_12_2 O_4_12_1 
++ O_4_13_4 O_4_13_3 O_4_13_2 O_4_13_1 O_4_14_4 O_4_14_3 O_4_14_2 O_4_14_1 O_4_15_4 O_4_15_3 O_4_15_2 O_4_15_1 O_4_16_4 O_4_16_3 O_4_16_2 O_4_16_1 
++ O_4_17_4 O_4_17_3 O_4_17_2 O_4_17_1 O_4_18_4 O_4_18_3 O_4_18_2 O_4_18_1 O_4_19_4 O_4_19_3 O_4_19_2 O_4_19_1 O_4_20_4 O_4_20_3 O_4_20_2 O_4_20_1 
++ O_4_21_4 O_4_21_3 O_4_21_2 O_4_21_1 O_4_22_4 O_4_22_3 O_4_22_2 O_4_22_1 O_4_23_4 O_4_23_3 O_4_23_2 O_4_23_1 O_4_24_4 O_4_24_3 O_4_24_2 O_4_24_1 
++ O_4_25_4 O_4_25_3 O_4_25_2 O_4_25_1 O_4_26_4 O_4_26_3 O_4_26_2 O_4_26_1 O_4_27_4 O_4_27_3 O_4_27_2 O_4_27_1 O_4_28_4 O_4_28_3 O_4_28_2 O_4_28_1 
++ O_4_29_4 O_4_29_3 O_4_29_2 O_4_29_1 O_4_30_4 O_4_30_3 O_4_30_2 O_4_30_1 O_4_31_4 O_4_31_3 O_4_31_2 O_4_31_1 O_4_32_4 O_4_32_3 O_4_32_2 O_4_32_1 
++ partial_sum_12_4 partial_sum_11_4 partial_sum_10_4 partial_sum_9_4 partial_sum_8_4 partial_sum_7_4 partial_sum_6_4 partial_sum_5_4 partial_sum_4_4 partial_sum_3_4 partial_sum_2_4 partial_sum_1_4 partial_sum_0_4 Adder_tree
 
 
 X517 GND VDD clk rst_n in_valid partial_sum_12_1 partial_sum_11_1 partial_sum_10_1 partial_sum_9_1 partial_sum_8_1 partial_sum_7_1 partial_sum_6_1 partial_sum_5_1 partial_sum_4_1 partial_sum_3_1 partial_sum_2_1 partial_sum_1_1 partial_sum_0_1 Out_1[12]  Out_1[11]  Out_1[10]  Out_1[9]  Out_1[8]  Out_1[7]  Out_1[6]  Out_1[5]  Out_1[4]  Out_1[3]  Out_1[2]  Out_1[1]  Out_1[0]  Accumulator          
+X518 GND VDD clk rst_n in_valid partial_sum_12_2 partial_sum_11_2 partial_sum_10_2 partial_sum_9_2 partial_sum_8_2 partial_sum_7_2 partial_sum_6_2 partial_sum_5_2 partial_sum_4_2 partial_sum_3_2 partial_sum_2_2 partial_sum_1_2 partial_sum_0_2 Out_2[12]  Out_2[11]  Out_2[10]  Out_2[9]  Out_2[8]  Out_2[7]  Out_2[6]  Out_2[5]  Out_2[4]  Out_2[3]  Out_2[2]  Out_2[1]  Out_2[0]  Accumulator 
+X519 GND VDD clk rst_n in_valid partial_sum_12_3 partial_sum_11_3 partial_sum_10_3 partial_sum_9_3 partial_sum_8_3 partial_sum_7_3 partial_sum_6_3 partial_sum_5_3 partial_sum_4_3 partial_sum_3_3 partial_sum_2_3 partial_sum_1_3 partial_sum_0_3 Out_3[12]  Out_3[11]  Out_3[10]  Out_3[9]  Out_3[8]  Out_3[7]  Out_3[6]  Out_3[5]  Out_3[4]  Out_3[3]  Out_3[2]  Out_3[1]  Out_3[0]  Accumulator 
+X520 GND VDD clk rst_n in_valid partial_sum_12_4 partial_sum_11_4 partial_sum_10_4 partial_sum_9_4 partial_sum_8_4 partial_sum_7_4 partial_sum_6_4 partial_sum_5_4 partial_sum_4_4 partial_sum_3_4 partial_sum_2_4 partial_sum_1_4 partial_sum_0_4 Out_4[12]  Out_4[11]  Out_4[10]  Out_4[9]  Out_4[8]  Out_4[7]  Out_4[6]  Out_4[5]  Out_4[4]  Out_4[3]  Out_4[2]  Out_4[1]  Out_4[0]  Accumulator 
+
 
 
 
@@ -859,8 +834,8 @@ X517 GND VDD clk rst_n in_valid partial_sum_12_1 partial_sum_11_1 partial_sum_10
 .ends
 
 .subckt INV in out
-    Mp  out  in  VDD  VDD  pmos_lvt  m=6
-    Mn  out  in  GND  GND  nmos_lvt  m=6
+    Mp  out  in  VDD  VDD  pmos_lvt  m=1
+    Mn  out  in  GND  GND  nmos_lvt  m=1
 .ends
 
 * Example .IC file for initializing SRAM weights
