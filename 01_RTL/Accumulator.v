@@ -14,7 +14,7 @@ begin
     end
     else if(in_valid)
     begin
-        result <= (result << 13'd1) + partial_sum;
+        result <= (result << 1) + partial_sum;
     end
     else
     begin

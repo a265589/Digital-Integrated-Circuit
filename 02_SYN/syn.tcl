@@ -14,14 +14,14 @@ set search_path {
        
 
 set link_library {dw_foundation.sldb }
-set synthetic_library { asap7sc7p5t_AO_RVT_TT_08302018.db asap7sc7p5t_OA_RVT_TT_08302018.db asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db}
-set target_library {asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db }         
+set synthetic_library { asap7sc7p5t_AO_LVT_TT_08302018.db asap7sc7p5t_OA_LVT_TT_08302018.db asap7sc7p5t_INVBUF_LVT_TT_08302018.db asap7sc7p5t_SEQ_LVT_TT_08302018.db asap7sc7p5t_SIMPLE_LVT_TT_08302018.db}
+set target_library {asap7sc7p5t_INVBUF_LVT_TT_08302018.db asap7sc7p5t_SIMPLE_LVT_TT_08302018.db asap7sc7p5t_SEQ_LVT_TT_08302018.db }         
 
 #======================================================
 #  Global Parameters
 #======================================================
-set DESIGN "Adder_tree"
-set MAX_Delay 1000
+set DESIGN "Accumulator"
+set MAX_Delay 200
 
 #======================================================
 #  Read RTL Code

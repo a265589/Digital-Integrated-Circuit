@@ -3,29 +3,29 @@
 Report : area
 Design : Adder_tree
 Version: P-2019.03-SP1-1
-Date   : Wed Dec 25 14:38:52 2024
+Date   : Tue Dec 31 08:39:41 2024
 ****************************************
 
 Library(s) Used:
 
-    asap7sc7p5t_SIMPLE_RVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SIMPLE_RVT_TT_08302018.db)
-    asap7sc7p5t_INVBUF_RVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_INVBUF_RVT_TT_08302018.db)
+    asap7sc7p5t_SIMPLE_LVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SIMPLE_LVT_TT_08302018.db)
+    asap7sc7p5t_INVBUF_LVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_INVBUF_LVT_TT_08302018.db)
 
 Number of ports:                          141
-Number of nets:                           418
-Number of cells:                          179
-Number of combinational cells:            179
+Number of nets:                           437
+Number of cells:                          198
+Number of combinational cells:            198
 Number of sequential cells:                 0
 Number of macros/black boxes:               0
-Number of buf/inv:                         36
-Number of references:                      15
+Number of buf/inv:                         55
+Number of references:                      13
 
-Combinational area:                459.095030
-Buf/Inv area:                       29.393280
+Combinational area:                491.987509
+Buf/Inv area:                       62.285759
 Noncombinational area:               0.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:                   459.095030
+Total cell area:                   491.987509
 Total area:                 undefined
 1

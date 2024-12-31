@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : area
+Design : Control
+Version: P-2019.03-SP1-1
+Date   : Tue Dec 31 08:38:43 2024
+****************************************
+
+Library(s) Used:
+
+    asap7sc7p5t_SIMPLE_LVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SIMPLE_LVT_TT_08302018.db)
+    asap7sc7p5t_INVBUF_LVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_INVBUF_LVT_TT_08302018.db)
+    asap7sc7p5t_SEQ_LVT_TT_08302018 (File: /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/08_TECH/LIB/asap7sc7p5t_SEQ_LVT_TT_08302018.db)
+
+Number of ports:                            3
+Number of nets:                            21
+Number of cells:                           19
+Number of combinational cells:             15
+Number of sequential cells:                 4
+Number of macros/black boxes:               0
+Number of buf/inv:                          7
+Number of references:                      10
+
+Combinational area:                 19.828800
+Buf/Inv area:                       11.197440
+Noncombinational area:              24.261120
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                    44.089920
+Total area:                 undefined
+1

@@ -1,0 +1,2 @@
+Command Line: /usr/cad/synopsys/verdi/2019.06/platform/LINUXAMD64/bin/vfast -silent -del / -o /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/05_HSPICE/multiplier2.tr0.fsdb -ft spice /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC_FINAL/05_HSPICE/multiplier2.tr0
+uname(Linux ee21 3.10.0-1160.88.1.el7.x86_64 #1 SMP Tue Mar 7 15:41:52 UTC 2023 x86_64)

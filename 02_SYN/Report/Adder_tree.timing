@@ -8,10 +8,10 @@ Report : timing
         -max_paths 1
 Design : Adder_tree
 Version: P-2019.03-SP1-1
-Date   : Wed Dec 25 14:38:52 2024
+Date   : Tue Dec 31 08:39:41 2024
 ****************************************
 
-Operating Conditions: PVT_0P7V_25C   Library: asap7sc7p5t_INVBUF_RVT_TT_08302018
+Operating Conditions: PVT_0P7V_25C   Library: asap7sc7p5t_INVBUF_LVT_TT_08302018
 Wire Load Model Mode: top
 
   Startpoint: in[92] (input port)
@@ -23,29 +23,30 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   input external delay                                    0.00       0.00 f
   in[92] (in)                                             0.00       0.00 f
-  DP_OP_94J1_122_9915/U195/SN (FAx1_ASAP7_75t_R)         97.53      97.53 f
-  DP_OP_94J1_122_9915/U185/CON (FAx1_ASAP7_75t_R)        49.38     146.92 r
-  DP_OP_94J1_122_9915/U158/SN (FAx1_ASAP7_75t_R)         71.25     218.16 f
-  DP_OP_94J1_122_9915/U154/CON (FAx1_ASAP7_75t_R)        38.48     256.64 r
-  DP_OP_94J1_122_9915/U118/CON (FAx1_ASAP7_75t_R)        23.55     280.19 f
-  U30/Y (INVx1_ASAP7_75t_R)                              17.27     297.45 r
-  DP_OP_94J1_122_9915/U75/SN (FAx1_ASAP7_75t_R)          85.72     383.17 f
-  U65/Y (MAJx2_ASAP7_75t_R)                              51.14     434.32 f
-  U23/Y (MAJIxp5_ASAP7_75t_R)                            24.30     458.62 r
-  U26/Y (MAJx2_ASAP7_75t_R)                              30.21     488.83 r
-  U25/Y (MAJx2_ASAP7_75t_R)                              24.42     513.25 r
-  U69/SN (FAx1_ASAP7_75t_R)                              25.03     538.27 f
-  out[7] (out)                                            0.00     538.27 f
-  data arrival time                                                538.27
+  DP_OP_94J1_122_9915/U195/SN (FAx1_ASAP7_75t_L)         97.53      97.53 f
+  DP_OP_94J1_122_9915/U185/CON (FAx1_ASAP7_75t_L)        49.38     146.92 r
+  DP_OP_94J1_122_9915/U158/SN (FAx1_ASAP7_75t_L)         74.64     221.55 f
+  DP_OP_94J1_122_9915/U154/CON (FAx1_ASAP7_75t_L)        41.36     262.91 r
+  DP_OP_94J1_122_9915/U118/CON (FAx1_ASAP7_75t_L)        22.92     285.83 f
+  U45/Y (BUFx4_ASAP7_75t_L)                              26.18     312.02 f
+  U60/Y (INVx3_ASAP7_75t_L)                               5.78     317.80 r
+  DP_OP_94J1_122_9915/U75/SN (FAx1_ASAP7_75t_L)          82.46     400.26 f
+  U82/Y (MAJx2_ASAP7_75t_L)                              51.14     451.40 f
+  U37/Y (MAJIxp5_ASAP7_75t_L)                            24.30     475.70 r
+  U3/Y (MAJx2_ASAP7_75t_L)                               30.21     505.91 r
+  U50/Y (MAJx2_ASAP7_75t_L)                              24.42     530.33 r
+  U86/SN (FAx1_ASAP7_75t_L)                              25.03     555.36 f
+  out[7] (out)                                            0.00     555.36 f
+  data arrival time                                                555.36
 
   max_delay                                            1000.00    1000.00
   output external delay                                   0.00    1000.00
   data required time                                              1000.00
   --------------------------------------------------------------------------
   data required time                                              1000.00
-  data arrival time                                               -538.27
+  data arrival time                                               -555.36
   --------------------------------------------------------------------------
-  slack (MET)                                                      461.73
+  slack (MET)                                                      444.64
 
 
 1

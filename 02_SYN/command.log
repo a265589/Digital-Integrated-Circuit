@@ -1,7 +1,7 @@
 #@ # 
 #@ # Running dc_shell Version P-2019.03-SP1-1 for linux64 -- May 06, 2019
-#@ # Date:   Wed Dec 25 14:38:07 2024
-#@ # Run by: icst_dic113@ee24
+#@ # Date:   Tue Dec 31 08:40:05 2024
+#@ # Run by: icst_dic113@ee21
 #@ 
 
 source /usr/cad/synopsys/synthesis/2019.03-sp1-1/admin/setup/.synopsys_dc.setup
@@ -6682,14 +6682,14 @@ source -echo -verbose /RAID2/COURSE/2024_Fall/icst_dic/icst_dic113/2024_NYCU_DIC
 #@ 
 #@ 
 #@ set link_library {dw_foundation.sldb }
-#@ set synthetic_library { asap7sc7p5t_AO_RVT_TT_08302018.db asap7sc7p5t_OA_RVT_TT_08302018.db asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db}
-#@ set target_library {asap7sc7p5t_INVBUF_RVT_TT_08302018.db asap7sc7p5t_SIMPLE_RVT_TT_08302018.db asap7sc7p5t_SEQ_RVT_TT_08302018.db }         
+#@ set synthetic_library { asap7sc7p5t_AO_LVT_TT_08302018.db asap7sc7p5t_OA_LVT_TT_08302018.db asap7sc7p5t_INVBUF_LVT_TT_08302018.db asap7sc7p5t_SEQ_LVT_TT_08302018.db asap7sc7p5t_SIMPLE_LVT_TT_08302018.db}
+#@ set target_library {asap7sc7p5t_INVBUF_LVT_TT_08302018.db asap7sc7p5t_SIMPLE_LVT_TT_08302018.db asap7sc7p5t_SEQ_LVT_TT_08302018.db }         
 #@ 
 #@ #======================================================
 #@ #  Global Parameters
 #@ #======================================================
-#@ set DESIGN "Adder_tree"
-#@ set MAX_Delay 1000
+#@ set DESIGN "Accumulator"
+#@ set MAX_Delay 200
 #@ 
 #@ #======================================================
 #@ #  Read RTL Code

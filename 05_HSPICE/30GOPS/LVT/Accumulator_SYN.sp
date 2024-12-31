@@ -1,0 +1,145 @@
+.SUBCKT Accumulator clk rst_n in_valid partial_sum[12] partial_sum[11] partial_sum[10] partial_sum[9] partial_sum[8] partial_sum[7] partial_sum[6] partial_sum[5] partial_sum[4] partial_sum[3] partial_sum[2] partial_sum[1] partial_sum[0] result[12] result[11] result[10] result[9] result[8] result[7] result[6] result[5] result[4] result[3] result[2] result[1] result[0]
+Xresult_reg_12_ N30 clk n2 n28 n14 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_11_ N29 clk n2 n54 n13 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_10_ N28 clk n2 n26 n12 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_9_ N27 clk n2 n29 n11 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_8_ N26 clk n2 n53 n10 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_7_ N25 clk n2 n55 n9 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_6_ N24 clk n2 n24 n8 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_5_ N23 clk n2 n30 n7 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_4_ N22 clk n2 n15 n6 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_3_ N21 clk n2 n25 n5 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_2_ N20 clk n2 n27 n4 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_1_ N19 clk n2 n23 n3 ASYNC_DFFHx1_ASAP7_75t_R
+Xresult_reg_0_ N18 clk n2 n56 n1 ASYNC_DFFHx1_ASAP7_75t_R
+XU31 n38 result[3] INVx1_ASAP7_75t_R
+XU32 n39 result[5] INVx1_ASAP7_75t_R
+XU33 n32 result[7] INVx1_ASAP7_75t_R
+XU34 n33 result[9] INVx1_ASAP7_75t_R
+XU35 n37 result[1] INVx1_ASAP7_75t_R
+XU36 n121 result[0] INVx2_ASAP7_75t_R
+XU37 partial_sum[2] n34 INVx4_ASAP7_75t_R
+XU38 partial_sum[4] n47 INVx4_ASAP7_75t_R
+XU39 partial_sum[6] n46 INVx4_ASAP7_75t_R
+XU40 partial_sum[8] n45 INVx4_ASAP7_75t_R
+XU41 partial_sum[10] n44 INVx4_ASAP7_75t_R
+XU42 n4 n120 BUFx3_ASAP7_75t_R
+XU43 n6 n119 BUFx3_ASAP7_75t_R
+XU44 result[0] partial_sum[1] n48 AND2x2_ASAP7_75t_R
+XU45 n1 n121 BUFx3_ASAP7_75t_R
+XU46 n11 n33 BUFx5_ASAP7_75t_R
+XU47 n3 n37 BUFx5_ASAP7_75t_R
+XU48 n5 n38 BUFx5_ASAP7_75t_R
+XU49 n7 n39 BUFx5_ASAP7_75t_R
+XU50 n9 n32 BUFx5_ASAP7_75t_R
+XU51 in_valid n16 INVx4_ASAP7_75t_R
+XU52 in_valid n17 INVx4_ASAP7_75t_R
+XU53 in_valid n18 INVx4_ASAP7_75t_R
+XU54 in_valid n19 INVx8_ASAP7_75t_R
+XU55 in_valid n20 INVx4_ASAP7_75t_R
+XU56 in_valid n21 INVx4_ASAP7_75t_R
+XU57 in_valid n22 INVx4_ASAP7_75t_R
+XU58 in_valid n49 INVx4_ASAP7_75t_R
+XU59 in_valid n50 INVx4_ASAP7_75t_R
+XU60 rst_n n23 INVx6_ASAP7_75t_R
+XU61 rst_n n24 INVx6_ASAP7_75t_R
+XU62 rst_n n25 INVx6_ASAP7_75t_R
+XU63 rst_n n26 INVx6_ASAP7_75t_R
+XU64 rst_n n27 INVx6_ASAP7_75t_R
+XU65 rst_n n28 INVx6_ASAP7_75t_R
+XU66 rst_n n29 INVx6_ASAP7_75t_R
+XU67 rst_n n30 INVx6_ASAP7_75t_R
+XU68 result[0] partial_sum[1] n62 NAND2xp33_ASAP7_75t_R
+XU69 n13 n31 BUFx3_ASAP7_75t_R
+XU70 partial_sum[2] n63 INVx6_ASAP7_75t_R
+XU71 n8 n118 BUFx3_ASAP7_75t_R
+XU72 n118 result[6] INVx3_ASAP7_75t_R
+XU73 n120 result[2] INVx3_ASAP7_75t_R
+XU74 n119 result[4] INVx3_ASAP7_75t_R
+XU75 n10 n117 BUFx3_ASAP7_75t_R
+XU76 n117 result[8] INVx3_ASAP7_75t_R
+XU77 n12 n116 BUFx3_ASAP7_75t_R
+XU78 n116 result[10] INVx3_ASAP7_75t_R
+XU79 partial_sum[10] n106 INVx6_ASAP7_75t_R
+XU80 partial_sum[8] n95 INVx6_ASAP7_75t_R
+XU81 partial_sum[6] n84 INVx6_ASAP7_75t_R
+XU82 partial_sum[4] n73 INVx6_ASAP7_75t_R
+XU83 in_valid n51 INVx4_ASAP7_75t_R
+XU84 in_valid n52 INVx4_ASAP7_75t_R
+XU85 in_valid n115 INVx4_ASAP7_75t_R
+XU86 rst_n n53 INVx6_ASAP7_75t_R
+XU87 rst_n n54 INVx6_ASAP7_75t_R
+XU88 rst_n n55 INVx6_ASAP7_75t_R
+XU89 rst_n n56 INVx6_ASAP7_75t_R
+XU90 rst_n n15 INVx6_ASAP7_75t_R
+XU91 n2 TIELOx1_ASAP7_75t_R
+XU92 n14 result[12] INVxp33_ASAP7_75t_R
+XU93 n31 result[11] INVxp33_ASAP7_75t_R
+XU94 in_valid partial_sum[0] N18 AND2x2_ASAP7_75t_R
+XU95 result[0] partial_sum[1] n57 NOR2xp33_ASAP7_75t_R
+XU96 n57 n48 n19 N19 NOR3xp33_ASAP7_75t_R
+XU97 result[1] partial_sum[2] n59 NOR2xp33_ASAP7_75t_R
+XU98 n37 n34 n58 NOR2xp33_ASAP7_75t_R
+XU99 n59 n58 n60 NOR2xp33_ASAP7_75t_R
+XU100 n60 n48 n61 HAxp5_ASAP7_75t_R
+XU101 n18 n61 N20 NOR2xp33_ASAP7_75t_R
+XU102 n37 n62 n63 n68 MAJIxp5_ASAP7_75t_R
+XU103 result[2] partial_sum[3] n65 AND2x2_ASAP7_75t_R
+XU104 result[2] partial_sum[3] n64 NOR2xp33_ASAP7_75t_R
+XU105 n65 n64 n66 NOR2xp33_ASAP7_75t_R
+XU106 n68 n66 n67 HAxp5_ASAP7_75t_R
+XU107 n21 n67 N21 NOR2xp33_ASAP7_75t_R
+XU108 result[2] partial_sum[3] n68 n74 MAJIxp5_ASAP7_75t_R
+XU109 n38 n47 n70 NOR2xp33_ASAP7_75t_R
+XU110 result[3] partial_sum[4] n69 NOR2xp33_ASAP7_75t_R
+XU111 n70 n69 n71 NOR2xp33_ASAP7_75t_R
+XU112 n74 n71 n72 XOR2xp5_ASAP7_75t_R
+XU113 n51 n72 N22 NOR2xp33_ASAP7_75t_R
+XU114 n38 n74 n73 n79 MAJIxp5_ASAP7_75t_R
+XU115 result[4] partial_sum[5] n76 AND2x2_ASAP7_75t_R
+XU116 result[4] partial_sum[5] n75 NOR2xp33_ASAP7_75t_R
+XU117 n76 n75 n77 NOR2xp33_ASAP7_75t_R
+XU118 n79 n77 n78 HAxp5_ASAP7_75t_R
+XU119 n49 n78 N23 NOR2xp33_ASAP7_75t_R
+XU120 result[4] partial_sum[5] n79 n85 MAJIxp5_ASAP7_75t_R
+XU121 n39 n46 n81 NOR2xp33_ASAP7_75t_R
+XU122 result[5] partial_sum[6] n80 NOR2xp33_ASAP7_75t_R
+XU123 n81 n80 n82 NOR2xp33_ASAP7_75t_R
+XU124 n85 n82 n83 XOR2xp5_ASAP7_75t_R
+XU125 n16 n83 N24 NOR2xp33_ASAP7_75t_R
+XU126 n39 n85 n84 n90 MAJIxp5_ASAP7_75t_R
+XU127 result[6] partial_sum[7] n87 AND2x2_ASAP7_75t_R
+XU128 result[6] partial_sum[7] n86 NOR2xp33_ASAP7_75t_R
+XU129 n87 n86 n88 NOR2xp33_ASAP7_75t_R
+XU130 n90 n88 n89 HAxp5_ASAP7_75t_R
+XU131 n52 n89 N25 NOR2xp33_ASAP7_75t_R
+XU132 result[6] partial_sum[7] n90 n96 MAJIxp5_ASAP7_75t_R
+XU133 n32 n45 n92 NOR2xp33_ASAP7_75t_R
+XU134 result[7] partial_sum[8] n91 NOR2xp33_ASAP7_75t_R
+XU135 n92 n91 n93 NOR2xp33_ASAP7_75t_R
+XU136 n96 n93 n94 XOR2xp5_ASAP7_75t_R
+XU137 n115 n94 N26 NOR2xp33_ASAP7_75t_R
+XU138 n32 n96 n95 n101 MAJIxp5_ASAP7_75t_R
+XU139 result[8] partial_sum[9] n98 AND2x2_ASAP7_75t_R
+XU140 result[8] partial_sum[9] n97 NOR2xp33_ASAP7_75t_R
+XU141 n98 n97 n99 NOR2xp33_ASAP7_75t_R
+XU142 n101 n99 n100 HAxp5_ASAP7_75t_R
+XU143 n50 n100 N27 NOR2xp33_ASAP7_75t_R
+XU144 result[8] partial_sum[9] n101 n107 MAJIxp5_ASAP7_75t_R
+XU145 n33 n44 n103 NOR2xp33_ASAP7_75t_R
+XU146 result[9] partial_sum[10] n102 NOR2xp33_ASAP7_75t_R
+XU147 n103 n102 n104 NOR2xp33_ASAP7_75t_R
+XU148 n107 n104 n105 XOR2xp5_ASAP7_75t_R
+XU149 n17 n105 N28 NOR2xp33_ASAP7_75t_R
+XU150 n33 n107 n106 n112 MAJIxp5_ASAP7_75t_R
+XU151 result[10] partial_sum[11] n109 NOR2xp33_ASAP7_75t_R
+XU152 result[10] partial_sum[11] n108 AND2x2_ASAP7_75t_R
+XU153 n109 n108 n110 NOR2xp33_ASAP7_75t_R
+XU154 n112 n110 n111 HAxp5_ASAP7_75t_R
+XU155 n22 n111 N29 NOR2xp33_ASAP7_75t_R
+XU156 result[10] partial_sum[11] n112 n113 MAJIxp5_ASAP7_75t_R
+XU157 partial_sum[12] n113 n31 n114 FAx1_ASAP7_75t_R
+XU158 n20 n114 N30 NOR2xp33_ASAP7_75t_R
+.ENDS
+
+

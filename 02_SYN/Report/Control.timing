@@ -1,0 +1,34 @@
+Error: Unit conflict found: Constraint time unit is 'ns'; main library time unit is 'ps'. (IFS-001)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Control
+Version: P-2019.03-SP1-1
+Date   : Tue Dec 31 08:38:43 2024
+****************************************
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7sc7p5t_INVBUF_LVT_TT_08302018
+Wire Load Model Mode: top
+
+  Startpoint: out_valid_reg
+              (rising edge-triggered flip-flop)
+  Endpoint: out_valid (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  out_valid_reg/CLK (ASYNC_DFFHx1_ASAP7_75t_L)            0.00       0.00 r
+  out_valid_reg/QN (ASYNC_DFFHx1_ASAP7_75t_L)            45.88      45.88 r
+  U21/Y (INVxp33_ASAP7_75t_L)                             4.44      50.33 f
+  out_valid (out)                                         0.00      50.33 f
+  data arrival time                                                 50.33
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
