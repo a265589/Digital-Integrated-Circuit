@@ -5,16 +5,16 @@
 ***-----------------------***
 
 .protect
-.include '../../08_TECH/LIB/7nm_TT.pm'
-.include '../../08_TECH/LIB/16mos.pm'
-.include '../../08_TECH/LIB/asap7sc7p5t_SIMPLE_LVT.sp' 
-.include '../../08_TECH/LIB/asap7sc7p5t_SEQ_LVT.sp'    
-.include '../../08_TECH/LIB/asap7sc7p5t_INVBUF_LVT.sp' 
-.include '../../08_TECH/LIB/asap7sc7p5t_AO_LVT.sp'     
-.include '../../08_TECH/LIB/asap7sc7p5t_OA_LVT.sp'     
-.include './LVT/Adder_tree_SYN_new.sp'
-.include './LVT/Accumulator_SYN_new.sp'
-.include './LVT/Control_SYN_new.sp'
+.include './7nm_TT.pm'
+.include './16mos.pm'
+.include './asap7sc7p5t_SIMPLE_LVT.sp' 
+.include './asap7sc7p5t_SEQ_LVT.sp'    
+.include './asap7sc7p5t_INVBUF_LVT.sp' 
+.include './asap7sc7p5t_AO_LVT.sp'     
+.include './asap7sc7p5t_OA_LVT.sp'     
+.include './Adder_tree_SYN_new.sp'
+.include './Accumulator_SYN_new.sp'
+.include './Control_SYN_new.sp'
 .unprotect
 
 .VEC "mul.vec" 
